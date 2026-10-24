@@ -1,0 +1,7 @@
+/jiralike
+/db/*.db*
+/blobs/*
+!/blobs/.gitkeep
+/web/node_modules
+/web/dist
+/web/.angular
