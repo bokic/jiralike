@@ -1,4 +1,4 @@
-add_executable(jiralike main.cpp)
+add_executable(jiralike main.cpp src/qrcodegen.cpp)
 
 set_target_properties(jiralike PROPERTIES
     RUNTIME_OUTPUT_DIRECTORY "${CMAKE_CURRENT_SOURCE_DIR}"
