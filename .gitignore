@@ -1,4 +1,5 @@
 /jiralike
+/build/
 /db/*.db*
 /blobs/*
 !/blobs/.gitkeep

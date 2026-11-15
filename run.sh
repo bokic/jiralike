@@ -7,7 +7,7 @@
 set -euo pipefail
 
 SCRIPT_DIR="$(cd "$(dirname "${BASH_SOURCE[0]}")" && pwd)"
-ROOT_DIR="$(cd "$SCRIPT_DIR/../.." && pwd)"
+ROOT_DIR="$SCRIPT_DIR"
 
 # Default configurations (can be overridden via environment variables or flags)
 HOST="${HOST:-0.0.0.0}"

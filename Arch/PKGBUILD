@@ -8,7 +8,7 @@ license=('LGPL3')
 makedepends=('cmake' 'ninja' 'gcc' 'fcgi' 'json-c' 'sqlite' 'nodejs' 'npm')
 
 build() {
-  cd "${srcdir}/../../../.."
+  cd "${srcdir}/../.."
   ./build.sh
   cd "${srcdir}/../../web"
   npm install

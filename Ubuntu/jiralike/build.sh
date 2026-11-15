@@ -8,7 +8,7 @@ mkdir -p "$PKG_DIR/var/lib/jiralike/blobs"
 mkdir -p "$PKG_DIR/etc/systemd/system"
 
 cp -r DEBIAN/* "$PKG_DIR/DEBIAN/"
-(cd ../../../.. && ./build.sh)
+(cd ../.. && ./build.sh)
 cp ../../jiralike "$PKG_DIR/opt/jiralike/jiralike"
 cp ../../jiralike.service "$PKG_DIR/etc/systemd/system/jiralike.service"
 
