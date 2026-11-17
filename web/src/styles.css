@@ -1002,8 +1002,9 @@ input:disabled, select:disabled, textarea:disabled {
 }
 
 .kanban-column.drag-over {
-  border-color: #2684ff;
-  background: #deebff;
+  border-color: var(--brand-primary);
+  background: var(--info-bg);
+  box-shadow: inset 0 0 0 1px var(--brand-primary);
 }
 
 .column-header {
@@ -1041,24 +1042,28 @@ input:disabled, select:disabled, textarea:disabled {
 }
 
 .issue-card {
-  background: #fff;
-  border-radius: 6px;
+  background: var(--bg-surface);
+  border-radius: var(--radius-md);
   padding: 10px 12px;
-  box-shadow: 0 1px 2px rgba(9, 30, 66, 0.14);
-  border: 1px solid #dfe1e6;
+  box-shadow: var(--shadow-sm);
+  border: 1px solid var(--border-color);
   cursor: grab;
   min-width: 0;
   overflow: hidden;
-  transition: transform 0.12s, box-shadow 0.12s;
+  transition: transform 0.12s, box-shadow 0.12s, border-color 0.12s;
 }
 
 .issue-card:hover {
-  box-shadow: 0 4px 10px rgba(9, 30, 66, 0.18);
+  box-shadow: var(--shadow-md);
+  border-color: var(--brand-primary);
   transform: translateY(-1px);
 }
 
 .issue-card.dragging {
   opacity: 0.45;
+  transform: rotate(1.5deg) scale(0.98);
+  border-style: dashed;
+  cursor: grabbing;
 }
 
 .card-top {
