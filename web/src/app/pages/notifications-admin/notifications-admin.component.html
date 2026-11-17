@@ -277,7 +277,7 @@
           @if (selectedScheme(); as scheme) {
             <div class="card-header">
               <div>
-                <div style="display: flex; gap: 8px; align-items: center;">
+                <div class="u-flex u-items-center u-gap-2">
                   <h2 class="card-title">{{ scheme.name }}</h2>
                   @if (scheme.is_default) {
                     <span class="badge badge-primary">Default Scheme</span>
@@ -285,7 +285,7 @@
                 </div>
                 <p class="card-subtitle">{{ scheme.description || 'Configures recipient groups and roles per event type.' }}</p>
               </div>
-              <div style="display: flex; gap: 8px;">
+              <div class="u-flex u-gap-2">
                 @if (!scheme.is_default) {
                   <button type="button" class="btn btn-sm btn-danger-ghost" (click)="deleteScheme(scheme)">
                     Delete Scheme
@@ -437,7 +437,7 @@
                 </div>
               </div>
 
-              <div style="margin-top: 16px;">
+              <div class="u-mt-4">
                 <button type="button" class="btn btn-primary" (click)="saveSmtpConfig()">
                   Save SMTP Settings
                 </button>
@@ -588,7 +588,7 @@
             />
           </div>
           <div class="form-group" style="margin-top: 12px;">
-            <div style="display: flex; justify-content: space-between; align-items: center;">
+            <div class="u-flex-between">
               <label class="form-label">Secret Token (for HMAC-SHA256 signature verification)</label>
               <button type="button" class="btn btn-ghost btn-xs" (click)="generateSecret()">
                 🎲 Generate Secret

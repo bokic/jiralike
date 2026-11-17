@@ -314,7 +314,7 @@
                   Members: {{ g.member_count || g.members?.length || 0 }}
                 </div>
               </div>
-              <div style="display: flex; gap: 4px;">
+              <div class="u-flex u-gap-1">
                 <button
                   type="button"
                   class="btn btn-ghost btn-xs"
@@ -347,7 +347,7 @@
               <h3>Group: {{ curGroup.name }}</h3>
               <p class="text-muted">{{ curGroup.description }}</p>
             </div>
-            <div style="display: flex; gap: 8px;">
+            <div class="u-flex u-gap-2">
               <select [(ngModel)]="addUserToGroupId" style="min-width: 180px;">
                 <option [ngValue]="null">— Select User to Add —</option>
                 @for (u of api.users(); track u.id) {
@@ -379,7 +379,7 @@
               @for (m of curGroup.members || []; track m.user_id) {
                 <tr>
                   <td>
-                    <div style="display: flex; align-items: center; gap: 8px;">
+                    <div class="u-flex u-items-center u-gap-2">
                       <span class="avatar-circle-sm" [style.background]="m.avatar_color">
                         {{ m.display_name.slice(0, 2).toUpperCase() }}
                       </span>
@@ -491,7 +491,7 @@
           <h3>Project Scheme Associations &amp; Role Members</h3>
           <p class="text-muted">Link a project to specific Permission and Security Schemes, and assign users to project roles.</p>
         </div>
-        <div style="display: flex; align-items: center; gap: 8px;">
+        <div class="u-flex u-items-center u-gap-2">
           <label for="proj-sel-schemes"><strong>Project:</strong></label>
           <select
             id="proj-sel-schemes"
@@ -511,7 +511,7 @@
           <h4>Permission Scheme Association</h4>
           <p class="text-muted small-text">Determines who can browse, edit, create, close, and manage sprints in this project.</p>
           <div style="display: flex; gap: 8px; margin-top: 10px;">
-            <select [(ngModel)]="assignPermSchemeId" style="flex: 1;">
+            <select [(ngModel)]="assignPermSchemeId" class="u-flex-1">
               @for (ps of permissionSchemes(); track ps.id) {
                 <option [ngValue]="ps.id">{{ ps.name }} @if (ps.is_default) { (Default) }</option>
               }
@@ -526,7 +526,7 @@
           <h4>Issue Security Scheme Association</h4>
           <p class="text-muted small-text">Determines available classification levels (Public, Internal, Confidential) for issues.</p>
           <div style="display: flex; gap: 8px; margin-top: 10px;">
-            <select [(ngModel)]="assignSecSchemeId" style="flex: 1;">
+            <select [(ngModel)]="assignSecSchemeId" class="u-flex-1">
               @for (ss of securitySchemes(); track ss.id) {
                 <option [ngValue]="ss.id">{{ ss.name }}</option>
               }
@@ -545,7 +545,7 @@
             <h4>Project Role Members</h4>
             <p class="text-muted small-text">Users assigned to roles in this project.</p>
           </div>
-          <div style="display: flex; gap: 8px;">
+          <div class="u-flex u-gap-2">
             <select [(ngModel)]="newRoleMemberName">
               @for (r of standardRoles; track r) {
                 <option [value]="r">{{ r }}</option>
@@ -583,7 +583,7 @@
               <tr>
                 <td><span class="role-badge">{{ m.role_name }}</span></td>
                 <td>
-                  <div style="display: flex; align-items: center; gap: 8px;">
+                  <div class="u-flex u-items-center u-gap-2">
                     <span class="avatar-circle-sm" [style.background]="m.avatar_color">
                       {{ m.display_name.slice(0, 2).toUpperCase() }}
                     </span>
@@ -741,7 +741,7 @@
         <textarea [(ngModel)]="newSecLevelDesc" rows="2" placeholder="Who should see this tier..."></textarea>
       </div>
       <div class="form-group checkbox-row">
-        <label style="display: flex; align-items: center; gap: 8px;">
+        <label class="u-flex u-items-center u-gap-2">
           <input type="checkbox" [(ngModel)]="newSecLevelIsDefault" />
           Set as Default Level for new issues
         </label>

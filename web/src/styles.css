@@ -4289,6 +4289,67 @@ kbd {
   to { opacity: 1; }
 }
 
+/* ==========================================================================
+   Reusable Layout, Spacing & Typography Utility Classes
+   ========================================================================== */
+.u-flex { display: flex; }
+.u-inline-flex { display: inline-flex; }
+.u-flex-col { display: flex; flex-direction: column; }
+.u-flex-between { display: flex; align-items: center; justify-content: space-between; }
+.u-items-center { align-items: center; }
+.u-justify-end { justify-content: flex-end; }
+.u-wrap { flex-wrap: wrap; }
+.u-flex-1 { flex: 1; min-width: 0; }
+.u-w-full { width: 100%; }
+
+.u-gap-1 { gap: 4px; }
+.u-gap-2 { gap: 8px; }
+.u-gap-3 { gap: 12px; }
+.u-gap-4 { gap: 16px; }
+
+.u-m-0 { margin: 0; }
+.u-mt-1 { margin-top: 4px; }
+.u-mt-2 { margin-top: 8px; }
+.u-mt-3 { margin-top: 12px; }
+.u-mt-4 { margin-top: 16px; }
+.u-mb-1 { margin-bottom: 4px; }
+.u-mb-2 { margin-bottom: 8px; }
+.u-mb-3 { margin-bottom: 12px; }
+.u-mb-4 { margin-bottom: 16px; }
+.u-ml-auto { margin-left: auto; }
+
+.u-p-2 { padding: 8px; }
+.u-p-3 { padding: 12px; }
+.u-p-4 { padding: 16px; }
+.u-p-6 { padding: 24px; }
+
+.u-text-xs { font-size: 12px; }
+.u-text-sm { font-size: 13px; }
+.u-text-center { text-align: center; }
+.u-font-semibold { font-weight: 600; }
+.u-font-bold { font-weight: 700; }
+.u-font-mono { font-family: ui-monospace, SFMono-Regular, Menlo, Monaco, Consolas, monospace; }
+.u-text-muted { color: var(--text-secondary); }
+.u-text-primary { color: var(--text-primary); }
+.u-text-danger { color: var(--danger-color); }
+.u-text-success { color: var(--success-color); }
+
+.u-grid-2 {
+  display: grid;
+  grid-template-columns: repeat(2, minmax(0, 1fr));
+  gap: 12px;
+}
+
+.modal-card-sm { max-width: 440px; width: 92vw; }
+.modal-card-md { max-width: 580px; width: 92vw; }
+.modal-card-lg { max-width: 780px; width: 94vw; }
+
+.u-empty-state {
+  padding: 28px 20px;
+  text-align: center;
+  color: var(--text-secondary);
+}
+
 
 
 

@@ -84,7 +84,7 @@ import {
                 </button>
               }
             </div>
-            <div style="display: flex; gap: 8px; align-items: center;">
+            <div class="u-flex u-items-center u-gap-2">
               <button type="button" class="btn btn-secondary btn-sm" (click)="saveCanvasLayout()">
                 💾 Save Canvas Node Positions
               </button>
@@ -114,7 +114,7 @@ import {
                   [(ngModel)]="newWf.description"
                   placeholder="Description"
                 />
-                <div style="display: flex; gap: 8px;">
+                <div class="u-flex u-gap-2">
                   <select name="new_wf_clone" [(ngModel)]="newWf.clone_from_id">
                     <option [ngValue]="1">Clone Default Agile 7-State</option>
                     <option [ngValue]="2">Clone Strict Bug &amp; QA Workflow</option>
@@ -458,7 +458,7 @@ import {
                 </div>
 
                 <!-- 1. Conditions -->
-                <div style="margin-top: 12px;">
+                <div class="u-mt-3">
                   <h4 style="margin: 0 0 6px 0; font-size: 13px; color: #0f172a;">
                     🛡 1. Workflow Conditions ({{ tr.conditions.length }})
                     <small class="text-muted" style="font-weight: normal;">
@@ -847,7 +847,7 @@ import {
             @for (m of api.setupStatus()?.migrations; track m.version) {
               <div class="subtask-row">
                 <span class="ver-pill">v{{ m.version }}</span>
-                <span style="flex: 1;">{{ m.description }}</span>
+                <span class="u-flex-1">{{ m.description }}</span>
                 <span class="text-muted">Applied: {{ m.applied_at }}</span>
               </div>
             }

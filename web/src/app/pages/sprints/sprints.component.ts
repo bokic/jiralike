@@ -165,7 +165,7 @@ import { Sprint } from '../../models/jira.models';
                 </div>
 
                 @if (isAdmin()) {
-                  <div style="display: flex; gap: 8px;">
+                  <div class="u-flex u-gap-2">
                     <button type="button" class="btn btn-primary btn-sm" (click)="saveSprint(sp)">
                       Save Sprint
                     </button>

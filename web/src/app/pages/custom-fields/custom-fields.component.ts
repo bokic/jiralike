@@ -111,7 +111,7 @@ import {
                         }
                       </div>
 
-                      <div style="display: flex; align-items: center; gap: 8px;">
+                      <div class="u-flex u-items-center u-gap-2">
                         <button
                           type="button"
                           class="btn btn-secondary btn-sm"
@@ -533,7 +533,7 @@ import {
                     <select
                       name="field_to_add_id"
                       [(ngModel)]="fieldIdToAdd"
-                      style="flex: 1;"
+                      class="u-flex-1"
                     >
                       <option [ngValue]="0">Select custom field to place onto "{{ tab.name }}"...</option>
                       @for (cf of api.customFields(); track cf.id) {
@@ -619,7 +619,7 @@ import {
                 class="subtask-row"
                 style="flex-direction: column; align-items: stretch; gap: 12px; padding: 14px;"
               >
-                <div style="display: flex; justify-content: space-between; align-items: center;">
+                <div class="u-flex-between">
                   <div>
                     <strong style="font-size: 1.02rem;">{{ ss.name }}</strong>
                     <div class="text-muted" style="font-size: 0.83rem;">{{ ss.description }}</div>

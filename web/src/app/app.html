@@ -170,7 +170,7 @@
           @if (showNotificationsDropdown()) {
             <div class="mentions-dropdown-panel" (click)="$event.stopPropagation()">
               <div class="mentions-panel-header">
-                <div style="display: flex; gap: 8px; align-items: center;">
+                <div class="u-flex u-items-center u-gap-2">
                   <button
                     type="button"
                     class="btn btn-xs"
@@ -196,7 +196,7 @@
                     }
                   </button>
                 </div>
-                <div style="display: flex; gap: 4px;">
+                <div class="u-flex u-gap-1">
                   @if (activeActivityTab() === 'notifications') {
                     <button
                       type="button"
@@ -242,7 +242,7 @@
                         }
                         <div class="mention-time-row">
                           <span class="text-muted">{{ n.created_at }}</span>
-                          <div style="display: flex; gap: 4px;">
+                          <div class="u-flex u-gap-1">
                             @if (!n.is_read) {
                               <button
                                 type="button"
@@ -269,7 +269,7 @@
                   } @empty {
                     <div style="padding: 24px; text-align: center; color: var(--text-secondary);">
                       <div style="font-size: 24px; margin-bottom: 6px;">🔕</div>
-                      <p style="margin: 0;">No notifications found</p>
+                      <p class="u-m-0">No notifications found</p>
                     </div>
                   }
                 } @else {
@@ -309,7 +309,7 @@
                   } @empty {
                     <div style="padding: 24px; text-align: center; color: var(--text-secondary);">
                       <div style="font-size: 24px; margin-bottom: 6px;">🔕</div>
-                      <p style="margin: 0;">No mentions yet. Teammates can mention you with &#64;{{ user.username }}</p>
+                      <p class="u-m-0">No mentions yet. Teammates can mention you with &#64;{{ user.username }}</p>
                     </div>
                   }
                 }
@@ -506,7 +506,7 @@
               {{ createModalError() }}
             </div>
           }
-          <div style="display: grid; grid-template-columns: 1fr 1fr; gap: 12px; margin-bottom: 12px;">
+          <div class="u-grid-2 u-mb-3">
             <div class="form-group">
               <label style="display: block; font-weight: 600; margin-bottom: 4px; font-size: 12px;">Issue Type</label>
               <select class="form-control" [(ngModel)]="createDraft.type">
@@ -618,7 +618,7 @@
     <div class="modal-backdrop" (click)="showCheatSheet.set(false)">
       <div class="modal-card" style="max-width: 640px; width: 90vw;" (click)="$event.stopPropagation()">
         <div class="modal-header">
-          <div style="display: flex; align-items: center; gap: 8px;">
+          <div class="u-flex u-items-center u-gap-2">
             <span style="font-size: 20px;">⌨️</span>
             <h3 style="margin: 0; font-size: 18px; font-weight: 600;">Jira Keyboard Shortcuts</h3>
           </div>

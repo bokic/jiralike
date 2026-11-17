@@ -141,7 +141,7 @@ import {
           <div class="detail-sidebar">
             <form (ngSubmit)="saveComponent()" class="card-panel">
               <div style="display: flex; justify-content: space-between; align-items: center; margin-bottom: 8px;">
-                <h3 style="margin: 0;">{{ editingComponent() ? 'Edit Component' : 'Add Component' }}</h3>
+                <h3 class="u-m-0">{{ editingComponent() ? 'Edit Component' : 'Add Component' }}</h3>
                 @if (editingComponent()) {
                   <button type="button" class="btn btn-ghost btn-sm" (click)="cancelEditComponent()">✕ Cancel</button>
                 }
@@ -214,7 +214,7 @@ import {
                   @for (v of projectVersions(); track v.id) {
                     <div class="subtask-row" style="justify-content: space-between; gap: 12px; flex-wrap: wrap;">
                       <div style="flex: 1; min-width: 220px;">
-                        <div style="display: flex; align-items: center; gap: 8px;">
+                        <div class="u-flex u-items-center u-gap-2">
                           <strong style="font-size: 1rem;">🏷 {{ v.name }}</strong>
                           <span
                             class="state-pill"
@@ -273,7 +273,7 @@ import {
               <div class="card-panel" style="margin-top: 16px;">
                 <div class="section-header">
                   <h3>📝 Generated Release Notes — {{ rn.version_name }} ({{ rn.total_items }} items)</h3>
-                  <div style="display: flex; gap: 8px;">
+                  <div class="u-flex u-gap-2">
                     <button type="button" class="btn btn-secondary btn-sm" (click)="copyReleaseNotes()">
                       📋 Copy Markdown
                     </button>
@@ -359,7 +359,7 @@ import {
                       <strong>{{ it.name }}</strong>
                       <span class="text-muted">{{ it.description }}</span>
                     </div>
-                    <div style="display: flex; align-items: center; gap: 8px;">
+                    <div class="u-flex u-items-center u-gap-2">
                       <span class="link-type-chip">Level {{ it.hierarchy_level }}</span>
                       @if (it.is_subtask) {
                         <span class="state-pill">Subtask</span>
@@ -385,7 +385,7 @@ import {
               <h3>Issue Type Schemes ({{ api.issueTypeSchemes().length }})</h3>
               @for (sch of api.issueTypeSchemes(); track sch.id) {
                 <div style="padding: 10px 0; border-bottom: 1px solid #e2e8f0;">
-                  <div style="display: flex; align-items: center; gap: 8px;">
+                  <div class="u-flex u-items-center u-gap-2">
                     <strong>{{ sch.name }}</strong>
                     @if (sch.is_default) {
                       <span class="current-pill">Default Scheme</span>
@@ -466,7 +466,7 @@ import {
                       <strong>✔ {{ r.name }}</strong>
                       <span class="text-muted" style="margin-left: 10px;">{{ r.description }}</span>
                     </div>
-                    <div style="display: flex; align-items: center; gap: 8px;">
+                    <div class="u-flex u-items-center u-gap-2">
                       @if (r.is_default) {
                         <span class="current-pill">Default Resolution</span>
                       }

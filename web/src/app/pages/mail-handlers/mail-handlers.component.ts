@@ -20,7 +20,7 @@ import { InboundMailHandler, InboundMailLog, Project, IssueTypeDef, User } from 
             Convert incoming customer and team emails into new work items or threaded comments automatically
           </p>
         </div>
-        <div style="display: flex; gap: 8px;">
+        <div class="u-flex u-gap-2">
           <button type="button" class="btn btn-primary" (click)="openCreateModal()">
             + Add Mail Handler
           </button>

@@ -33,7 +33,7 @@ interface EndpointItem {
           </p>
         </div>
 
-        <div style="display: flex; gap: 8px;">
+        <div class="u-flex u-gap-2">
           <a href="/api/openapi.json" target="_blank" class="btn btn-secondary btn-sm" title="Download raw OpenAPI 3.0 JSON specification">
             📄 {{ 'docs.download' | i18n }} ↗
           </a>
@@ -142,7 +142,7 @@ interface EndpointItem {
                     </span>
                   </div>
 
-                  <div style="display: flex; align-items: center; gap: 8px;">
+                  <div class="u-flex u-items-center u-gap-2">
                     <span style="font-size: 11px; padding: 2px 6px; border-radius: 4px; background: var(--bg-subtle); color: var(--text-secondary);">
                       {{ ep.tag }}
                     </span>
@@ -207,7 +207,7 @@ interface EndpointItem {
                 </p>
               </div>
 
-              <div style="display: flex; gap: 8px;">
+              <div class="u-flex u-gap-2">
                 <button type="button" class="btn btn-secondary btn-sm" (click)="loadRateLimits()">
                   🔄 Refresh Status
                 </button>

@@ -64,7 +64,7 @@ import { SsoConfig, TwoFactorSetup, TwoFactorStatus } from '../../models/jira.mo
           <!-- Active 2FA Info -->
           @if (twoFactorStatus()?.is_enabled && !setupStep()) {
             <div style="background: var(--bg-subtle); border: 1px solid var(--border-color); border-radius: 6px; padding: 16px; margin-bottom: 16px;">
-              <div style="display: flex; justify-content: space-between; align-items: center;">
+              <div class="u-flex-between">
                 <div>
                   <div style="font-weight: 600; font-size: 14px; color: var(--text-primary); margin-bottom: 4px;">
                     Your account is protected with Two-Factor Authentication
@@ -76,7 +76,7 @@ import { SsoConfig, TwoFactorSetup, TwoFactorStatus } from '../../models/jira.mo
                     Remaining emergency backup recovery codes: <strong>{{ twoFactorStatus()?.remaining_recovery_codes || 0 }}</strong>
                   </div>
                 </div>
-                <div style="display: flex; gap: 8px;">
+                <div class="u-flex u-gap-2">
                   <button type="button" class="btn btn-secondary btn-sm" (click)="startSetup()" [disabled]="loading()">
                     Reconfigure 2FA
                   </button>
@@ -90,7 +90,7 @@ import { SsoConfig, TwoFactorSetup, TwoFactorStatus } from '../../models/jira.mo
 
           <!-- Setup Workflow Wizard -->
           @if (!twoFactorStatus()?.is_enabled && !setupStep()) {
-            <div style="margin-top: 12px;">
+            <div class="u-mt-3">
               <p style="font-size: 14px; color: var(--text-secondary); line-height: 1.5; margin-bottom: 16px;">
                 Two-factor authentication adds an extra layer of security to your JiraLike account.
                 In addition to your password, you'll need to enter a 6-digit code from an authenticator app when signing in.
@@ -119,11 +119,11 @@ import { SsoConfig, TwoFactorSetup, TwoFactorStatus } from '../../models/jira.mo
 
                 <!-- Column 2: Secret & Verification -->
                 <div>
-                  <div style="margin-bottom: 16px;">
+                  <div class="u-mb-4">
                     <label style="display: block; font-size: 12px; font-weight: 600; color: var(--text-secondary); margin-bottom: 4px;">
                       Manual Secret Key (Base32):
                     </label>
-                    <div style="display: flex; gap: 8px; align-items: center;">
+                    <div class="u-flex u-items-center u-gap-2">
                       <code style="background: var(--bg-subtle); padding: 8px 12px; border-radius: 4px; font-size: 14px; font-family: monospace; letter-spacing: 1px; flex: 1;">
                         {{ setupData()!.secret }}
                       </code>
@@ -134,7 +134,7 @@ import { SsoConfig, TwoFactorSetup, TwoFactorStatus } from '../../models/jira.mo
                   </div>
 
                   <!-- 10 Recovery Codes -->
-                  <div style="margin-bottom: 16px;">
+                  <div class="u-mb-4">
                     <div style="display: flex; justify-content: space-between; align-items: center; margin-bottom: 4px;">
                       <label style="font-size: 12px; font-weight: 600; color: var(--text-secondary);">
                         Emergency Backup Recovery Codes (One-Time Use):
@@ -158,7 +158,7 @@ import { SsoConfig, TwoFactorSetup, TwoFactorStatus } from '../../models/jira.mo
                     <label style="display: block; font-size: 13px; font-weight: 600; margin-bottom: 6px;">
                       Step 3: Enter the 6-digit code shown in your Authenticator App:
                     </label>
-                    <div style="display: flex; gap: 8px;">
+                    <div class="u-flex u-gap-2">
                       <input
                         type="text"
                         maxlength="6"

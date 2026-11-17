@@ -473,7 +473,7 @@ import {
                           <span>Created: {{ activeOrg()!.created_at }}</span>
                         </div>
                       </div>
-                      <div style="display: flex; gap: 8px;">
+                      <div class="u-flex u-gap-2">
                         <button type="button" class="btn btn-primary btn-sm" (click)="openAddMemberModal()">
                           + Add Member
                         </button>

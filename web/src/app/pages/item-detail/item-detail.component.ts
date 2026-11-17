@@ -473,7 +473,7 @@ import {
                       value="set"
                       [(ngModel)]="worklogDraft.adjustment_mode"
                     />
-                    <div style="flex: 1;">
+                    <div class="u-flex-1">
                       <strong>Set to:</strong>
                       <div class="text-muted" style="font-size: 11.5px; margin-bottom: 4px;">
                         Set remaining estimate to a specific duration.
@@ -497,7 +497,7 @@ import {
                       value="reduce"
                       [(ngModel)]="worklogDraft.adjustment_mode"
                     />
-                    <div style="flex: 1;">
+                    <div class="u-flex-1">
                       <strong>Reduce by:</strong>
                       <div class="text-muted" style="font-size: 11.5px; margin-bottom: 4px;">
                         Decrease remaining estimate by custom amount.
@@ -769,7 +769,7 @@ import {
                                     [name]="'detail_cf_' + f.field_key"
                                     [(ngModel)]="customFieldsDraft[f.field_key]"
                                     placeholder="https://..."
-                                    style="flex: 1;"
+                                    class="u-flex-1"
                                   />
                                   @if (customFieldsDraft[f.field_key]) {
                                     <a
@@ -1010,20 +1010,20 @@ import {
                       </div>
                       <div class="comment-content" style="flex: 1;">
                         <div class="comment-header" style="display: flex; justify-content: space-between; align-items: center;">
-                          <div style="display: flex; align-items: center; gap: 8px;">
+                          <div class="u-flex u-items-center u-gap-2">
                             <strong>{{ c.author_name }}</strong>
                             <span class="text-muted">{{ c.created_at }}</span>
                             @if (c.is_internal) {
                               <span class="badge" style="background: #fff0b3; color: #7f5f01; border: 1px solid #ffe380; font-size: 11px; padding: 2px 6px; border-radius: 4px; font-weight: 600;">🔒 Internal Note</span>
                             }
                           </div>
-                          <div style="display: flex; gap: 4px;">
+                          <div class="u-flex u-gap-1">
                             <button type="button" class="btn btn-ghost btn-xs" (click)="startEditComment(c)" title="Edit comment">✏️</button>
                             <button type="button" class="btn btn-ghost btn-xs" (click)="deleteComment(c.id)" title="Delete comment">🗑</button>
                           </div>
                         </div>
                         @if (editingCommentId() === c.id) {
-                          <div style="margin-top: 8px;">
+                          <div class="u-mt-2">
                             <textarea [(ngModel)]="editingCommentText" rows="3" class="form-control" style="width: 100%; box-sizing: border-box;"></textarea>
                             <div style="margin-top: 6px; display: flex; gap: 6px;">
                               <button type="button" class="btn btn-primary btn-sm" (click)="saveEditComment(c.id)">Save</button>
@@ -1190,7 +1190,7 @@ import {
                       <span style="font-size: 13px; color: var(--text-secondary);">Linked Development Assets:</span>
                       <strong style="margin-left: 6px; color: var(--brand-primary); font-size: 14px;">{{ getDevCount(it) }} items</strong>
                     </div>
-                    <div style="display: flex; gap: 8px;">
+                    <div class="u-flex u-gap-2">
                       <button type="button" class="btn btn-primary btn-sm" (click)="openLinkDevModal()">
                         + Link VCS Entity
                       </button>
@@ -1910,7 +1910,7 @@ import {
             >
               <div class="section-header" style="margin-bottom: 12px;">
                 <div>
-                  <h3 style="margin: 0;">👁 Watchers ({{ it.watchers_count || 0 }})</h3>
+                  <h3 class="u-m-0">👁 Watchers ({{ it.watchers_count || 0 }})</h3>
                   <small class="text-muted">{{ it.key }}: {{ it.title }}</small>
                 </div>
                 <button type="button" class="btn btn-ghost btn-sm" (click)="showWatchersModal.set(false)">✕</button>
@@ -1952,7 +1952,7 @@ import {
             >
               <div class="section-header" style="margin-bottom: 12px;">
                 <div>
-                  <h3 style="margin: 0;">Link Development Asset</h3>
+                  <h3 class="u-m-0">Link Development Asset</h3>
                   <small class="text-muted">Link a branch, commit, PR, or build run to {{ it.key }}</small>
                 </div>
                 <button type="button" class="btn btn-ghost btn-sm" (click)="closeLinkDevModal()">✕</button>
@@ -2246,7 +2246,7 @@ import {
             >
               <div class="section-header" style="margin-bottom: 12px;">
                 <div>
-                  <h3 style="margin: 0;">⚡ Smart Commit Simulator &amp; Runner</h3>
+                  <h3 class="u-m-0">⚡ Smart Commit Simulator &amp; Runner</h3>
                   <small class="text-muted">Test syntax like <code>{{ it.key }} #resolve #time 1h 30m #comment done</code></small>
                 </div>
                 <button type="button" class="btn btn-ghost btn-sm" (click)="closeSmartCommitModal()">✕</button>
@@ -2311,11 +2311,11 @@ import {
                     }
                   </div>
 
-                  <div style="margin-bottom: 8px;">
+                  <div class="u-mb-2">
                     Resolved User: <strong>{{ sim.resolved_user_name }}</strong> (ID: {{ sim.resolved_user_id }})
                   </div>
 
-                  <div style="margin-bottom: 8px;">
+                  <div class="u-mb-2">
                     <strong>Parsed Commands:</strong>
                     @for (c of sim.parsed_commands; track c.raw_command) {
                       <div style="margin: 4px 0; padding: 4px 8px; background: var(--bg-surface); border-radius: 4px; border: 1px solid var(--border-color);">

@@ -366,7 +366,7 @@ import {
           <div class="card-panel" style="background: #f8fafc; border: 1px solid #e2e8f0; margin-top: 8px;">
             <div style="display: flex; justify-content: space-between; align-items: center; flex-wrap: wrap; gap: 8px; margin-bottom: 10px;">
               <div>
-                <h4 style="margin: 0;">🧬 Custom Fields — {{ screen.name }}</h4>
+                <h4 class="u-m-0">🧬 Custom Fields — {{ screen.name }}</h4>
                 <small class="text-muted">Rendered dynamically from active Screen Scheme &amp; Field Configuration</small>
               </div>
               <a routerLink="/custom-fields" class="btn btn-ghost btn-sm">Configure Fields &amp; Screens →</a>

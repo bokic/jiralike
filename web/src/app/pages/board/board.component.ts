@@ -773,7 +773,7 @@ export interface SwimlaneRow {
                     <span class="text-muted" style="font-weight: 400; font-size: 12px;">— {{ lane.subtitle }}</span>
                   }
                 </div>
-                <div style="display: flex; align-items: center; gap: 8px;">
+                <div class="u-flex u-items-center u-gap-2">
                   <span class="badge">{{ lane.items.length }} issues</span>
                   <span class="points-badge">{{ lane.totalPoints }} SP</span>
                 </div>
@@ -950,7 +950,7 @@ export interface SwimlaneRow {
             <div class="side-panels-col">
               <!-- EPICS PANEL -->
               <div class="side-panel-card">
-                <div style="display: flex; justify-content: space-between; align-items: center;">
+                <div class="u-flex-between">
                   <h4 style="margin: 0; font-size: 13px; text-transform: uppercase; color: var(--text-secondary);">
                     ⚡ Epics ({{ epicItems().length }})
                   </h4>
@@ -980,7 +980,7 @@ export interface SwimlaneRow {
                     (dragleave)="dragOverEpicId.set(null)"
                     (drop)="onEpicDrop($event, ep)"
                   >
-                    <div style="display: flex; justify-content: space-between; align-items: center;">
+                    <div class="u-flex-between">
                       <span class="issue-key" style="font-size: 11px;">{{ ep.key }}</span>
                       <span class="badge" style="font-size: 10px;">
                         {{ epStats.done }}/{{ epStats.total }} done · {{ epStats.points }} SP
@@ -998,7 +998,7 @@ export interface SwimlaneRow {
 
               <!-- VERSIONS PANEL -->
               <div class="side-panel-card">
-                <div style="display: flex; justify-content: space-between; align-items: center;">
+                <div class="u-flex-between">
                   <h4 style="margin: 0; font-size: 13px; text-transform: uppercase; color: var(--text-secondary);">
                     🚀 Versions ({{ api.versions().length }})
                   </h4>
@@ -1027,7 +1027,7 @@ export interface SwimlaneRow {
                     (dragleave)="dragOverVersionId.set(null)"
                     (drop)="onVersionDrop($event, ver)"
                   >
-                    <div style="display: flex; justify-content: space-between; align-items: center;">
+                    <div class="u-flex-between">
                       <strong style="font-size: 12px; color: var(--text-primary);">{{ ver.name }}</strong>
                       <span class="badge" style="font-size: 10px;">{{ ver.status }}</span>
                     </div>
@@ -1221,7 +1221,7 @@ export interface SwimlaneRow {
                 <div style="display: flex; gap: 10px; flex-wrap: wrap;">
                   @for (csp of closedSprints(); track csp.id) {
                     <div style="border: 1px solid var(--border-color); border-radius: 8px; padding: 10px 14px; background: var(--bg-app); min-width: 240px;">
-                      <div style="display: flex; justify-content: space-between; align-items: center;">
+                      <div class="u-flex-between">
                         <strong>{{ csp.name }}</strong>
                         <span class="badge" style="background: var(--success-bg); color: #006644;">CLOSED</span>
                       </div>
@@ -1607,7 +1607,7 @@ export interface SwimlaneRow {
                         <input type="number" min="0" [name]="'col_min_' + idx" [(ngModel)]="col.min_wip" />
                       </div>
                       <div class="form-group" style="margin: 0; display: flex; gap: 8px; align-items: flex-end;">
-                        <div style="flex: 1;">
+                        <div class="u-flex-1">
                           <label>Max WIP (0 = none)</label>
                           <input type="number" min="0" [name]="'col_max_' + idx" [(ngModel)]="col.max_wip" />
                         </div>
@@ -1622,7 +1622,7 @@ export interface SwimlaneRow {
                       </div>
                     </div>
 
-                    <div style="margin-top: 8px;">
+                    <div class="u-mt-2">
                       <label style="font-size: 11px; font-weight: 700; color: var(--text-secondary);">
                         Mapped Workflow Statuses (Many-to-One Status-to-Column Mapping):
                       </label>

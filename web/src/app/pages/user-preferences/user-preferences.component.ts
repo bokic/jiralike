@@ -23,7 +23,7 @@ import { UserPreferences } from '../../models/jira.models';
           </p>
         </div>
 
-        <div style="display: flex; gap: 8px;">
+        <div class="u-flex u-gap-2">
           <a routerLink="/settings/security" class="btn btn-secondary btn-sm">
             🔐 {{ 'nav.security' | i18n }}
           </a>
@@ -114,7 +114,7 @@ import { UserPreferences } from '../../models/jira.models';
               <label style="display: block; font-size: 14px; font-weight: 600; color: var(--text-primary); margin-bottom: 6px;">
                 ⏱️ {{ 'preferences.timeFormat' | i18n }}
               </label>
-              <div style="display: flex; gap: 16px;">
+              <div class="u-flex u-gap-4">
                 <label style="display: flex; align-items: center; gap: 6px; font-size: 14px; cursor: pointer;">
                   <input type="radio" name="time_format" [(ngModel)]="form.time_format" value="24h" />
                   <span>24-Hour (14:30)</span>
