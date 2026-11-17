@@ -39,7 +39,8 @@ export class App implements OnInit, OnDestroy {
   readonly workItemTypes = WORK_ITEM_TYPES;
 
   readonly supportedLanguages = SUPPORTED_LANGUAGES;
-  readonly showLangDropdown = signal(false);
+  readonly openNavMenu = signal<'planning' | 'servicedesk' | 'settings' | 'user' | 'mobile' | null>(null);
+  readonly showLangSubmenu = signal(false);
 
   readonly showNotificationsDropdown = signal(false);
   readonly activeActivityTab = signal<'notifications' | 'mentions'>('notifications');
@@ -77,15 +78,40 @@ export class App implements OnInit, OnDestroy {
 
   changeLanguage(code: string): void {
     this.i18n.setLanguage(code);
-    this.showLangDropdown.set(false);
+    this.showLangSubmenu.set(false);
     if (this.api.currentUser()) {
       this.api.updateUserPreferences({ language: code }).catch(() => {});
     }
   }
 
+  toggleNavMenu(
+    menu: 'planning' | 'servicedesk' | 'settings' | 'user' | 'mobile',
+    event?: Event
+  ): void {
+    event?.stopPropagation();
+    this.showNotificationsDropdown.set(false);
+    const next = this.openNavMenu() === menu ? null : menu;
+    this.openNavMenu.set(next);
+    if (next !== 'user') {
+      this.showLangSubmenu.set(false);
+    }
+  }
+
+  closeAllMenus(): void {
+    this.openNavMenu.set(null);
+    this.showLangSubmenu.set(false);
+    this.showNotificationsDropdown.set(false);
+  }
+
+  isRouteGroupActive(prefixes: string[]): boolean {
+    const cleanUrl = this.router.url.split('?')[0];
+    return prefixes.some((p) => cleanUrl === p || cleanUrl.startsWith(p + '/'));
+  }
+
   private pollInterval: any = null;
   private navSub: Subscription | null = null;
   private keydownHandler = (e: KeyboardEvent) => this.handleGlobalKeydown(e);
+  private docClickHandler = () => this.closeAllMenus();
 
   private enforcePortalCustomerRoute(url: string): void {
     if (this.api.currentUser()?.user_type === 'PORTAL_CUSTOMER') {
@@ -141,12 +167,14 @@ export class App implements OnInit, OnDestroy {
 
     this.navSub = this.router.events.subscribe((event) => {
       if (event instanceof NavigationEnd) {
+        this.closeAllMenus();
         this.enforcePortalCustomerRoute(event.urlAfterRedirects || event.url);
       }
     });
 
     if (typeof window !== 'undefined') {
       window.addEventListener('keydown', this.keydownHandler);
+      document.addEventListener('click', this.docClickHandler);
     }
   }
 
@@ -159,6 +187,7 @@ export class App implements OnInit, OnDestroy {
     }
     if (typeof window !== 'undefined') {
       window.removeEventListener('keydown', this.keydownHandler);
+      document.removeEventListener('click', this.docClickHandler);
     }
     this.api.closeRealtimeSync();
   }
@@ -215,8 +244,8 @@ export class App implements OnInit, OnDestroy {
         e.preventDefault();
         return;
       }
-      if (this.showNotificationsDropdown()) {
-        this.showNotificationsDropdown.set(false);
+      if (this.showNotificationsDropdown() || this.openNavMenu()) {
+        this.closeAllMenus();
         e.preventDefault();
         return;
       }
@@ -554,7 +583,9 @@ export class App implements OnInit, OnDestroy {
   // =========================================================================
   // Notifications & Mentions
   // =========================================================================
-  async toggleNotificationsDropdown(): Promise<void> {
+  async toggleNotificationsDropdown(event?: Event): Promise<void> {
+    event?.stopPropagation();
+    this.openNavMenu.set(null);
     const next = !this.showNotificationsDropdown();
     this.showNotificationsDropdown.set(next);
     if (next) {

@@ -2,146 +2,164 @@
   @if (api.currentUser(); as user) {
     <header class="top-navbar">
       <div class="nav-left">
+        @if (user.user_type !== 'PORTAL_CUSTOMER') {
+          <button
+            type="button"
+            class="nav-mobile-toggle"
+            (click)="toggleNavMenu('mobile', $event)"
+            [attr.aria-expanded]="openNavMenu() === 'mobile'"
+            title="Toggle Navigation Menu"
+          >
+            ☰
+          </button>
+        }
+
         <a routerLink="/board" class="brand-link">
           <span class="brand-icon">JL</span>
           <span class="brand-text">JiraLike</span>
         </a>
 
-        <nav class="nav-links">
-          @if (user.user_type === 'PORTAL_CUSTOMER') {
+        @if (user.user_type === 'PORTAL_CUSTOMER') {
+          <nav class="nav-links">
             <a routerLink="/servicedesk" routerLinkActive="active" title="Customer Help Center Portal">🎫 {{ 'nav.customerPortal' | i18n }}</a>
-            <span class="badge" style="background: #e6fcff; color: #006644; border: 1px solid #79f2c0; font-size: 11px; padding: 3px 8px; border-radius: 12px; font-weight: 600;">Customer Portal Account</span>
-          } @else {
+            <span class="nav-portal-badge">Customer Portal Account</span>
+          </nav>
+        } @else {
+          <nav class="nav-links" aria-label="Main navigation">
             <a routerLink="/dashboards" routerLinkActive="active">{{ 'nav.dashboards' | i18n }}</a>
             <a routerLink="/board" routerLinkActive="active">{{ 'nav.boards' | i18n }}</a>
             <a routerLink="/backlog" routerLinkActive="active">{{ 'nav.backlog' | i18n }}</a>
             <a routerLink="/search" routerLinkActive="active">{{ 'nav.search' | i18n }}</a>
-            <a routerLink="/reports" routerLinkActive="active">{{ 'nav.reports' | i18n }}</a>
-            <a routerLink="/roadmap/advanced" routerLinkActive="active" title="Advanced Roadmaps, Gantt Dependencies &amp; Critical Path">{{ 'nav.roadmaps' | i18n }}</a>
-            <a routerLink="/gantt" routerLinkActive="active">{{ 'nav.gantt' | i18n }}</a>
-            <a routerLink="/states" routerLinkActive="active">{{ 'nav.states' | i18n }}</a>
-            <a routerLink="/workflows" routerLinkActive="active">{{ 'nav.workflows' | i18n }}</a>
-            <a routerLink="/project-settings" routerLinkActive="active">{{ 'nav.releases' | i18n }}</a>
-            <a routerLink="/custom-fields" routerLinkActive="active">{{ 'nav.customFields' | i18n }}</a>
-            <a routerLink="/permissions" routerLinkActive="active">{{ 'nav.permissions' | i18n }}</a>
-            <a routerLink="/automation" routerLinkActive="active">{{ 'nav.automation' | i18n }}</a>
-            <a routerLink="/notifications" routerLinkActive="active">{{ 'nav.webhooks' | i18n }}</a>
-            <a routerLink="/settings/mail-handlers" routerLinkActive="active" title="Inbound Email-to-Issue Handlers &amp; Mailhooks">{{ 'nav.mailHandlers' | i18n }}</a>
-            <a routerLink="/servicedesk/agent" routerLinkActive="active">{{ 'nav.serviceDesk' | i18n }}</a>
-            <a routerLink="/servicedesk" routerLinkActive="active" target="_blank" title="Customer Help Center Portal">{{ 'nav.customerPortal' | i18n }} ↗</a>
-            <a routerLink="/trash" routerLinkActive="active" title="Trash Bin (30-day retention)">{{ 'nav.trashBin' | i18n }}</a>
-            <a routerLink="/developer/docs" routerLinkActive="active" title="OpenAPI 3.0 Documentation &amp; Rate Limiting Governance">{{ 'nav.developerDocs' | i18n }}</a>
-            @if (user.role === 'Admin') {
-              <a routerLink="/users" routerLinkActive="active" title="User Management">👥 Users</a>
-              <a routerLink="/database" routerLinkActive="active" title="Universal Database Studio">🗄️ Database</a>
-              <a routerLink="/sprints" routerLinkActive="active">{{ 'nav.sprintEditor' | i18n }}</a>
-            }
-            <button type="button" class="nav-create-btn" (click)="openCreateModal()" title="Create Issue (Press 'c')">{{ 'nav.create' | i18n }}</button>
-          }
-        </nav>
+
+            <!-- Planning & Analytics Dropdown -->
+            <div class="nav-dropdown">
+              <button
+                type="button"
+                class="nav-dropdown-trigger"
+                [class.active]="isRouteGroupActive(['/reports', '/roadmap', '/gantt', '/project-settings', '/sprints'])"
+                [class.open]="openNavMenu() === 'planning'"
+                (click)="toggleNavMenu('planning', $event)"
+                [attr.aria-expanded]="openNavMenu() === 'planning'"
+              >
+                Planning <span class="nav-caret">▾</span>
+              </button>
+              @if (openNavMenu() === 'planning') {
+                <div class="nav-dropdown-menu" (click)="$event.stopPropagation()">
+                  <a routerLink="/reports" routerLinkActive="active" class="nav-dropdown-item">📈 {{ 'nav.reports' | i18n }}</a>
+                  <a routerLink="/roadmap/advanced" routerLinkActive="active" class="nav-dropdown-item" title="Advanced Roadmaps, Gantt Dependencies &amp; Critical Path">🗺️ {{ 'nav.roadmaps' | i18n }}</a>
+                  <a routerLink="/gantt" routerLinkActive="active" class="nav-dropdown-item">📅 {{ 'nav.gantt' | i18n }}</a>
+                  <a routerLink="/project-settings" routerLinkActive="active" class="nav-dropdown-item">🏷️ {{ 'nav.releases' | i18n }}</a>
+                  @if (user.role === 'Admin') {
+                    <div class="nav-dropdown-divider"></div>
+                    <a routerLink="/sprints" routerLinkActive="active" class="nav-dropdown-item">🏃 {{ 'nav.sprintEditor' | i18n }}</a>
+                  }
+                </div>
+              }
+            </div>
+
+            <!-- Service Desk Dropdown -->
+            <div class="nav-dropdown">
+              <button
+                type="button"
+                class="nav-dropdown-trigger"
+                [class.active]="isRouteGroupActive(['/servicedesk'])"
+                [class.open]="openNavMenu() === 'servicedesk'"
+                (click)="toggleNavMenu('servicedesk', $event)"
+                [attr.aria-expanded]="openNavMenu() === 'servicedesk'"
+              >
+                {{ 'nav.serviceDesk' | i18n }} <span class="nav-caret">▾</span>
+              </button>
+              @if (openNavMenu() === 'servicedesk') {
+                <div class="nav-dropdown-menu" (click)="$event.stopPropagation()">
+                  <a routerLink="/servicedesk/agent" routerLinkActive="active" class="nav-dropdown-item">🎧 {{ 'nav.serviceDesk' | i18n }}</a>
+                  <a routerLink="/servicedesk" target="_blank" class="nav-dropdown-item" title="Customer Help Center Portal">🎫 {{ 'nav.customerPortal' | i18n }} ↗</a>
+                </div>
+              }
+            </div>
+
+            <!-- Settings & Admin Dropdown -->
+            <div class="nav-dropdown">
+              <button
+                type="button"
+                class="nav-dropdown-trigger"
+                [class.active]="isRouteGroupActive(['/states', '/workflows', '/custom-fields', '/permissions', '/automation', '/notifications', '/settings/mail-handlers', '/trash', '/developer', '/users', '/database'])"
+                [class.open]="openNavMenu() === 'settings'"
+                (click)="toggleNavMenu('settings', $event)"
+                [attr.aria-expanded]="openNavMenu() === 'settings'"
+              >
+                ⚙️ Settings <span class="nav-caret">▾</span>
+              </button>
+              @if (openNavMenu() === 'settings') {
+                <div class="nav-dropdown-menu nav-dropdown-menu-wide" (click)="$event.stopPropagation()">
+                  <div class="nav-dropdown-section-label">Workflow &amp; Fields</div>
+                  <a routerLink="/states" routerLinkActive="active" class="nav-dropdown-item">🔵 {{ 'nav.states' | i18n }}</a>
+                  <a routerLink="/workflows" routerLinkActive="active" class="nav-dropdown-item">🔀 {{ 'nav.workflows' | i18n }}</a>
+                  <a routerLink="/custom-fields" routerLinkActive="active" class="nav-dropdown-item">🧩 {{ 'nav.customFields' | i18n }}</a>
+
+                  <div class="nav-dropdown-divider"></div>
+                  <div class="nav-dropdown-section-label">Automation &amp; Security</div>
+                  <a routerLink="/permissions" routerLinkActive="active" class="nav-dropdown-item">🛡️ {{ 'nav.permissions' | i18n }}</a>
+                  <a routerLink="/automation" routerLinkActive="active" class="nav-dropdown-item">⚡ {{ 'nav.automation' | i18n }}</a>
+                  <a routerLink="/notifications" routerLinkActive="active" class="nav-dropdown-item">🔔 {{ 'nav.webhooks' | i18n }}</a>
+                  <a routerLink="/settings/mail-handlers" routerLinkActive="active" class="nav-dropdown-item" title="Inbound Email-to-Issue Handlers &amp; Mailhooks">✉️ {{ 'nav.mailHandlers' | i18n }}</a>
+
+                  <div class="nav-dropdown-divider"></div>
+                  <div class="nav-dropdown-section-label">System &amp; Tools</div>
+                  <a routerLink="/trash" routerLinkActive="active" class="nav-dropdown-item" title="Trash Bin (30-day retention)">🗑️ {{ 'nav.trashBin' | i18n }}</a>
+                  <a routerLink="/developer/docs" routerLinkActive="active" class="nav-dropdown-item" title="OpenAPI 3.0 Documentation &amp; Rate Limiting Governance">📘 {{ 'nav.developerDocs' | i18n }}</a>
+                  @if (user.role === 'Admin') {
+                    <a routerLink="/users" routerLinkActive="active" class="nav-dropdown-item" title="User Management">👥 Users</a>
+                    <a routerLink="/database" routerLinkActive="active" class="nav-dropdown-item" title="Universal Database Studio">🗄️ Database</a>
+                  }
+                </div>
+              }
+            </div>
+          </nav>
+
+          <button
+            type="button"
+            class="nav-create-btn"
+            (click)="openCreateModal()"
+            title="Create Issue (Press 'c')"
+          >
+            {{ 'nav.create' | i18n }}
+          </button>
+        }
       </div>
 
       <div class="nav-right">
-        <!-- Live Realtime Sync Status Indicator -->
-        <div class="realtime-indicator" [title]="api.realtimeConnected() ? 'Real-Time SSE Sync Active' : 'Connecting Real-Time Sync...'">
-          <span class="realtime-pulse-dot" [class.disconnected]="!api.realtimeConnected()"></span>
-          <span>{{ api.realtimeConnected() ? 'Live' : 'Syncing' }}</span>
-        </div>
-
         @if (api.currentSprint(); as curSprint) {
-          <span class="schema-badge" title="Active Current Sprint">
+          <span class="nav-sprint-pill" [title]="'Active Current Sprint: ' + curSprint.name">
             ★ {{ curSprint.name }}
           </span>
         }
-        <span class="schema-badge" title="SQLite Schema Version">
-          DB Schema v{{ api.setupStatus()?.schema_version || 5 }}
-        </span>
 
-        <!-- Theme Mode Switcher (Dark / Light / Auto) -->
-        <button
-          type="button"
-          class="nav-bell-btn"
-          (click)="api.toggleTheme()"
-          [title]="'Theme: ' + api.themeMode() + ' (Click to toggle Dark/Light/Auto)'"
-        >
-          @if (api.themeMode() === 'dark') { 🌙 }
-          @else if (api.themeMode() === 'light') { ☀️ }
-          @else { 🌓 }
-        </button>
-
-        <!-- Density Mode Switcher (Comfortable vs Compact) -->
-        <button
-          type="button"
-          class="nav-bell-btn"
-          (click)="api.toggleDensity()"
-          [title]="'Density: ' + api.densityMode() + ' (Click to toggle)'"
-        >
-          @if (api.densityMode() === 'compact') { ⇥⇤ }
-          @else { ⇤⇥ }
-        </button>
-
-        <!-- Language / Locale Switcher (EN, DE, FR, ES, JA, ZH) -->
-        <div style="position: relative;">
-          <button
-            type="button"
-            class="nav-bell-btn"
-            (click)="showLangDropdown.set(!showLangDropdown())"
-            [title]="'Language: ' + i18n.currentLang().toUpperCase() + ' (Click to change)'"
-            style="font-size: 13px; font-weight: 600; padding: 4px 8px; width: auto; min-width: 44px;"
-          >
-            🌐 {{ i18n.currentLang().toUpperCase() }}
-          </button>
-
-          @if (showLangDropdown()) {
-            <div
-              class="lang-dropdown-menu"
-              style="position: absolute; right: 0; top: 100%; margin-top: 6px; background: var(--bg-surface); border: 1px solid var(--border-color); border-radius: 6px; box-shadow: var(--shadow-md); z-index: 1000; min-width: 170px; padding: 4px 0;"
-              (click)="$event.stopPropagation()"
-            >
-              @for (lang of supportedLanguages; track lang.code) {
-                <button
-                  type="button"
-                  style="display: flex; align-items: center; gap: 8px; width: 100%; padding: 8px 12px; border: none; background: none; font-size: 13px; text-align: left; cursor: pointer; color: var(--text-primary);"
-                  [style.background]="i18n.currentLang() === lang.code ? 'var(--bg-subtle)' : 'none'"
-                  [style.font-weight]="i18n.currentLang() === lang.code ? '600' : '400'"
-                  (click)="changeLanguage(lang.code)"
-                >
-                  <span>{{ lang.flag }}</span>
-                  <span>{{ lang.name }}</span>
-                  <small style="color: var(--text-secondary); margin-left: auto;">{{ lang.code.toUpperCase() }}</small>
-                </button>
-              }
-              <div style="border-top: 1px solid var(--border-color); margin-top: 4px; padding-top: 4px;">
-                <a
-                  routerLink="/settings/preferences"
-                  (click)="showLangDropdown.set(false)"
-                  style="display: block; padding: 6px 12px; font-size: 12px; color: var(--brand-primary); text-decoration: none;"
-                >
-                  ⚙️ {{ 'nav.preferences' | i18n }}...
-                </a>
-              </div>
-            </div>
-          }
+        <!-- Live Realtime Sync Status Indicator -->
+        <div class="nav-live-pill" [title]="api.realtimeConnected() ? 'Real-Time SSE Sync Active' : 'Connecting Real-Time Sync...'">
+          <span class="realtime-pulse-dot" [class.disconnected]="!api.realtimeConnected()"></span>
+          <span class="nav-live-text">{{ api.realtimeConnected() ? ('nav.live' | i18n) : ('nav.syncing' | i18n) }}</span>
         </div>
 
-        <!-- Keyboard Shortcuts Help -->
-        <button
-          type="button"
-          class="nav-bell-btn"
-          (click)="showCheatSheet.set(true)"
-          title="Keyboard Shortcuts Cheat Sheet (Press ?)"
-        >
-          ⌨️
-        </button>
+        <!-- Quick Command Palette -->
+        @if (user.user_type !== 'PORTAL_CUSTOMER') {
+          <button
+            type="button"
+            class="nav-icon-btn"
+            (click)="openCommandPalette()"
+            title="Command Palette (Press .)"
+          >
+            ⌘
+          </button>
+        }
 
         <!-- In-App Notification Center & Activity Bell -->
         <div class="notifications-wrapper" style="position: relative;">
           <button
             type="button"
-            class="nav-bell-btn"
+            class="nav-icon-btn"
             [class.has-unread]="api.totalUnreadActivityCount() > 0"
-            (click)="toggleNotificationsDropdown()"
-            title="Notification Center & Mentions"
+            (click)="toggleNotificationsDropdown($event)"
+            title="Notification Center &amp; Mentions"
           >
             🔔
             @if (api.totalUnreadActivityCount() > 0) {
@@ -305,16 +323,165 @@
           }
         </div>
 
-        <a routerLink="/settings/preferences" class="user-pill" style="text-decoration: none; cursor: pointer;" title="User Preferences, Language &amp; Security">
-          <span class="avatar-sm" [style.background]="user.avatar_color">
-            {{ user.display_name.slice(0, 2).toUpperCase() }}
-          </span>
-          <span class="user-name">{{ user.display_name }}</span>
-          <span class="user-role">({{ user.role }})</span>
-        </a>
-        <button type="button" class="btn btn-ghost btn-sm" (click)="signOut()">{{ 'nav.logout' | i18n }}</button>
+        <!-- User Account & Workspace Menu -->
+        <div class="nav-dropdown nav-user-wrapper">
+          <button
+            type="button"
+            class="nav-user-trigger"
+            [class.open]="openNavMenu() === 'user'"
+            (click)="toggleNavMenu('user', $event)"
+            [attr.aria-expanded]="openNavMenu() === 'user'"
+            title="Account, Appearance &amp; Preferences"
+          >
+            <span class="avatar-sm" [style.background]="user.avatar_color">
+              {{ user.display_name.slice(0, 2).toUpperCase() }}
+            </span>
+            <span class="nav-user-name">{{ user.display_name }}</span>
+            <span class="nav-caret">▾</span>
+          </button>
+
+          @if (openNavMenu() === 'user') {
+            <div class="nav-dropdown-menu nav-user-menu" (click)="$event.stopPropagation()">
+              <div class="nav-user-header">
+                <span class="avatar-sm" [style.background]="user.avatar_color">
+                  {{ user.display_name.slice(0, 2).toUpperCase() }}
+                </span>
+                <div class="nav-user-meta">
+                  <div class="nav-user-display">{{ user.display_name }}</div>
+                  <div class="nav-user-sub">
+                    <span>&#64;{{ user.username }}</span>
+                    <span class="nav-role-badge">{{ user.role }}</span>
+                  </div>
+                </div>
+                <span class="nav-schema-tag" title="SQLite Schema Version">
+                  v{{ api.setupStatus()?.schema_version || 5 }}
+                </span>
+              </div>
+
+              <div class="nav-dropdown-divider"></div>
+
+              <div class="nav-user-controls">
+                <div class="nav-control-row">
+                  <span>Theme</span>
+                  <button type="button" class="nav-control-pill" (click)="api.toggleTheme()">
+                    @if (api.themeMode() === 'dark') { 🌙 Dark }
+                    @else if (api.themeMode() === 'light') { ☀️ Light }
+                    @else { 🌓 Auto }
+                  </button>
+                </div>
+                <div class="nav-control-row">
+                  <span>Density</span>
+                  <button type="button" class="nav-control-pill" (click)="api.toggleDensity()">
+                    {{ api.densityMode() === 'compact' ? '⇥⇤ Compact' : '⇤⇥ Comfortable' }}
+                  </button>
+                </div>
+                <div class="nav-control-row">
+                  <span>Language</span>
+                  <button type="button" class="nav-control-pill" (click)="showLangSubmenu.set(!showLangSubmenu())">
+                    🌐 {{ i18n.currentLang().toUpperCase() }} ▾
+                  </button>
+                </div>
+                @if (showLangSubmenu()) {
+                  <div class="nav-lang-grid">
+                    @for (lang of supportedLanguages; track lang.code) {
+                      <button
+                        type="button"
+                        class="nav-lang-chip"
+                        [class.active]="i18n.currentLang() === lang.code"
+                        (click)="changeLanguage(lang.code)"
+                      >
+                        <span>{{ lang.flag }}</span>
+                        <span>{{ lang.code.toUpperCase() }}</span>
+                      </button>
+                    }
+                  </div>
+                }
+              </div>
+
+              <div class="nav-dropdown-divider"></div>
+
+              <a routerLink="/settings/preferences" class="nav-dropdown-item">
+                ⚙️ {{ 'nav.preferences' | i18n }}
+              </a>
+              @if (user.user_type !== 'PORTAL_CUSTOMER') {
+                <button
+                  type="button"
+                  class="nav-dropdown-item"
+                  (click)="closeAllMenus(); showCheatSheet.set(true)"
+                >
+                  ⌨️ Keyboard Shortcuts <span class="nav-item-kbd">?</span>
+                </button>
+                <button
+                  type="button"
+                  class="nav-dropdown-item"
+                  (click)="closeAllMenus(); openCommandPalette()"
+                >
+                  ⌘ Command Palette <span class="nav-item-kbd">.</span>
+                </button>
+              }
+
+              <div class="nav-dropdown-divider"></div>
+
+              <button type="button" class="nav-dropdown-item nav-logout-item" (click)="signOut()">
+                🚪 {{ 'nav.logout' | i18n }}
+              </button>
+            </div>
+          }
+        </div>
       </div>
     </header>
+
+    @if (openNavMenu() === 'mobile' && user.user_type !== 'PORTAL_CUSTOMER') {
+      <div class="nav-mobile-drawer" (click)="$event.stopPropagation()">
+        <div class="nav-mobile-actions">
+          <button
+            type="button"
+            class="nav-create-btn"
+            style="width: 100%; justify-content: center;"
+            (click)="closeAllMenus(); openCreateModal()"
+          >
+            {{ 'nav.create' | i18n }}
+          </button>
+        </div>
+
+        <div class="nav-dropdown-section-label">Workspace</div>
+        <a routerLink="/dashboards" routerLinkActive="active" class="nav-dropdown-item">{{ 'nav.dashboards' | i18n }}</a>
+        <a routerLink="/board" routerLinkActive="active" class="nav-dropdown-item">{{ 'nav.boards' | i18n }}</a>
+        <a routerLink="/backlog" routerLinkActive="active" class="nav-dropdown-item">{{ 'nav.backlog' | i18n }}</a>
+        <a routerLink="/search" routerLinkActive="active" class="nav-dropdown-item">{{ 'nav.search' | i18n }}</a>
+
+        <div class="nav-dropdown-divider"></div>
+        <div class="nav-dropdown-section-label">Planning</div>
+        <a routerLink="/reports" routerLinkActive="active" class="nav-dropdown-item">📈 {{ 'nav.reports' | i18n }}</a>
+        <a routerLink="/roadmap/advanced" routerLinkActive="active" class="nav-dropdown-item">🗺️ {{ 'nav.roadmaps' | i18n }}</a>
+        <a routerLink="/gantt" routerLinkActive="active" class="nav-dropdown-item">📅 {{ 'nav.gantt' | i18n }}</a>
+        <a routerLink="/project-settings" routerLinkActive="active" class="nav-dropdown-item">🏷️ {{ 'nav.releases' | i18n }}</a>
+        @if (user.role === 'Admin') {
+          <a routerLink="/sprints" routerLinkActive="active" class="nav-dropdown-item">🏃 {{ 'nav.sprintEditor' | i18n }}</a>
+        }
+
+        <div class="nav-dropdown-divider"></div>
+        <div class="nav-dropdown-section-label">{{ 'nav.serviceDesk' | i18n }}</div>
+        <a routerLink="/servicedesk/agent" routerLinkActive="active" class="nav-dropdown-item">🎧 {{ 'nav.serviceDesk' | i18n }}</a>
+        <a routerLink="/servicedesk" target="_blank" class="nav-dropdown-item">🎫 {{ 'nav.customerPortal' | i18n }} ↗</a>
+
+        <div class="nav-dropdown-divider"></div>
+        <div class="nav-dropdown-section-label">Settings</div>
+        <a routerLink="/states" routerLinkActive="active" class="nav-dropdown-item">🔵 {{ 'nav.states' | i18n }}</a>
+        <a routerLink="/workflows" routerLinkActive="active" class="nav-dropdown-item">🔀 {{ 'nav.workflows' | i18n }}</a>
+        <a routerLink="/custom-fields" routerLinkActive="active" class="nav-dropdown-item">🧩 {{ 'nav.customFields' | i18n }}</a>
+        <a routerLink="/permissions" routerLinkActive="active" class="nav-dropdown-item">🛡️ {{ 'nav.permissions' | i18n }}</a>
+        <a routerLink="/automation" routerLinkActive="active" class="nav-dropdown-item">⚡ {{ 'nav.automation' | i18n }}</a>
+        <a routerLink="/notifications" routerLinkActive="active" class="nav-dropdown-item">🔔 {{ 'nav.webhooks' | i18n }}</a>
+        <a routerLink="/settings/mail-handlers" routerLinkActive="active" class="nav-dropdown-item">✉️ {{ 'nav.mailHandlers' | i18n }}</a>
+        <a routerLink="/trash" routerLinkActive="active" class="nav-dropdown-item">🗑️ {{ 'nav.trashBin' | i18n }}</a>
+        <a routerLink="/developer/docs" routerLinkActive="active" class="nav-dropdown-item">📘 {{ 'nav.developerDocs' | i18n }}</a>
+        @if (user.role === 'Admin') {
+          <a routerLink="/users" routerLinkActive="active" class="nav-dropdown-item">👥 Users</a>
+          <a routerLink="/database" routerLinkActive="active" class="nav-dropdown-item">🗄️ Database</a>
+        }
+      </div>
+    }
   }
 
   <main class="main-viewport">
