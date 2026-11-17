@@ -423,6 +423,23 @@ import {
               </div>
             </div>
 
+            <!-- Quick-Insert JQL Chips -->
+            <div class="u-flex u-items-center u-wrap u-gap-1 u-mt-2">
+              <span class="u-text-xs u-text-muted u-font-semibold" style="margin-right: 4px;">Quick Insert:</span>
+              <button type="button" class="btn btn-ghost btn-sm" (click)="appendJqlSnippet('assignee = currentUser()')">
+                + My Issues
+              </button>
+              <button type="button" class="btn btn-ghost btn-sm" (click)="appendJqlSnippet('status != &quot;Done&quot;')">
+                + Open Issues
+              </button>
+              <button type="button" class="btn btn-ghost btn-sm" (click)="appendJqlSnippet('priority = &quot;High&quot;')">
+                + High Priority
+              </button>
+              <button type="button" class="btn btn-ghost btn-sm" (click)="appendJqlOrderBy('ORDER BY updated DESC')">
+                ↓ Recently Updated
+              </button>
+            </div>
+
             <!-- Live Syntax-Highlighted Token Stream -->
             @if (activeTokens().length > 0) {
               <div class="token-stream-bar">
