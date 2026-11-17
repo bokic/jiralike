@@ -89,8 +89,7 @@
     <div class="table-container">
       @if (loading()) {
         <div class="loading-overlay">
-          <div class="spinner"></div>
-          <span>Loading data...</span>
+          <app-loading-state variant="table" />
         </div>
       }
 

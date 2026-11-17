@@ -2,12 +2,13 @@ import { Component, OnInit, signal, computed } from '@angular/core';
 import { CommonModule } from '@angular/common';
 import { FormsModule } from '@angular/forms';
 import { ApiService } from '../../services/api.service';
+import { LoadingStateComponent } from '../../components/loading-state/loading-state.component';
 import { AdminTableDescriptor, AdminTableData, AdminColumnMeta } from '../../models/jira.models';
 
 @Component({
   selector: 'app-database-admin',
   standalone: true,
-  imports: [CommonModule, FormsModule],
+  imports: [CommonModule, FormsModule, LoadingStateComponent],
   templateUrl: './database-admin.component.html',
   styleUrls: ['./database-admin.component.css']
 })

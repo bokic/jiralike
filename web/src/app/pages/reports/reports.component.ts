@@ -3,6 +3,7 @@ import { CommonModule } from '@angular/common';
 import { FormsModule } from '@angular/forms';
 import { RouterLink } from '@angular/router';
 import { ApiService } from '../../services/api.service';
+import { LoadingStateComponent } from '../../components/loading-state/loading-state.component';
 import {
   BurndownReport,
   CumulativeFlowReport,
@@ -28,7 +29,7 @@ export type ReportType =
 @Component({
   selector: 'app-reports',
   standalone: true,
-  imports: [CommonModule, FormsModule, RouterLink],
+  imports: [CommonModule, FormsModule, RouterLink, LoadingStateComponent],
   template: `
     <div class="reports-container">
       <!-- Top Reports Header -->
@@ -290,10 +291,8 @@ export type ReportType =
       <!-- MAIN REPORT BODY -->
       <div class="report-content-body">
         @if (loading()) {
-          <div class="report-loading-state">
-            <div class="spinner"></div>
-            <span>Calculating agile metrics &amp; generating chart...</span>
-          </div>
+          <app-loading-state variant="cards" />
+          <app-loading-state variant="spinner" message="Calculating agile metrics &amp; generating chart..." />
         } @else {
 
           <!-- ============================================================= -->
