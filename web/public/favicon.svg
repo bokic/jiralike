@@ -1,0 +1,29 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 64 64">
+  <defs>
+    <linearGradient id="jl-bg" x1="0" y1="0" x2="1" y2="1">
+      <stop offset="0%" stop-color="#0747a6" />
+      <stop offset="55%" stop-color="#0052cc" />
+      <stop offset="100%" stop-color="#2684ff" />
+    </linearGradient>
+    <linearGradient id="jl-accent" x1="0" y1="0" x2="0" y2="1">
+      <stop offset="0%" stop-color="#ffffff" />
+      <stop offset="100%" stop-color="#dbeafe" />
+    </linearGradient>
+  </defs>
+
+  <!-- App Icon Rounded Container -->
+  <rect x="2" y="2" width="60" height="60" rx="14" fill="url(#jl-bg)" />
+  <rect x="3" y="3" width="58" height="58" rx="13" fill="none" stroke="rgba(255,255,255,0.22)" stroke-width="1.5" />
+
+  <!-- Stylized Agile Board Columns (3 ascending columns) -->
+  <!-- Column 1: To Do (tallest) -->
+  <rect x="13" y="15" width="10" height="34" rx="3" fill="url(#jl-accent)" />
+  <!-- Column 2: In Progress -->
+  <rect x="27" y="15" width="10" height="24" rx="3" fill="rgba(255,255,255,0.82)" />
+  <!-- Column 3: Done (compact + highlight dot) -->
+  <rect x="41" y="15" width="10" height="15" rx="3" fill="rgba(255,255,255,0.65)" />
+
+  <!-- Sprint/Done Accent Pill at bottom-right -->
+  <circle cx="46" cy="43" r="6" fill="#36b37e" />
+  <path d="M43.2 43.2 L45.2 45.2 L49 41" fill="none" stroke="#ffffff" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" />
+</svg>
