@@ -356,7 +356,7 @@ import {
                                     />
                                   }
                                   <!-- Center cutout for donut style -->
-                                  <circle cx="0" cy="0" r="48" fill="#ffffff" />
+                                  <circle cx="0" cy="0" r="48" fill="var(--bg-surface)" />
                                   <text x="0" y="-4" text-anchor="middle" class="donut-total">{{ data.total }}</text>
                                   <text x="0" y="14" text-anchor="middle" class="donut-label">Total</text>
                                 </g>
@@ -389,10 +389,10 @@ import {
 
                             <svg viewBox="0 0 450 180" class="trend-svg">
                               <!-- Gridlines -->
-                              <line x1="40" y1="20" x2="430" y2="20" stroke="#EBECF0" stroke-width="1" />
-                              <line x1="40" y1="70" x2="430" y2="70" stroke="#EBECF0" stroke-width="1" />
-                              <line x1="40" y1="120" x2="430" y2="120" stroke="#EBECF0" stroke-width="1" />
-                              <line x1="40" y1="150" x2="430" y2="150" stroke="#DFE1E6" stroke-width="1.5" />
+                              <line x1="40" y1="20" x2="430" y2="20" stroke="var(--border-color)" stroke-width="1" />
+                              <line x1="40" y1="70" x2="430" y2="70" stroke="var(--border-color)" stroke-width="1" />
+                              <line x1="40" y1="120" x2="430" y2="120" stroke="var(--border-color)" stroke-width="1" />
+                              <line x1="40" y1="150" x2="430" y2="150" stroke="var(--border-color)" stroke-width="1.5" />
 
                               <!-- Created Line (Red/Orange) -->
                               <path [attr.d]="buildTrendLine(data.buckets, 'created_count', 450, 180)" fill="none" stroke="#FF5630" stroke-width="2.5" />
@@ -417,9 +417,9 @@ import {
                             </div>
 
                             <svg viewBox="0 0 450 180" class="burndown-svg">
-                              <line x1="40" y1="20" x2="430" y2="20" stroke="#EBECF0" stroke-width="1" />
-                              <line x1="40" y1="80" x2="430" y2="80" stroke="#EBECF0" stroke-width="1" />
-                              <line x1="40" y1="150" x2="430" y2="150" stroke="#DFE1E6" stroke-width="1.5" />
+                              <line x1="40" y1="20" x2="430" y2="20" stroke="var(--border-color)" stroke-width="1" />
+                              <line x1="40" y1="80" x2="430" y2="80" stroke="var(--border-color)" stroke-width="1" />
+                              <line x1="40" y1="150" x2="430" y2="150" stroke="var(--border-color)" stroke-width="1.5" />
 
                               <!-- Ideal Guideline (Dashed grey) -->
                               <path [attr.d]="buildBurndownIdeal(data.timeline, 450, 180)" fill="none" stroke="#6B778C" stroke-dasharray="4,4" stroke-width="2" />

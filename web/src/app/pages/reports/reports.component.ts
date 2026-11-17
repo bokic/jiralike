@@ -348,11 +348,11 @@ export type ReportType =
                 <div class="svg-container">
                   <svg viewBox="0 0 900 320" class="responsive-svg" preserveAspectRatio="none">
                     <!-- Grid Lines -->
-                    <line x1="60" y1="30" x2="880" y2="30" stroke="#EBECF0" stroke-width="1" />
-                    <line x1="60" y1="90" x2="880" y2="90" stroke="#EBECF0" stroke-width="1" />
-                    <line x1="60" y1="150" x2="880" y2="150" stroke="#EBECF0" stroke-width="1" />
-                    <line x1="60" y1="210" x2="880" y2="210" stroke="#EBECF0" stroke-width="1" />
-                    <line x1="60" y1="270" x2="880" y2="270" stroke="#42526E" stroke-width="1.5" />
+                    <line x1="60" y1="30" x2="880" y2="30" stroke="var(--border-color)" stroke-width="1" />
+                    <line x1="60" y1="90" x2="880" y2="90" stroke="var(--border-color)" stroke-width="1" />
+                    <line x1="60" y1="150" x2="880" y2="150" stroke="var(--border-color)" stroke-width="1" />
+                    <line x1="60" y1="210" x2="880" y2="210" stroke="var(--border-color)" stroke-width="1" />
+                    <line x1="60" y1="270" x2="880" y2="270" stroke="var(--text-secondary)" stroke-width="1.5" />
 
                     <!-- Weekend Background Bars -->
                     @for (dp of bd.timeline; track dp.date; let idx = $index) {
@@ -399,7 +399,7 @@ export type ReportType =
                         [attr.cy]="getBurndownY(estimationUnit() === 'points' ? dp.remaining_points : dp.remaining_hours, bd)"
                         r="4"
                         fill="#0052CC"
-                        stroke="#fff"
+                        stroke="var(--bg-surface)"
                         stroke-width="1.5"
                         class="chart-dot"
                       >
@@ -511,11 +511,11 @@ export type ReportType =
                 <div class="svg-container">
                   <svg viewBox="0 0 900 320" class="responsive-svg" preserveAspectRatio="none">
                     <!-- Grid Lines -->
-                    <line x1="60" y1="30" x2="880" y2="30" stroke="#EBECF0" stroke-width="1" />
-                    <line x1="60" y1="90" x2="880" y2="90" stroke="#EBECF0" stroke-width="1" />
-                    <line x1="60" y1="150" x2="880" y2="150" stroke="#EBECF0" stroke-width="1" />
-                    <line x1="60" y1="210" x2="880" y2="210" stroke="#EBECF0" stroke-width="1" />
-                    <line x1="60" y1="270" x2="880" y2="270" stroke="#42526E" stroke-width="1.5" />
+                    <line x1="60" y1="30" x2="880" y2="30" stroke="var(--border-color)" stroke-width="1" />
+                    <line x1="60" y1="90" x2="880" y2="90" stroke="var(--border-color)" stroke-width="1" />
+                    <line x1="60" y1="150" x2="880" y2="150" stroke="var(--border-color)" stroke-width="1" />
+                    <line x1="60" y1="210" x2="880" y2="210" stroke="var(--border-color)" stroke-width="1" />
+                    <line x1="60" y1="270" x2="880" y2="270" stroke="var(--text-secondary)" stroke-width="1.5" />
 
                     <!-- Total Scope Line (Red/Grey upper line) -->
                     <path
@@ -549,7 +549,7 @@ export type ReportType =
                         [attr.cy]="getBurndownY(dp.completed_points, bd)"
                         r="4"
                         fill="#36B37E"
-                        stroke="#fff"
+                        stroke="var(--bg-surface)"
                         stroke-width="1.5"
                       >
                         <title>{{ dp.date }}: Completed {{ dp.completed_points }} pts of {{ dp.total_scope_points }} pts</title>
@@ -618,11 +618,11 @@ export type ReportType =
                 <div class="svg-container">
                   <svg viewBox="0 0 900 320" class="responsive-svg" preserveAspectRatio="none">
                     <!-- Grid Lines -->
-                    <line x1="60" y1="30" x2="880" y2="30" stroke="#EBECF0" stroke-width="1" />
-                    <line x1="60" y1="90" x2="880" y2="90" stroke="#EBECF0" stroke-width="1" />
-                    <line x1="60" y1="150" x2="880" y2="150" stroke="#EBECF0" stroke-width="1" />
-                    <line x1="60" y1="210" x2="880" y2="210" stroke="#EBECF0" stroke-width="1" />
-                    <line x1="60" y1="270" x2="880" y2="270" stroke="#42526E" stroke-width="1.5" />
+                    <line x1="60" y1="30" x2="880" y2="30" stroke="var(--border-color)" stroke-width="1" />
+                    <line x1="60" y1="90" x2="880" y2="90" stroke="var(--border-color)" stroke-width="1" />
+                    <line x1="60" y1="150" x2="880" y2="150" stroke="var(--border-color)" stroke-width="1" />
+                    <line x1="60" y1="210" x2="880" y2="210" stroke="var(--border-color)" stroke-width="1" />
+                    <line x1="60" y1="270" x2="880" y2="270" stroke="var(--text-secondary)" stroke-width="1.5" />
 
                     <!-- Rolling Average Horizontal Line -->
                     <line
@@ -761,9 +761,9 @@ export type ReportType =
                 <div class="svg-container">
                   <svg viewBox="0 0 900 320" class="responsive-svg" preserveAspectRatio="none">
                     <!-- Grid -->
-                    <line x1="60" y1="30" x2="880" y2="30" stroke="#EBECF0" stroke-width="1" />
-                    <line x1="60" y1="150" x2="880" y2="150" stroke="#EBECF0" stroke-width="1" />
-                    <line x1="60" y1="270" x2="880" y2="270" stroke="#42526E" stroke-width="1.5" />
+                    <line x1="60" y1="30" x2="880" y2="30" stroke="var(--border-color)" stroke-width="1" />
+                    <line x1="60" y1="150" x2="880" y2="150" stroke="var(--border-color)" stroke-width="1" />
+                    <line x1="60" y1="270" x2="880" y2="270" stroke="var(--text-secondary)" stroke-width="1.5" />
 
                     <!-- Render Stacked Area Polygons -->
                     @for (layer of getCfdLayers(cfd); track layer.status) {
@@ -771,7 +771,7 @@ export type ReportType =
                         [attr.points]="layer.polygonPoints"
                         [attr.fill]="getStatusColor(layer.status)"
                         fill-opacity="0.8"
-                        stroke="#fff"
+                        stroke="var(--bg-surface)"
                         stroke-width="0.5"
                       >
                         <title>{{ layer.status }}</title>
@@ -881,7 +881,7 @@ export type ReportType =
                         [attr.cy]="getCycleTimeY(it.cycle_time_days, ct)"
                         [attr.r]="it.is_outlier ? 6 : 4.5"
                         [attr.fill]="it.is_outlier ? '#FF5630' : '#0052CC'"
-                        stroke="#fff"
+                        stroke="var(--bg-surface)"
                         stroke-width="1.5"
                         class="chart-dot"
                       >
@@ -890,7 +890,7 @@ export type ReportType =
                     }
 
                     <!-- Axis -->
-                    <line x1="60" y1="270" x2="880" y2="270" stroke="#42526E" stroke-width="1.5" />
+                    <line x1="60" y1="270" x2="880" y2="270" stroke="var(--text-secondary)" stroke-width="1.5" />
                     <text x="50" y="35" text-anchor="end" class="svg-axis-label">{{ getMaxCycleTimeVal(ct) }}d</text>
                     <text x="50" y="155" text-anchor="end" class="svg-axis-label">{{ getMaxCycleTimeVal(ct) / 2 | number:'1.0-0' }}d</text>
                     <text x="50" y="275" text-anchor="end" class="svg-axis-label">0d</text>
@@ -982,9 +982,9 @@ export type ReportType =
 
                 <div class="svg-container">
                   <svg viewBox="0 0 900 320" class="responsive-svg" preserveAspectRatio="none">
-                    <line x1="60" y1="30" x2="880" y2="30" stroke="#EBECF0" stroke-width="1" />
-                    <line x1="60" y1="150" x2="880" y2="150" stroke="#EBECF0" stroke-width="1" />
-                    <line x1="60" y1="270" x2="880" y2="270" stroke="#42526E" stroke-width="1.5" />
+                    <line x1="60" y1="30" x2="880" y2="30" stroke="var(--border-color)" stroke-width="1" />
+                    <line x1="60" y1="150" x2="880" y2="150" stroke="var(--border-color)" stroke-width="1" />
+                    <line x1="60" y1="270" x2="880" y2="270" stroke="var(--text-secondary)" stroke-width="1.5" />
 
                     <!-- Created Cumulative Line (Blue) -->
                     <path
