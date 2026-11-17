@@ -143,7 +143,7 @@
 }
 
 .grant-pill[data-type="dynamic"] {
-  background: #fff0b3;
+  background: var(--warning-bg);
   border-color: #ffe380;
   color: var(--text-primary);
 }

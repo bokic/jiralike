@@ -362,7 +362,7 @@
 }
 
 .trigger-badge { background: var(--success-bg); color: #006644; }
-.condition-badge { background: #fff0b3; color: var(--text-primary); }
+.condition-badge { background: var(--warning-bg); color: var(--text-primary); }
 .action-badge { background: var(--info-bg); color: #0747a6; }
 
 .flow-arrow {
@@ -840,7 +840,7 @@
 
 .run-result-box.error {
   border-color: #ffbdad;
-  background: #fff6f4;
+  background: var(--danger-bg);
 }
 
 .res-title-row {

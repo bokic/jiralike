@@ -360,7 +360,7 @@
   border: 1px solid var(--color-border, var(--border-color));
   border-radius: 4px;
   font-size: 12px;
-  background: white;
+  background: var(--bg-surface);
 }
 
 /* Modals */
@@ -378,7 +378,7 @@
 }
 
 .modal-card {
-  background: white;
+  background: var(--bg-surface);
   border-radius: 4px;
   box-shadow: 0 4px 16px rgba(0, 0, 0, 0.2);
   width: 600px;
