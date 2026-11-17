@@ -10,7 +10,7 @@
 }
 
 .rich-editor-container:focus-within {
-  border-color: #0052cc;
+  border-color: var(--brand-primary);
   box-shadow: 0 0 0 2px rgba(0, 82, 204, 0.2);
 }
 
@@ -35,7 +35,7 @@
 .toolbar-divider {
   width: 1px;
   height: 18px;
-  background: #dfe1e6;
+  background: var(--border-color);
   margin: 0 4px;
 }
 
@@ -69,14 +69,14 @@
   font-size: 11px;
   padding: 2px 6px;
   background: var(--success-bg);
-  color: #006644;
+  color: var(--success-color);
   border-radius: 3px;
   font-weight: 500;
 }
 
 .upload-badge.uploading {
   background: var(--info-bg);
-  color: #0747a6;
+  color: var(--brand-primary);
   animation: pulse-upload 1.2s infinite;
 }
 
@@ -285,7 +285,7 @@
   font-size: 1.1rem;
   font-weight: 600;
   margin: 8px 0 4px;
-  color: #253858;
+  color: var(--text-secondary);
 }
 
 .preview-content :deep(.md-code-block) {
@@ -326,7 +326,7 @@
 
 .preview-content :deep(code.inline-code) {
   background: var(--bg-app);
-  color: #bf2600;
+  color: var(--danger-color);
   padding: 1px 5px;
   border-radius: 3px;
   font-family: Consolas, monospace;
@@ -345,26 +345,26 @@
 
 .preview-content :deep(.md-callout-note) {
   background: var(--info-bg);
-  border-color: #0052cc;
-  color: #0747a6;
+  border-color: var(--brand-primary);
+  color: var(--brand-primary);
 }
 
 .preview-content :deep(.md-callout-tip) {
   background: var(--success-bg);
-  border-color: #00875a;
-  color: #006644;
+  border-color: var(--success-color);
+  color: var(--success-color);
 }
 
 .preview-content :deep(.md-callout-warning) {
-  background: #fff0b3;
-  border-color: #ff991f;
+  background: var(--warning-bg);
+  border-color: var(--warning-color);
   color: var(--text-primary);
 }
 
 .preview-content :deep(.md-callout-important) {
   background: var(--danger-bg);
-  border-color: #de350b;
-  color: #bf2600;
+  border-color: var(--danger-color);
+  color: var(--danger-color);
 }
 
 .preview-content :deep(.callout-icon) {
@@ -443,7 +443,7 @@
 .preview-content :deep(.mention-badge) {
   display: inline-flex;
   align-items: center;
-  background: #e9f2ff;
+  background: var(--info-bg);
   color: var(--brand-primary);
   padding: 1px 6px;
   border-radius: 12px;
@@ -469,5 +469,5 @@
 
 .preview-content :deep(.issue-mention-badge:hover) {
   background: var(--info-bg);
-  border-color: #0052cc;
+  border-color: var(--brand-primary);
 }

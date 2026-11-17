@@ -34,7 +34,7 @@ import { DomSanitizer, SafeHtml } from '@angular/platform-browser';
       font-size: 1.05rem;
       font-weight: 600;
       margin: 8px 0 4px;
-      color: #253858;
+      color: var(--text-secondary);
     }
     :host ::ng-deep .md-code-block {
       background: #091e42;
@@ -69,7 +69,7 @@ import { DomSanitizer, SafeHtml } from '@angular/platform-browser';
     }
     :host ::ng-deep code.inline-code {
       background: var(--bg-app);
-      color: #bf2600;
+      color: var(--danger-color);
       padding: 1px 5px;
       border-radius: 3px;
       font-family: Consolas, monospace;
@@ -86,23 +86,23 @@ import { DomSanitizer, SafeHtml } from '@angular/platform-browser';
     }
     :host ::ng-deep .md-callout-note {
       background: var(--info-bg);
-      border-color: #0052cc;
-      color: #0747a6;
+      border-color: var(--brand-primary);
+      color: var(--brand-primary);
     }
     :host ::ng-deep .md-callout-tip {
       background: var(--success-bg);
-      border-color: #00875a;
-      color: #006644;
+      border-color: var(--success-color);
+      color: var(--success-color);
     }
     :host ::ng-deep .md-callout-warning {
-      background: #fff0b3;
-      border-color: #ff991f;
+      background: var(--warning-bg);
+      border-color: var(--warning-color);
       color: var(--text-primary);
     }
     :host ::ng-deep .md-callout-important {
       background: var(--danger-bg);
-      border-color: #de350b;
-      color: #bf2600;
+      border-color: var(--danger-color);
+      color: var(--danger-color);
     }
     :host ::ng-deep .callout-icon {
       font-size: 16px;
@@ -168,7 +168,7 @@ import { DomSanitizer, SafeHtml } from '@angular/platform-browser';
     :host ::ng-deep .mention-badge {
       display: inline-flex;
       align-items: center;
-      background: #e9f2ff;
+      background: var(--info-bg);
       color: var(--brand-primary);
       padding: 1px 6px;
       border-radius: 12px;
@@ -191,7 +191,7 @@ import { DomSanitizer, SafeHtml } from '@angular/platform-browser';
     }
     :host ::ng-deep .issue-mention-badge:hover {
       background: var(--info-bg);
-      border-color: #0052cc;
+      border-color: var(--brand-primary);
     }
   `]
 })
