@@ -3,12 +3,13 @@ import { CommonModule } from '@angular/common';
 import { FormsModule } from '@angular/forms';
 import { ApiService } from '../../services/api.service';
 import { UiFeedbackService } from '../../services/ui-feedback.service';
+import { EmptyStateComponent } from '../../components/empty-state/empty-state.component';
 import { TrashItem } from '../../models/jira.models';
 
 @Component({
   selector: 'app-trash',
   standalone: true,
-  imports: [CommonModule, FormsModule],
+  imports: [CommonModule, FormsModule, EmptyStateComponent],
   template: `
     <div class="trash-container">
       <!-- Toast Alert -->
@@ -86,11 +87,13 @@ import { TrashItem } from '../../models/jira.models';
           <p>Loading Trash Bin items...</p>
         </div>
       } @else if (filteredItems().length === 0) {
-        <div class="empty-state">
-          <span class="empty-icon">🍃</span>
-          <h3>Trash Bin is Empty</h3>
-          <p>There are no soft-deleted issues matching your query.</p>
-        </div>
+        <app-empty-state
+          icon="trash"
+          title="Trash Bin is Empty"
+          description="There are no soft-deleted issues matching your query."
+          [actionLabel]="filterText() ? 'Clear Search' : ''"
+          (action)="filterText.set('')"
+        />
       } @else {
         <div class="table-card">
           <table class="trash-table">

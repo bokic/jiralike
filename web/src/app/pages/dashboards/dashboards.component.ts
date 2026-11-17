@@ -4,6 +4,7 @@ import { FormsModule } from '@angular/forms';
 import { RouterLink } from '@angular/router';
 import { ApiService } from '../../services/api.service';
 import { UiFeedbackService } from '../../services/ui-feedback.service';
+import { EmptyStateComponent } from '../../components/empty-state/empty-state.component';
 import {
   Dashboard,
   DashboardGadget,
@@ -16,7 +17,7 @@ import {
 @Component({
   selector: 'app-dashboards',
   standalone: true,
-  imports: [CommonModule, FormsModule, RouterLink],
+  imports: [CommonModule, FormsModule, RouterLink, EmptyStateComponent],
   template: `
     <div class="dashboards-view">
       <!-- Top Control Bar -->
@@ -593,16 +594,13 @@ import {
                     </div>
                   </article>
                 } @empty {
-                  <div class="empty-column-placeholder">
-                    <p>No gadgets in Column {{ colIdx + 1 }}</p>
-                    <button
-                      type="button"
-                      class="btn btn-outline btn-sm"
-                      (click)="openCatalogModal(colIdx)"
-                    >
-                      + Add Gadget Here
-                    </button>
-                  </div>
+                  <app-empty-state
+                    icon="dashboard"
+                    [title]="'No gadgets in Column ' + (colIdx + 1)"
+                    description="Add a chart, filter results, or activity stream gadget to this column."
+                    actionLabel="+ Add Gadget Here"
+                    (action)="openCatalogModal(colIdx)"
+                  />
                 }
               </div>
             </div>
