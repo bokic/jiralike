@@ -766,7 +766,15 @@ export interface SwimlaneRow {
           <!-- SWIMLANE GROUPED BOARD VIEW -->
           @for (lane of swimlaneRows(); track lane.key) {
             <div class="swimlane-section">
-              <div class="swimlane-header" (click)="toggleSwimlaneCollapsed(lane.key)">
+              <div
+                class="swimlane-header"
+                role="button"
+                tabindex="0"
+                [attr.aria-expanded]="!isSwimlaneCollapsed(lane.key)"
+                (click)="toggleSwimlaneCollapsed(lane.key)"
+                (keydown.enter)="toggleSwimlaneCollapsed(lane.key)"
+                (keydown.space)="$event.preventDefault(); toggleSwimlaneCollapsed(lane.key)"
+              >
                 <div class="swimlane-title">
                   <span>{{ isSwimlaneCollapsed(lane.key) ? '▶' : '▼' }}</span>
                   <span>{{ lane.title }}</span>

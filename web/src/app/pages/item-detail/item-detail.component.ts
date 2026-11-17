@@ -1614,22 +1614,22 @@ import {
               </div>
 
               <div class="dev-rollup-grid">
-                <div class="dev-stat-box" (click)="activeTab.set('development')" title="View Branches">
+                <button type="button" class="dev-stat-box" (click)="activeTab.set('development')" title="View Branches">
                   <div class="dev-stat-val">{{ it.development?.branches_count || 0 }}</div>
                   <div class="dev-stat-label">Branches</div>
-                </div>
-                <div class="dev-stat-box" (click)="activeTab.set('development')" title="View Commits">
+                </button>
+                <button type="button" class="dev-stat-box" (click)="activeTab.set('development')" title="View Commits">
                   <div class="dev-stat-val">{{ it.development?.commits_count || 0 }}</div>
                   <div class="dev-stat-label">Commits</div>
-                </div>
-                <div class="dev-stat-box" (click)="activeTab.set('development')" title="View Pull Requests">
+                </button>
+                <button type="button" class="dev-stat-box" (click)="activeTab.set('development')" title="View Pull Requests">
                   <div class="dev-stat-val">{{ it.development?.pull_requests_count || 0 }}</div>
                   <div class="dev-stat-label">PRs</div>
-                </div>
-                <div class="dev-stat-box" (click)="activeTab.set('development')" title="View Builds">
+                </button>
+                <button type="button" class="dev-stat-box" (click)="activeTab.set('development')" title="View Builds">
                   <div class="dev-stat-val">{{ it.development?.builds_count || 0 }}</div>
                   <div class="dev-stat-label">Builds</div>
-                </div>
+                </button>
               </div>
 
               @if (it.development && (it.development.branches_count > 0 || it.development.commits_count > 0 || it.development.pull_requests_count > 0 || it.development.builds_count > 0)) {

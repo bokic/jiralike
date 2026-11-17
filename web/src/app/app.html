@@ -219,8 +219,12 @@
                   @for (n of getFilteredNotifications(); track n.id) {
                     <div
                       class="mention-item-card"
+                      role="button"
+                      tabindex="0"
                       [class.unread]="!n.is_read"
                       (click)="openNotification(n)"
+                      (keydown.enter)="openNotification(n)"
+                      (keydown.space)="$event.preventDefault(); openNotification(n)"
                     >
                       <div class="mention-avatar-col">
                         <span class="event-badge-icon" [attr.data-event]="n.event_type">
@@ -276,8 +280,12 @@
                   @for (m of api.mentions(); track m.id) {
                     <div
                       class="mention-item-card"
+                      role="button"
+                      tabindex="0"
                       [class.unread]="!m.is_read"
                       (click)="openMention(m)"
+                      (keydown.enter)="openMention(m)"
+                      (keydown.space)="$event.preventDefault(); openMention(m)"
                     >
                       <div class="mention-avatar-col">
                         <span class="avatar-circle-sm" [style.background]="m.author_color">

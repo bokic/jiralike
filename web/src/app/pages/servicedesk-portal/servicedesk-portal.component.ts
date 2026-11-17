@@ -207,7 +207,14 @@ import {
 
                 <div class="request-types-grid">
                   @for (rt of desk.request_types; track rt.id) {
-                    <div class="req-type-card" (click)="openCreateModal(desk, rt)">
+                    <div
+                      class="req-type-card"
+                      role="button"
+                      tabindex="0"
+                      (click)="openCreateModal(desk, rt)"
+                      (keydown.enter)="openCreateModal(desk, rt)"
+                      (keydown.space)="$event.preventDefault(); openCreateModal(desk, rt)"
+                    >
                       <div class="rt-icon">{{ getIcon(rt.icon) }}</div>
                       <div class="rt-info">
                         <h4>{{ rt.name }}</h4>
