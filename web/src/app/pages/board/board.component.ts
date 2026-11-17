@@ -5,6 +5,7 @@ import { ActivatedRoute, Router, RouterLink } from '@angular/router';
 import { ApiService } from '../../services/api.service';
 import { I18nPipe } from '../../services/i18n.service';
 import { IconComponent } from '../../components/icon/icon.component';
+import { BoardCardComponent } from '../../components/board-card/board-card.component';
 import {
   AvailableTransition,
   BoardColumn,
@@ -34,7 +35,7 @@ export interface SwimlaneRow {
 @Component({
   selector: 'app-board',
   standalone: true,
-  imports: [CommonModule, FormsModule, RouterLink, IconComponent, I18nPipe],
+  imports: [CommonModule, FormsModule, RouterLink, IconComponent, I18nPipe, BoardCardComponent],
   styles: [
     `
       .board-shell {
@@ -834,120 +835,19 @@ export interface SwimlaneRow {
 
       <!-- Reusable Issue Card Template -->
       <ng-template #issueCardTpl let-item let-col="col">
-        <div
-          class="issue-card kanban-card"
-          [attr.data-item-key]="item.key"
-          [attr.data-item-id]="item.id"
-          draggable="true"
-          [style.border-left-color]="getCardColorStrip(item)"
-          [class.dragging]="draggedItem()?.id === item.id"
-          (dragstart)="onDragStart($event, item)"
-          (dragend)="onDragEnd()"
-        >
-          <div class="card-top">
-            <a [routerLink]="['/', item.key]" class="issue-key">{{ item.key }}</a>
-            <div style="display: flex; align-items: center; gap: 4px;">
-              @if (col?.statuses?.length > 1) {
-                <span class="state-pill" [attr.data-state]="item.status" style="font-size: 10px; padding: 1px 6px;">
-                  {{ item.status }}
-                </span>
-              }
-              <span class="priority-badge" [attr.data-priority]="item.priority">
-                {{ item.priority }}
-              </span>
-            </div>
-          </div>
-
-          <div class="card-top">
-            <span class="type-badge" [attr.data-type]="item.type">{{ item.type }}</span>
-            <span class="cat-badge" [attr.data-cat]="item.category">{{ item.category }}</span>
-          </div>
-
-          @if (item.parent_key) {
-            <div class="parent-chip">↳ {{ item.parent_key }}: {{ item.parent_title }}</div>
-          }
-
-          <a [routerLink]="['/', item.key]" class="card-title">{{ item.title }}</a>
-
-          @if (shouldShowCardField('components') || shouldShowCardField('fix_versions') || shouldShowCardField('labels')) {
-            <div class="card-labels">
-              @if (item.resolution_name) {
-                <span class="label-chip" style="background: #dcfce7; color: #166534;">✔ {{ item.resolution_name }}</span>
-              }
-              @if (shouldShowCardField('components')) {
-                @for (comp of item.components || []; track comp.id) {
-                  <span class="label-chip" style="background: #e0f2fe; color: #0369a1;">🧩 {{ comp.name }}</span>
-                }
-              }
-              @if (shouldShowCardField('fix_versions')) {
-                @for (fv of item.fix_versions || []; track fv.id) {
-                  <span class="label-chip" style="background: #f3e8ff; color: #6b21a8;">🚀 {{ fv.name }}</span>
-                }
-              }
-              @if (shouldShowCardField('labels')) {
-                @for (lbl of splitLabels(item.labels); track lbl) {
-                  <span class="label-chip">{{ lbl }}</span>
-                }
-              }
-            </div>
-          }
-
-          @if (shouldShowCardField('due_date') && item.due_date) {
-            <div style="font-size: 11px; color: var(--text-secondary); margin-top: 4px;">
-              📅 Due: <strong>{{ item.due_date }}</strong>
-            </div>
-          }
-
-          <div class="card-progress">
-            <div class="progress-bar">
-              <div class="progress-fill" [style.width.%]="item.progress"></div>
-            </div>
-            <span class="progress-text">{{ item.progress }}%</span>
-          </div>
-
-          <div class="card-footer">
-            <div class="card-meta">
-              @if (shouldShowCardField('story_points') && item.story_points > 0) {
-                <span class="points-badge" title="Story Points">{{ item.story_points }} SP</span>
-              }
-              @if (item.time_spent_formatted || item.remaining_estimate_formatted || item.original_estimate_formatted) {
-                <span
-                  class="points-badge"
-                  style="background: #eef2ff; color: #4338ca; border-color: #c7d2fe;"
-                  [title]="'Time Spent: ' + (item.time_spent_formatted || '0m') + ' / Remaining: ' + (item.remaining_estimate_formatted || '0m')"
-                >
-                  ⏱ {{ item.time_spent_formatted || '0m' }}/{{ item.remaining_estimate_formatted || item.original_estimate_formatted || '0m' }}
-                </span>
-              }
-              @if (item.tshirt_size) {
-                <span class="label-chip" style="background: #fdf2f8; color: #be185d;" title="T-Shirt Size">
-                  👕 {{ item.tshirt_size }}
-                </span>
-              }
-              @if (item.subtask_count > 0) {
-                <span class="meta-icon" title="Subtasks">⧉ {{ item.subtask_count }}</span>
-              }
-              @if (item.attachment_count > 0) {
-                <span class="meta-icon" title="Blob Attachments">📎 {{ item.attachment_count }}</span>
-              }
-              @if (item.comment_count > 0) {
-                <span class="meta-icon" title="Comments">💬 {{ item.comment_count }}</span>
-              }
-            </div>
-
-            @if (item.assignee_name) {
-              <div
-                class="avatar-circle"
-                [style.background]="item.assignee_color"
-                [title]="'Assigned to ' + item.assignee_name"
-              >
-                {{ initials(item.assignee_name) }}
-              </div>
-            } @else {
-              <div class="avatar-circle unassigned" title="Unassigned">?</div>
-            }
-          </div>
-        </div>
+        <app-board-card
+          [item]="item"
+          [col]="col"
+          [colorStrip]="getCardColorStrip(item)"
+          [isDragging]="draggedItem()?.id === item.id"
+          [showComponents]="shouldShowCardField('components')"
+          [showFixVersions]="shouldShowCardField('fix_versions')"
+          [showLabels]="shouldShowCardField('labels')"
+          [showDueDate]="shouldShowCardField('due_date')"
+          [showStoryPoints]="shouldShowCardField('story_points')"
+          (dragStarted)="onDragStart($event, item)"
+          (dragEnded)="onDragEnd()"
+        />
       </ng-template>
 
       <!-- ================================================================== -->
