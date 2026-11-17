@@ -3,6 +3,7 @@ import { CommonModule } from '@angular/common';
 import { FormsModule } from '@angular/forms';
 import { ActivatedRoute, Router, RouterLink } from '@angular/router';
 import { ApiService } from '../../services/api.service';
+import { I18nPipe } from '../../services/i18n.service';
 import {
   JqlSearchResponse,
   JqlSuggestions,
@@ -16,7 +17,7 @@ import {
 @Component({
   selector: 'app-search',
   standalone: true,
-  imports: [CommonModule, FormsModule, RouterLink],
+  imports: [CommonModule, FormsModule, RouterLink, I18nPipe],
   template: `
     <div class="search-workspace">
       @if (toastMessage()) {
@@ -335,7 +336,7 @@ import {
                     (keyup.enter)="applyBasicFilters()"
                   />
                   <button type="button" class="btn btn-primary btn-sm" (click)="applyBasicFilters()">
-                    Search
+                    {{ 'common.search' | i18n }}
                   </button>
                   <button type="button" class="btn btn-ghost btn-sm" (click)="resetBasicFilters()">
                     Reset

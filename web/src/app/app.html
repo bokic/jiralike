@@ -516,7 +516,7 @@
           }
           <div class="u-grid-2 u-mb-3">
             <div class="form-group">
-              <label style="display: block; font-weight: 600; margin-bottom: 4px; font-size: 12px;">Issue Type</label>
+              <label style="display: block; font-weight: 600; margin-bottom: 4px; font-size: 12px;">{{ 'common.type' | i18n }}</label>
               <select class="form-control" [(ngModel)]="createDraft.type">
                 @for (t of workItemTypes; track t) {
                   <option [value]="t">{{ t }}</option>
@@ -524,7 +524,7 @@
               </select>
             </div>
             <div class="form-group">
-              <label style="display: block; font-weight: 600; margin-bottom: 4px; font-size: 12px;">Priority</label>
+              <label style="display: block; font-weight: 600; margin-bottom: 4px; font-size: 12px;">{{ 'common.priority' | i18n }}</label>
               <select class="form-control" [(ngModel)]="createDraft.priority">
                 @for (p of priorities; track p) {
                   <option [value]="p">{{ p }}</option>
@@ -533,7 +533,7 @@
             </div>
           </div>
           <div class="form-group u-mb-3">
-            <label style="display: block; font-weight: 600; margin-bottom: 4px; font-size: 12px;">Summary / Title <span class="u-text-danger">*</span></label>
+            <label style="display: block; font-weight: 600; margin-bottom: 4px; font-size: 12px;">{{ 'common.summary' | i18n }} <span class="u-text-danger">*</span></label>
             <input
               id="quick-create-title"
               type="text"
@@ -549,7 +549,7 @@
             }
           </div>
           <div class="form-group" style="margin-bottom: 12px;">
-            <label style="display: block; font-weight: 600; margin-bottom: 4px; font-size: 12px;">Description</label>
+            <label style="display: block; font-weight: 600; margin-bottom: 4px; font-size: 12px;">{{ 'common.description' | i18n }}</label>
             <textarea
               rows="3"
               class="form-control"
@@ -558,17 +558,17 @@
             ></textarea>
           </div>
           <div class="form-group" style="margin-bottom: 12px;">
-            <label style="display: block; font-weight: 600; margin-bottom: 4px; font-size: 12px;">Assignee</label>
+            <label style="display: block; font-weight: 600; margin-bottom: 4px; font-size: 12px;">{{ 'common.assignee' | i18n }}</label>
             <select class="form-control" [(ngModel)]="createDraft.assignee_id">
               <option [ngValue]="null">Unassigned</option>
               @for (u of api.users(); track u.id) {
-                <option [ngValue]="u.id">{{ u.display_name }} ({{ u.role }})</option>
+                <option [value]="u.id">{{ u.display_name }} ({{ u.role }})</option>
               }
             </select>
           </div>
         </div>
         <div class="modal-footer" style="padding: 12px 20px; display: flex; justify-content: flex-end; gap: 8px; border-top: 1px solid var(--border-color);">
-          <button type="button" class="btn btn-secondary" (click)="showCreateModal.set(false)">Cancel</button>
+          <button type="button" class="btn btn-secondary" (click)="showCreateModal.set(false)">{{ 'common.cancel' | i18n }}</button>
           <button
             type="button"
             class="btn btn-primary"

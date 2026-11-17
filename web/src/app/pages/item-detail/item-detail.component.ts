@@ -3,6 +3,7 @@ import { CommonModule } from '@angular/common';
 import { FormsModule } from '@angular/forms';
 import { ActivatedRoute, Router, RouterLink } from '@angular/router';
 import { ApiService } from '../../services/api.service';
+import { I18nPipe } from '../../services/i18n.service';
 import { UiFeedbackService } from '../../services/ui-feedback.service';
 import { RichEditorComponent } from '../../components/rich-editor/rich-editor.component';
 import { MarkdownViewerComponent } from '../../components/rich-editor/markdown-viewer.component';
@@ -27,7 +28,7 @@ import {
 @Component({
   selector: 'app-item-detail',
   standalone: true,
-  imports: [CommonModule, FormsModule, RouterLink, RichEditorComponent, MarkdownViewerComponent],
+  imports: [CommonModule, FormsModule, RouterLink, RichEditorComponent, MarkdownViewerComponent, I18nPipe],
   template: `
     @if (item(); as it) {
       <div class="page-container">
@@ -559,18 +560,18 @@ import {
 
               <div class="form-group">
                 <div style="display: flex; justify-content: space-between; align-items: center; margin-bottom: 6px;">
-                  <label for="detail-description" style="margin: 0; font-weight: 600;">Description</label>
+                  <label for="detail-description" style="margin: 0; font-weight: 600;">{{ 'common.description' | i18n }}</label>
                   @if (!isEditingDescription()) {
                     <button type="button" class="btn btn-ghost btn-sm" (click)="startEditDescription(it.description)">
-                      ✏ Edit Description
+                      ✏ {{ 'common.edit' | i18n }}
                     </button>
                   } @else {
                     <div style="display: flex; gap: 6px;">
                       <button type="button" class="btn btn-primary btn-sm" (click)="saveDescription()">
-                        Save
+                        {{ 'common.save' | i18n }}
                       </button>
                       <button type="button" class="btn btn-secondary btn-sm" (click)="cancelEditDescription()">
-                        Cancel
+                        {{ 'common.cancel' | i18n }}
                       </button>
                     </div>
                   }

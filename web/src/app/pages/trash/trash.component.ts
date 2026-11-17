@@ -2,6 +2,7 @@ import { Component, OnInit, computed, inject, signal } from '@angular/core';
 import { CommonModule } from '@angular/common';
 import { FormsModule } from '@angular/forms';
 import { ApiService } from '../../services/api.service';
+import { I18nPipe } from '../../services/i18n.service';
 import { UiFeedbackService } from '../../services/ui-feedback.service';
 import { EmptyStateComponent } from '../../components/empty-state/empty-state.component';
 import { TrashItem } from '../../models/jira.models';
@@ -9,7 +10,7 @@ import { TrashItem } from '../../models/jira.models';
 @Component({
   selector: 'app-trash',
   standalone: true,
-  imports: [CommonModule, FormsModule, EmptyStateComponent],
+  imports: [CommonModule, FormsModule, EmptyStateComponent, I18nPipe],
   template: `
     <div class="trash-container">
       <!-- Toast Alert -->
@@ -99,10 +100,10 @@ import { TrashItem } from '../../models/jira.models';
           <table class="trash-table">
             <thead>
               <tr>
-                <th>Key</th>
-                <th>Type</th>
+                <th>{{ 'common.key' | i18n }}</th>
+                <th>{{ 'common.type' | i18n }}</th>
                 <th>Original Project</th>
-                <th>Summary</th>
+                <th>{{ 'common.summary' | i18n }}</th>
                 <th>Deleted By</th>
                 <th>Deleted Date</th>
                 <th>Retention Countdown</th>

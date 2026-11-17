@@ -3,6 +3,7 @@ import { CommonModule } from '@angular/common';
 import { FormsModule } from '@angular/forms';
 import { ActivatedRoute, Router, RouterLink } from '@angular/router';
 import { ApiService } from '../../services/api.service';
+import { I18nPipe } from '../../services/i18n.service';
 import { IconComponent } from '../../components/icon/icon.component';
 import {
   AvailableTransition,
@@ -33,7 +34,7 @@ export interface SwimlaneRow {
 @Component({
   selector: 'app-board',
   standalone: true,
-  imports: [CommonModule, FormsModule, RouterLink, IconComponent],
+  imports: [CommonModule, FormsModule, RouterLink, IconComponent, I18nPipe],
   styles: [
     `
       .board-shell {
@@ -557,7 +558,7 @@ export interface SwimlaneRow {
         <div class="board-top-actions">
           @if (viewMode() === 'board' && activeBoard()?.board_type === 'scrum' && activeSprintForBoard(); as actSp) {
             <button type="button" class="btn btn-primary btn-sm" (click)="openCompleteSprintModal(actSp)">
-              <app-icon name="check" [size]="14" /> Complete Sprint ({{ actSp.name }})
+              <app-icon name="check" [size]="14" /> {{ 'board.completeSprint' | i18n }} ({{ actSp.name }})
             </button>
           }
           <button type="button" class="btn btn-secondary btn-sm" (click)="openCreateBoardModal()">
@@ -566,7 +567,7 @@ export interface SwimlaneRow {
           <button type="button" class="btn btn-secondary btn-sm" (click)="openBoardConfigModal()" title="Configure Columns, WIP Limits &amp; Quick Filters">
             <app-icon name="settings" [size]="14" /> Configure
           </button>
-          <a routerLink="/create" class="btn btn-primary btn-sm"><app-icon name="plus" [size]="14" /> Create Issue</a>
+          <a routerLink="/create" class="btn btn-primary btn-sm"><app-icon name="plus" [size]="14" /> {{ 'board.createIssue' | i18n }}</a>
         </div>
       </div>
 
@@ -598,7 +599,7 @@ export interface SwimlaneRow {
           </div>
 
           <div class="qf-pills">
-            <span class="qf-label u-inline-flex u-items-center u-gap-1"><app-icon name="filter" [size]="12" /> Quick Filters</span>
+            <span class="qf-label u-inline-flex u-items-center u-gap-1"><app-icon name="filter" [size]="12" /> {{ 'board.quickFilters' | i18n }}</span>
             @if (activeBoard(); as board) {
               @for (qf of board.quick_filters; track qf.id) {
                 <button
