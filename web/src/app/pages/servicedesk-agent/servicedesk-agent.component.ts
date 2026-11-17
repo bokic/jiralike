@@ -275,7 +275,7 @@ import {
                     </tr>
                   } @empty {
                     <tr>
-                      <td colspan="9" class="text-center" style="padding: 40px; color: #5e6c84;">
+                      <td colspan="9" class="text-center" style="padding: 40px; color: var(--text-secondary);">
                         🎉 All caught up! No requests pending in this queue.
                       </td>
                     </tr>
@@ -430,8 +430,8 @@ import {
 
               <div class="orgs-layout" style="display: grid; grid-template-columns: 320px 1fr; gap: 20px; align-items: start;">
                 <!-- Left: Organizations list -->
-                <div class="orgs-list-card" style="background: #ffffff; border: 1px solid #dfe1e6; border-radius: 6px; overflow: hidden;">
-                  <div style="padding: 12px 16px; border-bottom: 1px solid #dfe1e6; background: #fafbfc; font-weight: 700; font-size: 13px;">
+                <div class="orgs-list-card" style="background: var(--bg-surface); border: 1px solid var(--border-color); border-radius: 6px; overflow: hidden;">
+                  <div style="padding: 12px 16px; border-bottom: 1px solid var(--border-color); background: var(--bg-app); font-weight: 700; font-size: 13px;">
                     Organizations ({{ organizations().length }})
                   </div>
                   <div class="orgs-nav-list" style="display: flex; flex-direction: column;">
@@ -443,17 +443,17 @@ import {
                         [style.border-left]="activeOrg()?.id === org.id ? '3px solid #0052cc' : '3px solid transparent'"
                       >
                         <div>
-                          <div style="font-weight: 600; font-size: 13px; color: #172b4d;">🏢 {{ org.name }}</div>
+                          <div style="font-weight: 600; font-size: 13px; color: var(--text-primary);">🏢 {{ org.name }}</div>
                           @if (org.domain) {
-                            <div style="font-size: 11px; color: #5e6c84;">Domain: &#64;{{ org.domain }}</div>
+                            <div style="font-size: 11px; color: var(--text-secondary);">Domain: &#64;{{ org.domain }}</div>
                           }
                         </div>
-                        <span class="badge" style="background: #dfe1e6; color: #172b4d; font-size: 11px;">
+                        <span class="badge" style="background: #dfe1e6; color: var(--text-primary); font-size: 11px;">
                           {{ org.member_count || 0 }} members
                         </span>
                       </div>
                     } @empty {
-                      <div style="padding: 24px; text-align: center; color: #5e6c84; font-size: 13px;">
+                      <div style="padding: 24px; text-align: center; color: var(--text-secondary); font-size: 13px;">
                         No organizations created for this desk yet.
                       </div>
                     }
@@ -462,13 +462,13 @@ import {
 
                 <!-- Right: Active Organization Detail & Members -->
                 @if (activeOrg()) {
-                  <div class="org-detail-card" style="background: #ffffff; border: 1px solid #dfe1e6; border-radius: 6px; padding: 20px;">
-                    <div style="display: flex; justify-content: space-between; align-items: flex-start; margin-bottom: 16px; border-bottom: 1px solid #ebecf0; padding-bottom: 16px;">
+                  <div class="org-detail-card" style="background: var(--bg-surface); border: 1px solid var(--border-color); border-radius: 6px; padding: 20px;">
+                    <div style="display: flex; justify-content: space-between; align-items: flex-start; margin-bottom: 16px; border-bottom: 1px solid var(--border-color); padding-bottom: 16px;">
                       <div>
                         <h3 style="margin: 0 0 6px 0; font-size: 18px;">🏢 {{ activeOrg()!.name }}</h3>
-                        <div style="font-size: 12px; color: #5e6c84; display: flex; gap: 16px;">
+                        <div style="font-size: 12px; color: var(--text-secondary); display: flex; gap: 16px;">
                           @if (activeOrg()!.domain) {
-                            <span>Domain: <strong style="color: #0052cc;">&#64;{{ activeOrg()!.domain }}</strong> (Auto-enrolls incoming emails)</span>
+                            <span>Domain: <strong style="color: var(--brand-primary);">&#64;{{ activeOrg()!.domain }}</strong> (Auto-enrolls incoming emails)</span>
                           }
                           <span>Created: {{ activeOrg()!.created_at }}</span>
                         </div>
@@ -484,7 +484,7 @@ import {
                     </div>
 
                     <h4 style="margin: 0 0 12px 0; font-size: 14px;">Organization Members</h4>
-                    <div class="table-container" style="border: 1px solid #ebecf0; border-radius: 4px; overflow: hidden;">
+                    <div class="table-container" style="border: 1px solid var(--border-color); border-radius: 4px; overflow: hidden;">
                       <table class="triage-table" style="margin: 0;">
                         <thead>
                           <tr>
@@ -499,8 +499,8 @@ import {
                           @for (m of activeOrgMembers(); track (m.user_id || m.id)) {
                             <tr>
                               <td>
-                                <strong style="color: #172b4d;">{{ m.display_name }}</strong>
-                                <span style="font-size: 11px; color: #6b778c; margin-left: 4px;">(&#64;{{ m.username }})</span>
+                                <strong style="color: var(--text-primary);">{{ m.display_name }}</strong>
+                                <span style="font-size: 11px; color: var(--text-secondary); margin-left: 4px;">(&#64;{{ m.username }})</span>
                               </td>
                               <td>{{ m.email }}</td>
                               <td>
@@ -508,7 +508,7 @@ import {
                                   {{ m.user_type || 'PORTAL_CUSTOMER' }}
                                 </span>
                               </td>
-                              <td style="font-size: 12px; color: #5e6c84;">{{ m.added_at }}</td>
+                              <td style="font-size: 12px; color: var(--text-secondary);">{{ m.added_at }}</td>
                               <td>
                                 <button type="button" class="btn btn-danger btn-xs" (click)="removeOrgMember(m.user_id || m.id)">
                                   Remove
@@ -517,7 +517,7 @@ import {
                             </tr>
                           } @empty {
                             <tr>
-                              <td colspan="5" style="text-align: center; padding: 24px; color: #5e6c84;">
+                              <td colspan="5" style="text-align: center; padding: 24px; color: var(--text-secondary);">
                                 No members in this organization yet. Add users to allow them to view each other's tickets.
                               </td>
                             </tr>
@@ -527,7 +527,7 @@ import {
                     </div>
                   </div>
                 } @else {
-                  <div style="background: #ffffff; border: 1px solid #dfe1e6; border-radius: 6px; padding: 40px; text-align: center; color: #5e6c84;">
+                  <div style="background: var(--bg-surface); border: 1px solid var(--border-color); border-radius: 6px; padding: 40px; text-align: center; color: var(--text-secondary);">
                     Select an organization from the list or create a new one.
                   </div>
                 }
@@ -776,13 +776,13 @@ import {
   styles: [`
     .agent-workspace {
       min-height: calc(100vh - 56px);
-      background: #f4f5f7;
+      background: var(--bg-app);
       font-family: -apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, sans-serif;
-      color: #172b4d;
+      color: var(--text-primary);
     }
     .agent-topbar {
-      background: #ffffff;
-      border-bottom: 1px solid #dfe1e6;
+      background: var(--bg-surface);
+      border-bottom: 1px solid var(--border-color);
       padding: 12px 24px;
       display: flex;
       justify-content: space-between;
@@ -823,15 +823,15 @@ import {
     }
     .agent-sidebar {
       width: 260px;
-      background: #fafbfc;
-      border-right: 1px solid #dfe1e6;
+      background: var(--bg-app);
+      border-right: 1px solid var(--border-color);
       padding: 16px 12px;
       flex-shrink: 0;
     }
     .sidebar-section-title {
       font-size: 11px;
       font-weight: 700;
-      color: #5e6c84;
+      color: var(--text-secondary);
       text-transform: uppercase;
       letter-spacing: 0.5px;
       padding: 0 8px 8px;
@@ -844,7 +844,7 @@ import {
       border: none;
       font-size: 16px;
       cursor: pointer;
-      color: #0052cc;
+      color: var(--brand-primary);
       font-weight: 700;
     }
     .queue-nav-list {
@@ -869,11 +869,11 @@ import {
       transition: background 0.15s;
     }
     .queue-nav-item:hover {
-      background: #ebecf0;
+      background: var(--bg-subtle);
     }
     .queue-nav-item.active {
-      background: #deebff;
-      color: #0052cc;
+      background: var(--info-bg);
+      color: var(--brand-primary);
       font-weight: 600;
     }
     .queue-icon {
@@ -887,16 +887,16 @@ import {
       white-space: nowrap;
     }
     .queue-count {
-      background: #ebecf0;
-      color: #42526e;
+      background: var(--bg-subtle);
+      color: var(--text-secondary);
       font-size: 11px;
       font-weight: 700;
       padding: 2px 7px;
       border-radius: 10px;
     }
     .queue-count.count-alert {
-      background: #ffebe6;
-      color: #de350b;
+      background: var(--danger-bg);
+      color: var(--danger-color);
     }
     .agent-content {
       flex: 1;
@@ -912,23 +912,23 @@ import {
     .queue-view-header h2 {
       margin: 0;
       font-size: 20px;
-      color: #172b4d;
+      color: var(--text-primary);
     }
     .queue-desc {
       margin: 4px 0 0 0;
       font-size: 13px;
-      color: #5e6c84;
+      color: var(--text-secondary);
     }
     .code-tag {
-      background: #ebecf0;
+      background: var(--bg-subtle);
       padding: 1px 5px;
       border-radius: 3px;
       font-family: monospace;
       font-size: 12px;
     }
     .triage-table-card {
-      background: #ffffff;
-      border: 1px solid #dfe1e6;
+      background: var(--bg-surface);
+      border: 1px solid var(--border-color);
       border-radius: 6px;
       box-shadow: 0 1px 3px rgba(9, 30, 66, 0.05);
       overflow-x: auto;
@@ -939,24 +939,24 @@ import {
       font-size: 13px;
     }
     .triage-table th {
-      background: #f4f5f7;
+      background: var(--bg-app);
       text-align: left;
       padding: 10px 14px;
-      border-bottom: 2px solid #dfe1e6;
-      color: #5e6c84;
+      border-bottom: 2px solid var(--border-color);
+      color: var(--text-secondary);
       font-size: 12px;
       white-space: nowrap;
     }
     .triage-table td {
       padding: 12px 14px;
-      border-bottom: 1px solid #ebecf0;
+      border-bottom: 1px solid var(--border-color);
       vertical-align: middle;
     }
     .triage-row:hover {
       background: #f8f9fa;
     }
     .item-key-link {
-      color: #0052cc;
+      color: var(--brand-primary);
       font-weight: 700;
       text-decoration: none;
     }
@@ -969,23 +969,23 @@ import {
       gap: 3px;
     }
     .item-title {
-      color: #172b4d;
+      color: var(--text-primary);
     }
     .item-rt-tag {
       font-size: 11px;
-      color: #5e6c84;
+      color: var(--text-secondary);
     }
     .customer-cell {
       display: flex;
       flex-direction: column;
     }
     .customer-email {
-      color: #5e6c84;
+      color: var(--text-secondary);
       font-size: 11px;
     }
     .status-pill {
       background: #dfe1e6;
-      color: #42526e;
+      color: var(--text-secondary);
       padding: 3px 8px;
       border-radius: 12px;
       font-size: 11px;
@@ -993,11 +993,11 @@ import {
       white-space: nowrap;
     }
     .status-pill.pill-done {
-      background: #e3fcef;
+      background: var(--success-bg);
       color: #006644;
     }
     .status-pill.pill-wait {
-      background: #fffae6;
+      background: var(--warning-bg);
       color: #ff8b00;
     }
     .priority-pill {
@@ -1008,15 +1008,15 @@ import {
       white-space: nowrap;
     }
     .pill-highest, .pill-high, .pill-critical {
-      background: #ffebe6;
-      color: #de350b;
+      background: var(--danger-bg);
+      color: var(--danger-color);
     }
     .pill-medium {
       background: #fff0b3;
-      color: #172b4d;
+      color: var(--text-primary);
     }
     .pill-low, .pill-lowest {
-      background: #e3fcef;
+      background: var(--success-bg);
       color: #006644;
     }
     .assignee-badge {
@@ -1031,9 +1031,9 @@ import {
       border-radius: 50%;
     }
     .btn-assign-self {
-      background: #ebecf0;
+      background: var(--bg-subtle);
       border: none;
-      color: #0052cc;
+      color: var(--brand-primary);
       font-size: 11px;
       padding: 3px 8px;
       border-radius: 3px;
@@ -1060,8 +1060,8 @@ import {
       gap: 20px;
     }
     .sla-config-card {
-      background: #ffffff;
-      border: 1px solid #dfe1e6;
+      background: var(--bg-surface);
+      border: 1px solid var(--border-color);
       border-radius: 6px;
       padding: 18px;
       box-shadow: 0 1px 2px rgba(9, 30, 66, 0.05);
@@ -1078,25 +1078,25 @@ import {
     }
     .sla-card-desc {
       font-size: 13px;
-      color: #5e6c84;
+      color: var(--text-secondary);
       margin: 0 0 12px 0;
     }
     .sla-calendar-tag {
       font-size: 12px;
-      background: #fafbfc;
-      border: 1px solid #ebecf0;
+      background: var(--bg-app);
+      border: 1px solid var(--border-color);
       padding: 6px 10px;
       border-radius: 4px;
       margin-bottom: 12px;
     }
     .goals-mini-table {
       font-size: 12px;
-      border-top: 1px solid #ebecf0;
+      border-top: 1px solid var(--border-color);
       padding-top: 10px;
     }
     .goals-title {
       font-weight: 700;
-      color: #5e6c84;
+      color: var(--text-secondary);
       margin-bottom: 6px;
     }
     .goal-row {
@@ -1112,8 +1112,8 @@ import {
       gap: 16px;
     }
     .canned-card {
-      background: #ffffff;
-      border: 1px solid #dfe1e6;
+      background: var(--bg-surface);
+      border: 1px solid var(--border-color);
       border-radius: 6px;
       padding: 16px;
     }
@@ -1128,7 +1128,7 @@ import {
       font-size: 14px;
     }
     .shortcut-tag {
-      background: #deebff;
+      background: var(--info-bg);
       color: #0747a6;
       font-family: monospace;
       font-size: 11px;
@@ -1137,8 +1137,8 @@ import {
       border-radius: 3px;
     }
     .canned-content-box {
-      background: #fafbfc;
-      border: 1px solid #ebecf0;
+      background: var(--bg-app);
+      border: 1px solid var(--border-color);
       border-radius: 4px;
       padding: 10px;
       font-size: 12px;
@@ -1169,7 +1169,7 @@ import {
       padding: 16px;
     }
     .agent-modal {
-      background: #ffffff;
+      background: var(--bg-surface);
       border-radius: 8px;
       width: 100%;
       max-width: 600px;
@@ -1178,8 +1178,8 @@ import {
     }
     .agent-modal-header {
       padding: 16px 20px;
-      background: #f4f5f7;
-      border-bottom: 1px solid #dfe1e6;
+      background: var(--bg-app);
+      border-bottom: 1px solid var(--border-color);
       display: flex;
       justify-content: space-between;
       align-items: center;
@@ -1199,8 +1199,8 @@ import {
     }
     .agent-modal-footer {
       padding: 14px 20px;
-      background: #f4f5f7;
-      border-top: 1px solid #dfe1e6;
+      background: var(--bg-app);
+      border-top: 1px solid var(--border-color);
       display: flex;
       justify-content: flex-end;
       gap: 10px;
@@ -1215,12 +1215,12 @@ import {
       align-items: center;
     }
     .alert-success {
-      background: #e3fcef;
+      background: var(--success-bg);
       border: 1px solid #abf5d1;
       color: #006644;
     }
     .alert-error {
-      background: #ffebe6;
+      background: var(--danger-bg);
       border: 1px solid #ffbdad;
       color: #bf2600;
     }

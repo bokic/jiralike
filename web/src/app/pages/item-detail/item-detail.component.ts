@@ -235,7 +235,7 @@ import {
                 <div class="form-group">
                   <label>
                     Resolution
-                    <span style="color: #de350b; font-weight: bold;">*</span>
+                    <span style="color: var(--danger-color); font-weight: bold;">*</span>
                   </label>
                   <select name="tr_modal_resolution" [(ngModel)]="transitionDraft.resolution_id">
                     <option [ngValue]="0">— Select Resolution —</option>
@@ -251,7 +251,7 @@ import {
                 <div class="form-group">
                   <label>
                     Steps to Reproduce
-                    <span style="color: #de350b; font-weight: bold;">*</span>
+                    <span style="color: var(--danger-color); font-weight: bold;">*</span>
                   </label>
                   <textarea
                     rows="3"
@@ -278,7 +278,7 @@ import {
                           <label>
                             {{ f.name }}
                             @if (f.is_required || hasValidatorForField(tr, f.field_key)) {
-                              <span style="color: #de350b; font-weight: bold;">*</span>
+                              <span style="color: var(--danger-color); font-weight: bold;">*</span>
                             }
                           </label>
                           @switch (f.field_type) {
@@ -337,7 +337,7 @@ import {
                 <label>
                   Transition Comment
                   @if (hasCommentValidator(tr)) {
-                    <span style="color: #de350b; font-weight: bold;">* (Required by Validator)</span>
+                    <span style="color: var(--danger-color); font-weight: bold;">* (Required by Validator)</span>
                   }
                 </label>
                 <textarea
@@ -403,7 +403,7 @@ import {
 
                 <!-- Quick Presets -->
                 <div class="tt-quick-chips">
-                  <span style="font-size: 11px; color: #5e6c84; align-self: center; margin-right: 4px;">Quick Add:</span>
+                  <span style="font-size: 11px; color: var(--text-secondary); align-self: center; margin-right: 4px;">Quick Add:</span>
                   @for (preset of ['15m', '30m', '1h', '2h', '4h', '1d']; track preset) {
                     <button type="button" class="tt-chip" (click)="applyDurationPreset(preset)">
                       +{{ preset }}
@@ -414,9 +414,9 @@ import {
                 @if (durationPreview(); as prev) {
                   <div style="margin-top: 6px; font-size: 11.5px;">
                     @if (prev.valid) {
-                      <span style="color: #00875a; font-weight: 600;">✔ Valid: {{ prev.formatted }} ({{ prev.seconds }}s)</span>
+                      <span style="color: var(--success-color); font-weight: 600;">✔ Valid: {{ prev.formatted }} ({{ prev.seconds }}s)</span>
                     } @else if (prev.error) {
-                      <span style="color: #de350b;">⚠ {{ prev.error }}</span>
+                      <span style="color: var(--danger-color);">⚠ {{ prev.error }}</span>
                     }
                   </div>
                 }
@@ -665,7 +665,7 @@ import {
                             <label>
                               {{ f.name }}
                               @if (f.is_required) {
-                                <span style="color: #de350b; font-weight: bold;">*</span>
+                                <span style="color: var(--danger-color); font-weight: bold;">*</span>
                               }
                               <small class="text-muted" style="font-weight: normal; margin-left: 6px;">
                                 ({{ f.field_type }})
@@ -1076,13 +1076,13 @@ import {
                   </div>
                 </div>
               } @else if (activeTab() === 'worklogs') {
-                <div style="display: flex; align-items: center; justify-content: space-between; margin-bottom: 12px; padding-bottom: 8px; border-bottom: 1px solid #ebecf0;">
+                <div style="display: flex; align-items: center; justify-content: space-between; margin-bottom: 12px; padding-bottom: 8px; border-bottom: 1px solid var(--border-color);">
                   <div>
-                    <span style="font-size: 13px; color: #5e6c84;">Total Time Spent:</span>
-                    <strong style="margin-left: 6px; color: #0052cc; font-size: 14px;">{{ it.time_spent_formatted || '0m' }}</strong>
+                    <span style="font-size: 13px; color: var(--text-secondary);">Total Time Spent:</span>
+                    <strong style="margin-left: 6px; color: var(--brand-primary); font-size: 14px;">{{ it.time_spent_formatted || '0m' }}</strong>
                     <span style="margin: 0 8px; color: #dfe1e6;">|</span>
-                    <span style="font-size: 13px; color: #5e6c84;">Remaining:</span>
-                    <strong style="margin-left: 6px; color: #00875a; font-size: 14px;">{{ it.remaining_estimate_formatted || '0m' }}</strong>
+                    <span style="font-size: 13px; color: var(--text-secondary);">Remaining:</span>
+                    <strong style="margin-left: 6px; color: var(--success-color); font-size: 14px;">{{ it.remaining_estimate_formatted || '0m' }}</strong>
                   </div>
                   <button type="button" class="btn btn-primary btn-sm" (click)="openLogWorkModal()">
                     ⏱ + Log Work
@@ -1121,7 +1121,7 @@ import {
                     }
                   </div>
                 } @else {
-                  <div style="padding: 24px 16px; text-align: center; color: #6b778c;">
+                  <div style="padding: 24px 16px; text-align: center; color: var(--text-secondary);">
                     <div style="font-size: 28px; margin-bottom: 6px;">⏱</div>
                     <p style="margin: 0 0 10px;">No work has been logged on this issue yet.</p>
                     <button type="button" class="btn btn-secondary btn-sm" (click)="openLogWorkModal()">
@@ -1178,17 +1178,17 @@ import {
                       </div>
                     </div>
                   } @empty {
-                    <div style="padding: 24px; text-align: center; color: #6b778c;">
+                    <div style="padding: 24px; text-align: center; color: var(--text-secondary);">
                       <p>No audit changelog entries yet. Any updates to this issue will appear here.</p>
                     </div>
                   }
                 </div>
               } @else if (activeTab() === 'development') {
                 <div class="dev-tab-container">
-                  <div style="display: flex; align-items: center; justify-content: space-between; margin-bottom: 12px; padding-bottom: 8px; border-bottom: 1px solid #ebecf0;">
+                  <div style="display: flex; align-items: center; justify-content: space-between; margin-bottom: 12px; padding-bottom: 8px; border-bottom: 1px solid var(--border-color);">
                     <div>
-                      <span style="font-size: 13px; color: #5e6c84;">Linked Development Assets:</span>
-                      <strong style="margin-left: 6px; color: #0052cc; font-size: 14px;">{{ getDevCount(it) }} items</strong>
+                      <span style="font-size: 13px; color: var(--text-secondary);">Linked Development Assets:</span>
+                      <strong style="margin-left: 6px; color: var(--brand-primary); font-size: 14px;">{{ getDevCount(it) }} items</strong>
                     </div>
                     <div style="display: flex; gap: 8px;">
                       <button type="button" class="btn btn-primary btn-sm" (click)="openLinkDevModal()">
@@ -1423,7 +1423,7 @@ import {
                   {{ it.watchers_count || 0 }}
                 </button>
 
-                <div style="width: 1px; height: 22px; background: #ebecf0; margin: 0 4px;"></div>
+                <div style="width: 1px; height: 22px; background: var(--bg-subtle); margin: 0 4px;"></div>
 
                 <button
                   type="button"
@@ -1506,7 +1506,7 @@ import {
               }
 
               <!-- Inline Editable Estimates -->
-              <div style="border-top: 1px solid #ebecf0; padding-top: 10px; margin-top: 10px;">
+              <div style="border-top: 1px solid var(--border-color); padding-top: 10px; margin-top: 10px;">
                 <div class="grid-2">
                   <div class="form-group">
                     <label style="font-size: 12px;">Original Estimate</label>
@@ -1558,17 +1558,17 @@ import {
             @if (it.service_desk_id || (it.slas && it.slas.length > 0) || it.is_customer_request) {
               <div class="card-panel" style="border-left: 4px solid #0052cc;">
                 <div style="display: flex; justify-content: space-between; align-items: center; margin-bottom: 8px;">
-                  <h3 style="margin: 0; font-size: 14px; font-weight: 700; color: #172b4d;">⏱️ SLA Targets &amp; Service Desk</h3>
+                  <h3 style="margin: 0; font-size: 14px; font-weight: 700; color: var(--text-primary);">⏱️ SLA Targets &amp; Service Desk</h3>
                   @if (it.service_desk_name) {
                     <span class="badge badge-info" style="font-size: 10px;">{{ it.service_desk_name }}</span>
                   }
                 </div>
 
                 @if (it.customer_reporter_name) {
-                  <div style="font-size: 12px; margin-bottom: 10px; color: #42526e; display: flex; flex-direction: column; gap: 2px;">
+                  <div style="font-size: 12px; margin-bottom: 10px; color: var(--text-secondary); display: flex; flex-direction: column; gap: 2px;">
                     <span>Customer: <strong>{{ it.customer_reporter_name }}</strong></span>
                     @if (it.customer_reporter_email) {
-                      <span style="color: #5e6c84;">{{ it.customer_reporter_email }}</span>
+                      <span style="color: var(--text-secondary);">{{ it.customer_reporter_email }}</span>
                     }
                   </div>
                 }
@@ -1576,7 +1576,7 @@ import {
                 @if (it.slas && it.slas.length > 0) {
                   <div style="display: flex; flex-direction: column; gap: 8px;">
                     @for (sla of it.slas; track sla.id) {
-                      <div [style.border-left]="'3px solid ' + (sla.badge_color || '#36b37e')" style="background: #fafbfc; padding: 6px 10px; border-radius: 4px; border: 1px solid #ebecf0; border-left-width: 4px;">
+                      <div [style.border-left]="'3px solid ' + (sla.badge_color || '#36b37e')" style="background: var(--bg-app); padding: 6px 10px; border-radius: 4px; border: 1px solid var(--border-color); border-left-width: 4px;">
                         <div style="display: flex; justify-content: space-between; font-size: 11px; margin-bottom: 3px;">
                           <span style="font-weight: 600; color: #344563;">{{ sla.name }}</span>
                           <span [style.color]="sla.badge_color || '#36b37e'" style="font-weight: 700;">
@@ -1592,7 +1592,7 @@ import {
                           </span>
                         </div>
                         <div style="display: flex; justify-content: space-between; font-size: 12px;">
-                          <span style="color: #5e6c84;">{{ sla.elapsed_formatted }} / {{ sla.target_formatted }}</span>
+                          <span style="color: var(--text-secondary);">{{ sla.elapsed_formatted }} / {{ sla.target_formatted }}</span>
                           <strong [style.color]="sla.badge_color || '#36b37e'">{{ sla.remaining_formatted }}</strong>
                         </div>
                       </div>
@@ -1918,7 +1918,7 @@ import {
 
               <div class="watchers-modal-list">
                 @for (w of it.watchers_info?.watchers || []; track w.user_id) {
-                  <div style="display: flex; align-items: center; gap: 10px; padding: 8px 0; border-bottom: 1px solid #ebecf0;">
+                  <div style="display: flex; align-items: center; gap: 10px; padding: 8px 0; border-bottom: 1px solid var(--border-color);">
                     <div class="avatar-circle" [style.background]="w.avatar_color" style="width: 28px; height: 28px; font-size: 11px;">
                       {{ w.display_name.slice(0, 2).toUpperCase() }}
                     </div>
@@ -1959,7 +1959,7 @@ import {
               </div>
 
               @if (linkDevError()) {
-                <div style="margin-bottom: 12px; padding: 8px 12px; background: #ffebe6; color: #de350b; border-radius: 4px; font-size: 12px;">
+                <div style="margin-bottom: 12px; padding: 8px 12px; background: var(--danger-bg); color: var(--danger-color); border-radius: 4px; font-size: 12px;">
                   {{ linkDevError() }}
                 </div>
               }
@@ -2104,13 +2104,13 @@ import {
               <div class="section-header" style="display: flex; justify-content: space-between; align-items: flex-start; margin-bottom: 14px;">
                 <div>
                   <h3 style="margin: 0; font-size: 18px;">📋 Clone Issue ({{ it.key }})</h3>
-                  <small class="text-muted" style="color: #6b778c; font-size: 12px;">Create an exact duplicate with customizable links and subtasks</small>
+                  <small class="text-muted" style="color: var(--text-secondary); font-size: 12px;">Create an exact duplicate with customizable links and subtasks</small>
                 </div>
                 <button type="button" class="btn btn-ghost btn-sm" (click)="closeCloneModal()">✕</button>
               </div>
 
               @if (cloneError()) {
-                <div style="margin-bottom: 12px; padding: 8px 12px; background: #ffebe6; color: #de350b; border-radius: 4px; font-size: 12px;">
+                <div style="margin-bottom: 12px; padding: 8px 12px; background: var(--danger-bg); color: var(--danger-color); border-radius: 4px; font-size: 12px;">
                   {{ cloneError() }}
                 </div>
               }
@@ -2122,14 +2122,14 @@ import {
                   [(ngModel)]="cloneDraft.summary"
                   name="clone_summary"
                   class="form-control"
-                  style="width: 100%; padding: 8px 10px; border: 1px solid #dfe1e6; border-radius: 4px; font-size: 13px;"
+                  style="width: 100%; padding: 8px 10px; border: 1px solid var(--border-color); border-radius: 4px; font-size: 13px;"
                   placeholder="e.g. CLONE - {{ it.title }}"
                 />
               </div>
 
               <div class="form-group" style="margin-bottom: 12px;">
                 <label style="font-size: 12px; font-weight: 600; display: block; margin-bottom: 4px;">Target Project</label>
-                <select [(ngModel)]="cloneDraft.project_id" name="clone_project_id" class="form-control" style="width: 100%; padding: 8px 10px; border: 1px solid #dfe1e6; border-radius: 4px; font-size: 13px;">
+                <select [(ngModel)]="cloneDraft.project_id" name="clone_project_id" class="form-control" style="width: 100%; padding: 8px 10px; border: 1px solid var(--border-color); border-radius: 4px; font-size: 13px;">
                   @for (p of api.projects(); track p.id) {
                     <option [value]="p.id">{{ p.name }} ({{ p.key }})</option>
                   }
@@ -2175,20 +2175,20 @@ import {
               <div class="section-header" style="display: flex; justify-content: space-between; align-items: flex-start; margin-bottom: 14px;">
                 <div>
                   <h3 style="margin: 0; font-size: 18px;">↗ Move / Convert Issue ({{ it.key }})</h3>
-                  <small class="text-muted" style="color: #6b778c; font-size: 12px;">Transfer across projects or change issue type &amp; status</small>
+                  <small class="text-muted" style="color: var(--text-secondary); font-size: 12px;">Transfer across projects or change issue type &amp; status</small>
                 </div>
                 <button type="button" class="btn btn-ghost btn-sm" (click)="closeMoveModal()">✕</button>
               </div>
 
               @if (moveError()) {
-                <div style="margin-bottom: 12px; padding: 8px 12px; background: #ffebe6; color: #de350b; border-radius: 4px; font-size: 12px;">
+                <div style="margin-bottom: 12px; padding: 8px 12px; background: var(--danger-bg); color: var(--danger-color); border-radius: 4px; font-size: 12px;">
                   {{ moveError() }}
                 </div>
               }
 
               <div class="form-group" style="margin-bottom: 12px;">
                 <label style="font-size: 12px; font-weight: 600; display: block; margin-bottom: 4px;">Target Project</label>
-                <select [(ngModel)]="moveDraft.target_project_id" name="move_project_id" class="form-control" style="width: 100%; padding: 8px 10px; border: 1px solid #dfe1e6; border-radius: 4px; font-size: 13px;">
+                <select [(ngModel)]="moveDraft.target_project_id" name="move_project_id" class="form-control" style="width: 100%; padding: 8px 10px; border: 1px solid var(--border-color); border-radius: 4px; font-size: 13px;">
                   @for (p of api.projects(); track p.id) {
                     <option [value]="p.id">{{ p.name }} ({{ p.key }})</option>
                   }
@@ -2202,7 +2202,7 @@ import {
 
               <div class="form-group" style="margin-bottom: 12px;">
                 <label style="font-size: 12px; font-weight: 600; display: block; margin-bottom: 4px;">Target Issue Type</label>
-                <select [(ngModel)]="moveDraft.target_type" name="move_type" class="form-control" style="width: 100%; padding: 8px 10px; border: 1px solid #dfe1e6; border-radius: 4px; font-size: 13px;">
+                <select [(ngModel)]="moveDraft.target_type" name="move_type" class="form-control" style="width: 100%; padding: 8px 10px; border: 1px solid var(--border-color); border-radius: 4px; font-size: 13px;">
                   <option value="Epic">Epic</option>
                   <option value="Story">Story</option>
                   <option value="Task">Task</option>
@@ -2213,7 +2213,7 @@ import {
 
               <div class="form-group" style="margin-bottom: 12px;">
                 <label style="font-size: 12px; font-weight: 600; display: block; margin-bottom: 4px;">Target Workflow Status</label>
-                <select [(ngModel)]="moveDraft.target_status" name="move_status" class="form-control" style="width: 100%; padding: 8px 10px; border: 1px solid #dfe1e6; border-radius: 4px; font-size: 13px;">
+                <select [(ngModel)]="moveDraft.target_status" name="move_status" class="form-control" style="width: 100%; padding: 8px 10px; border: 1px solid var(--border-color); border-radius: 4px; font-size: 13px;">
                   <option value="Backlog">Backlog</option>
                   <option value="To Do">To Do</option>
                   <option value="In Progress">In Progress</option>
@@ -2253,7 +2253,7 @@ import {
               </div>
 
               @if (smartCommitError()) {
-                <div style="margin-bottom: 12px; padding: 8px 12px; background: #ffebe6; color: #de350b; border-radius: 4px; font-size: 12px;">
+                <div style="margin-bottom: 12px; padding: 8px 12px; background: var(--danger-bg); color: var(--danger-color); border-radius: 4px; font-size: 12px;">
                   {{ smartCommitError() }}
                 </div>
               }
@@ -2305,7 +2305,7 @@ import {
                   <div style="margin-bottom: 6px;">
                     Matched Keys:
                     @for (k of sim.matched_keys; track k) {
-                      <strong style="margin-right: 6px; color: #0052cc;">{{ k }}</strong>
+                      <strong style="margin-right: 6px; color: var(--brand-primary);">{{ k }}</strong>
                     } @empty {
                       <span class="text-muted">None</span>
                     }
@@ -2318,7 +2318,7 @@ import {
                   <div style="margin-bottom: 8px;">
                     <strong>Parsed Commands:</strong>
                     @for (c of sim.parsed_commands; track c.raw_command) {
-                      <div style="margin: 4px 0; padding: 4px 8px; background: #ffffff; border-radius: 4px; border: 1px solid #ebecf0;">
+                      <div style="margin: 4px 0; padding: 4px 8px; background: var(--bg-surface); border-radius: 4px; border: 1px solid var(--border-color);">
                         <span class="smart-cmd-tag">{{ c.type }}</span>
                         @if (c.type === 'comment') {
                           <span>Comment: "{{ c.comment_body }}"</span>
@@ -2335,7 +2335,7 @@ import {
 
                   @if (sim.applied_actions && sim.applied_actions.length > 0) {
                     <div style="margin-top: 8px; padding-top: 8px; border-top: 1px solid #e2e8f0;">
-                      <strong style="color: #00875a;">Applied Actions:</strong>
+                      <strong style="color: var(--success-color);">Applied Actions:</strong>
                       <ul style="margin: 4px 0 0 16px; padding: 0;">
                         @for (a of sim.applied_actions; track a) {
                           <li>{{ a }}</li>

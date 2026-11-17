@@ -13,22 +13,22 @@ import { DomSanitizer, SafeHtml } from '@angular/platform-browser';
     .markdown-rendered-view {
       font-size: 13.5px;
       line-height: 1.6;
-      color: #172b4d;
+      color: var(--text-primary);
       word-break: break-word;
     }
     :host ::ng-deep h1.md-h1 {
       font-size: 1.4rem;
       font-weight: 700;
       margin: 12px 0 6px;
-      color: #172b4d;
-      border-bottom: 1px solid #ebecf0;
+      color: var(--text-primary);
+      border-bottom: 1px solid var(--border-color);
       padding-bottom: 4px;
     }
     :host ::ng-deep h2.md-h2 {
       font-size: 1.2rem;
       font-weight: 600;
       margin: 10px 0 4px;
-      color: #172b4d;
+      color: var(--text-primary);
     }
     :host ::ng-deep h3.md-h3 {
       font-size: 1.05rem;
@@ -68,7 +68,7 @@ import { DomSanitizer, SafeHtml } from '@angular/platform-browser';
       overflow-x: auto;
     }
     :host ::ng-deep code.inline-code {
-      background: #f4f5f7;
+      background: var(--bg-app);
       color: #bf2600;
       padding: 1px 5px;
       border-radius: 3px;
@@ -85,22 +85,22 @@ import { DomSanitizer, SafeHtml } from '@angular/platform-browser';
       border-left: 4px solid;
     }
     :host ::ng-deep .md-callout-note {
-      background: #deebff;
+      background: var(--info-bg);
       border-color: #0052cc;
       color: #0747a6;
     }
     :host ::ng-deep .md-callout-tip {
-      background: #e3fcef;
+      background: var(--success-bg);
       border-color: #00875a;
       color: #006644;
     }
     :host ::ng-deep .md-callout-warning {
       background: #fff0b3;
       border-color: #ff991f;
-      color: #172b4d;
+      color: var(--text-primary);
     }
     :host ::ng-deep .md-callout-important {
-      background: #ffebe6;
+      background: var(--danger-bg);
       border-color: #de350b;
       color: #bf2600;
     }
@@ -110,10 +110,10 @@ import { DomSanitizer, SafeHtml } from '@angular/platform-browser';
       margin-top: 1px;
     }
     :host ::ng-deep .md-quote {
-      border-left: 3px solid #dfe1e6;
+      border-left: 3px solid var(--border-color);
       margin: 6px 0;
       padding-left: 10px;
-      color: #5e6c84;
+      color: var(--text-secondary);
       font-style: italic;
     }
     :host ::ng-deep .md-task {
@@ -124,7 +124,7 @@ import { DomSanitizer, SafeHtml } from '@angular/platform-browser';
     }
     :host ::ng-deep .md-task.checked .task-label {
       text-decoration: line-through;
-      color: #6b778c;
+      color: var(--text-secondary);
     }
     :host ::ng-deep .md-li {
       margin: 2px 0 2px 18px;
@@ -140,15 +140,15 @@ import { DomSanitizer, SafeHtml } from '@angular/platform-browser';
       font-size: 12.5px;
     }
     :host ::ng-deep .md-table th {
-      background: #f4f5f7;
+      background: var(--bg-app);
       padding: 6px 10px;
-      border: 1px solid #dfe1e6;
+      border: 1px solid var(--border-color);
       font-weight: 600;
       text-align: left;
     }
     :host ::ng-deep .md-table td {
       padding: 6px 10px;
-      border: 1px solid #dfe1e6;
+      border: 1px solid var(--border-color);
     }
     :host ::ng-deep .md-img-card {
       margin: 8px 0;
@@ -157,19 +157,19 @@ import { DomSanitizer, SafeHtml } from '@angular/platform-browser';
     :host ::ng-deep .md-img-card img {
       max-width: 100%;
       border-radius: 4px;
-      border: 1px solid #dfe1e6;
+      border: 1px solid var(--border-color);
       box-shadow: 0 1px 3px rgba(0,0,0,0.1);
     }
     :host ::ng-deep .md-img-caption {
       font-size: 11px;
-      color: #6b778c;
+      color: var(--text-secondary);
       margin-top: 2px;
     }
     :host ::ng-deep .mention-badge {
       display: inline-flex;
       align-items: center;
       background: #e9f2ff;
-      color: #0052cc;
+      color: var(--brand-primary);
       padding: 1px 6px;
       border-radius: 12px;
       font-size: 12px;
@@ -179,9 +179,9 @@ import { DomSanitizer, SafeHtml } from '@angular/platform-browser';
     :host ::ng-deep .issue-mention-badge {
       display: inline-flex;
       align-items: center;
-      background: #f4f5f7;
-      color: #0052cc;
-      border: 1px solid #dfe1e6;
+      background: var(--bg-app);
+      color: var(--brand-primary);
+      border: 1px solid var(--border-color);
       border-radius: 3px;
       padding: 1px 5px;
       font-size: 11.5px;
@@ -190,7 +190,7 @@ import { DomSanitizer, SafeHtml } from '@angular/platform-browser';
       margin: 0 2px;
     }
     :host ::ng-deep .issue-mention-badge:hover {
-      background: #deebff;
+      background: var(--info-bg);
       border-color: #0052cc;
     }
   `]

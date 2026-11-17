@@ -248,7 +248,7 @@ interface EndpointItem {
                   <div style="font-size: 18px; font-weight: 700; color: var(--text-primary);">
                     {{ st.client_total_requests }}
                   </div>
-                  <small style="color: #de350b; font-size: 11px;">{{ st.client_blocked_requests }} blocked (429)</small>
+                  <small style="color: var(--danger-color); font-size: 11px;">{{ st.client_blocked_requests }} blocked (429)</small>
                 </div>
               </div>
             }
@@ -308,7 +308,7 @@ interface EndpointItem {
           </div>
           <iframe
             src="/api/docs"
-            style="width: 100%; height: 750px; border: none; background: #fff;"
+            style="width: 100%; height: 750px; border: none; background: var(--bg-surface);"
             title="Interactive Swagger UI Documentation"
           ></iframe>
         </div>

@@ -156,7 +156,7 @@ import {
                             {{ opt.value }}
                             <button
                               type="button"
-                              style="border: none; background: transparent; cursor: pointer; font-size: 11px; margin-left: 4px; color: #0052cc;"
+                              style="border: none; background: transparent; cursor: pointer; font-size: 11px; margin-left: 4px; color: var(--brand-primary);"
                               (click)="editOption(opt)"
                               title="Edit option"
                             >

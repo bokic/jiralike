@@ -394,7 +394,7 @@ import {
                         <label>
                           {{ f.name }}
                           @if (f.is_required) {
-                            <span style="color: #de350b; font-weight: bold;">*</span>
+                            <span style="color: var(--danger-color); font-weight: bold;">*</span>
                           }
                           <small class="text-muted" style="font-weight: normal; margin-left: 6px;">({{ f.field_type }})</small>
                         </label>

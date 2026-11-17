@@ -690,7 +690,7 @@
           <button type="button" class="modal-close" (click)="selectedEmail.set(null)">✕</button>
         </div>
         <div class="modal-body">
-          <div style="background: #f4f5f7; padding: 10px 14px; border-radius: 4px; margin-bottom: 16px; font-size: 13px;">
+          <div style="background: var(--bg-app); padding: 10px 14px; border-radius: 4px; margin-bottom: 16px; font-size: 13px;">
             <div><strong>To:</strong> {{ email.to_name }} &lt;{{ email.to_email }}&gt;</div>
             <div><strong>Subject:</strong> {{ email.subject }}</div>
             <div><strong>Status:</strong> <span class="badge badge-primary">{{ email.status }}</span> ({{ email.created_at }})</div>

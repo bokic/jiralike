@@ -1006,12 +1006,12 @@ ORDER BY {{ info.order_by_sql || 'w.board_order ASC, w.id ASC' }}</pre>
 
           <div class="modal-body">
             @if (bulkError()) {
-              <div style="margin-bottom: 12px; padding: 8px 12px; background: #ffebe6; color: #de350b; border-radius: 4px; font-size: 12px;">
+              <div style="margin-bottom: 12px; padding: 8px 12px; background: var(--danger-bg); color: var(--danger-color); border-radius: 4px; font-size: 12px;">
                 {{ bulkError() }}
               </div>
             }
 
-            <div style="display: flex; gap: 8px; margin-bottom: 16px; border-bottom: 1px solid #dfe1e6; padding-bottom: 8px;">
+            <div style="display: flex; gap: 8px; margin-bottom: 16px; border-bottom: 1px solid var(--border-color); padding-bottom: 8px;">
               <button
                 type="button"
                 class="btn btn-sm"
@@ -1119,7 +1119,7 @@ ORDER BY {{ info.order_by_sql || 'w.board_order ASC, w.id ASC' }}</pre>
             }
 
             @if (bulkOperation() === 'delete') {
-              <div style="background: #fff0b3; padding: 12px; border-radius: 6px; margin-bottom: 12px; font-size: 13px; color: #172b4d;">
+              <div style="background: #fff0b3; padding: 12px; border-radius: 6px; margin-bottom: 12px; font-size: 13px; color: var(--text-primary);">
                 ⚠️ You are about to delete <strong>{{ selectedItemIds().length }}</strong> selected issues.
                 By default, they will be moved to the <strong>Trash Bin</strong> with a 30-day retention countdown and can be restored anytime from <em>Settings &gt; Trash Bin</em>.
               </div>
@@ -1154,7 +1154,7 @@ ORDER BY {{ info.order_by_sql || 'w.board_order ASC, w.id ASC' }}</pre>
       .search-workspace {
         display: flex;
         min-height: calc(100vh - 60px);
-        background: #f4f5f7;
+        background: var(--bg-app);
       }
       .toast-banner {
         position: fixed;
@@ -1184,8 +1184,8 @@ ORDER BY {{ info.order_by_sql || 'w.board_order ASC, w.id ASC' }}</pre>
       }
       .filters-sidebar {
         width: 300px;
-        background: #ffffff;
-        border-right: 1px solid #dfe1e6;
+        background: var(--bg-surface);
+        border-right: 1px solid var(--border-color);
         display: flex;
         flex-direction: column;
         transition: width 0.15s ease;
@@ -1199,7 +1199,7 @@ ORDER BY {{ info.order_by_sql || 'w.board_order ASC, w.id ASC' }}</pre>
         align-items: center;
         justify-content: space-between;
         padding: 14px 14px;
-        border-bottom: 1px solid #ebecf0;
+        border-bottom: 1px solid var(--border-color);
       }
       .sidebar-title-wrap {
         display: flex;
@@ -1210,19 +1210,19 @@ ORDER BY {{ info.order_by_sql || 'w.board_order ASC, w.id ASC' }}</pre>
         margin: 0;
         font-size: 14px;
         font-weight: 700;
-        color: #172b4d;
+        color: var(--text-primary);
       }
       .filter-count-pill {
-        background: #ebecf0;
-        color: #42526e;
+        background: var(--bg-subtle);
+        color: var(--text-secondary);
         font-size: 11px;
         font-weight: 600;
         padding: 2px 7px;
         border-radius: 10px;
       }
       .btn-icon {
-        background: #f4f5f7;
-        border: 1px solid #dfe1e6;
+        background: var(--bg-app);
+        border: 1px solid var(--border-color);
         border-radius: 4px;
         cursor: pointer;
         padding: 4px 8px;
@@ -1232,7 +1232,7 @@ ORDER BY {{ info.order_by_sql || 'w.board_order ASC, w.id ASC' }}</pre>
         display: flex;
         padding: 8px 10px 0;
         gap: 4px;
-        border-bottom: 1px solid #ebecf0;
+        border-bottom: 1px solid var(--border-color);
       }
       .sidebar-tabs button {
         flex: 1;
@@ -1242,11 +1242,11 @@ ORDER BY {{ info.order_by_sql || 'w.board_order ASC, w.id ASC' }}</pre>
         padding: 6px 4px;
         font-size: 12px;
         font-weight: 600;
-        color: #5e6c84;
+        color: var(--text-secondary);
         cursor: pointer;
       }
       .sidebar-tabs button.active {
-        color: #0052cc;
+        color: var(--brand-primary);
         border-bottom-color: #0052cc;
       }
       .sidebar-actions {
@@ -1264,20 +1264,20 @@ ORDER BY {{ info.order_by_sql || 'w.board_order ASC, w.id ASC' }}</pre>
         gap: 8px;
       }
       .saved-filter-card {
-        border: 1px solid #dfe1e6;
+        border: 1px solid var(--border-color);
         border-radius: 6px;
         padding: 10px;
-        background: #fafbfc;
+        background: var(--bg-app);
         cursor: pointer;
         transition: all 0.12s ease;
       }
       .saved-filter-card:hover {
         border-color: #4c9aff;
-        background: #ffffff;
+        background: var(--bg-surface);
       }
       .saved-filter-card.active {
         border-color: #0052cc;
-        background: #deebff;
+        background: var(--info-bg);
       }
       .sf-top {
         display: flex;
@@ -1298,13 +1298,13 @@ ORDER BY {{ info.order_by_sql || 'w.board_order ASC, w.id ASC' }}</pre>
       .sf-name {
         font-size: 13px;
         font-weight: 600;
-        color: #172b4d;
+        color: var(--text-primary);
         flex: 1;
       }
       .sf-badge {
         font-size: 10px;
-        background: #ebecf0;
-        color: #42526e;
+        background: var(--bg-subtle);
+        color: var(--text-secondary);
         padding: 1px 6px;
         border-radius: 4px;
         text-transform: uppercase;
@@ -1312,7 +1312,7 @@ ORDER BY {{ info.order_by_sql || 'w.board_order ASC, w.id ASC' }}</pre>
       }
       .sf-desc {
         font-size: 11px;
-        color: #5e6c84;
+        color: var(--text-secondary);
         margin: 4px 0;
       }
       .sf-jql-preview {
@@ -1333,7 +1333,7 @@ ORDER BY {{ info.order_by_sql || 'w.board_order ASC, w.id ASC' }}</pre>
         justify-content: space-between;
         margin-top: 6px;
         padding-top: 6px;
-        border-top: 1px dashed #dfe1e6;
+        border-top: 1px dashed var(--border-color);
       }
       .sf-owner-btns {
         display: flex;
@@ -1342,14 +1342,14 @@ ORDER BY {{ info.order_by_sql || 'w.board_order ASC, w.id ASC' }}</pre>
       .btn-link-xs {
         background: none;
         border: none;
-        color: #0052cc;
+        color: var(--brand-primary);
         font-size: 11px;
         font-weight: 600;
         cursor: pointer;
         padding: 0;
       }
       .btn-link-xs.danger {
-        color: #de350b;
+        color: var(--danger-color);
       }
       .search-main {
         flex: 1;
@@ -1368,19 +1368,19 @@ ORDER BY {{ info.order_by_sql || 'w.board_order ASC, w.id ASC' }}</pre>
       }
       .breadcrumb-row {
         font-size: 12px;
-        color: #5e6c84;
+        color: var(--text-secondary);
         display: flex;
         gap: 6px;
       }
       .crumb-active {
-        color: #0052cc;
+        color: var(--brand-primary);
         font-weight: 600;
       }
       .search-title {
         margin: 2px 0 0;
         font-size: 20px;
         font-weight: 700;
-        color: #172b4d;
+        color: var(--text-primary);
       }
       .header-controls {
         display: flex;
@@ -1390,7 +1390,7 @@ ORDER BY {{ info.order_by_sql || 'w.board_order ASC, w.id ASC' }}</pre>
       }
       .mode-toggle-group {
         display: inline-flex;
-        background: #ebecf0;
+        background: var(--bg-subtle);
         border-radius: 6px;
         padding: 2px;
       }
@@ -1400,13 +1400,13 @@ ORDER BY {{ info.order_by_sql || 'w.board_order ASC, w.id ASC' }}</pre>
         padding: 6px 12px;
         font-size: 12px;
         font-weight: 600;
-        color: #42526e;
+        color: var(--text-secondary);
         border-radius: 4px;
         cursor: pointer;
       }
       .mode-btn.active {
-        background: #ffffff;
-        color: #0052cc;
+        background: var(--bg-surface);
+        color: var(--brand-primary);
         box-shadow: 0 1px 3px rgba(9, 30, 66, 0.15);
       }
       .export-group {
@@ -1414,8 +1414,8 @@ ORDER BY {{ info.order_by_sql || 'w.board_order ASC, w.id ASC' }}</pre>
         gap: 6px;
       }
       .card {
-        background: #ffffff;
-        border: 1px solid #dfe1e6;
+        background: var(--bg-surface);
+        border: 1px solid var(--border-color);
         border-radius: 8px;
       }
       .basic-search-panel {
@@ -1437,16 +1437,16 @@ ORDER BY {{ info.order_by_sql || 'w.board_order ASC, w.id ASC' }}</pre>
       .filter-field label {
         font-size: 11px;
         font-weight: 700;
-        color: #5e6c84;
+        color: var(--text-secondary);
         text-transform: uppercase;
       }
       .filter-field select,
       .filter-field input {
         padding: 6px 8px;
-        border: 1px solid #dfe1e6;
+        border: 1px solid var(--border-color);
         border-radius: 4px;
         font-size: 12px;
-        background: #fafbfc;
+        background: var(--bg-app);
       }
       .basic-text-row {
         display: flex;
@@ -1458,7 +1458,7 @@ ORDER BY {{ info.order_by_sql || 'w.board_order ASC, w.id ASC' }}</pre>
       .generated-jql-strip {
         margin-top: 12px;
         padding-top: 10px;
-        border-top: 1px solid #ebecf0;
+        border-top: 1px solid var(--border-color);
         display: flex;
         align-items: center;
         gap: 10px;
@@ -1466,11 +1466,11 @@ ORDER BY {{ info.order_by_sql || 'w.board_order ASC, w.id ASC' }}</pre>
       }
       .strip-label {
         font-weight: 600;
-        color: #5e6c84;
+        color: var(--text-secondary);
       }
       .generated-jql-strip code {
         flex: 1;
-        background: #f4f5f7;
+        background: var(--bg-app);
         padding: 4px 8px;
         border-radius: 4px;
         color: #0747a6;
@@ -1500,15 +1500,15 @@ ORDER BY {{ info.order_by_sql || 'w.board_order ASC, w.id ASC' }}</pre>
         border-radius: 12px;
       }
       .jql-badge.valid {
-        background: #e3fcef;
+        background: var(--success-bg);
         color: #006644;
       }
       .jql-badge.invalid {
-        background: #ffebe6;
+        background: var(--danger-bg);
         color: #bf2600;
       }
       .jql-badge.timing {
-        background: #deebff;
+        background: var(--info-bg);
         color: #0747a6;
       }
       .jql-badge.fts5 {
@@ -1520,7 +1520,7 @@ ORDER BY {{ info.order_by_sql || 'w.board_order ASC, w.id ASC' }}</pre>
         align-items: stretch;
         border: 2px solid #0052cc;
         border-radius: 6px;
-        background: #fafbfc;
+        background: var(--bg-app);
         overflow: hidden;
       }
       .jql-input-wrapper.has-error {
@@ -1543,8 +1543,8 @@ ORDER BY {{ info.order_by_sql || 'w.board_order ASC, w.id ASC' }}</pre>
         font-family: 'JetBrains Mono', 'Fira Code', monospace;
         font-size: 13px;
         line-height: 1.45;
-        color: #172b4d;
-        background: #ffffff;
+        color: var(--text-primary);
+        background: var(--bg-surface);
         resize: vertical;
         outline: none;
       }
@@ -1553,8 +1553,8 @@ ORDER BY {{ info.order_by_sql || 'w.board_order ASC, w.id ASC' }}</pre>
         align-items: center;
         gap: 6px;
         padding: 6px 10px;
-        background: #f4f5f7;
-        border-left: 1px solid #dfe1e6;
+        background: var(--bg-app);
+        border-left: 1px solid var(--border-color);
       }
       .token-stream-bar {
         display: flex;
@@ -1562,7 +1562,7 @@ ORDER BY {{ info.order_by_sql || 'w.board_order ASC, w.id ASC' }}</pre>
         flex-wrap: wrap;
         gap: 5px;
         padding: 6px 10px;
-        background: #f4f5f7;
+        background: var(--bg-app);
         border-radius: 4px;
         font-family: monospace;
         font-size: 12px;
@@ -1570,18 +1570,18 @@ ORDER BY {{ info.order_by_sql || 'w.board_order ASC, w.id ASC' }}</pre>
       .token-stream-label {
         font-size: 11px;
         font-weight: 700;
-        color: #5e6c84;
+        color: var(--text-secondary);
         margin-right: 4px;
       }
       .jql-tok {
         padding: 1px 6px;
         border-radius: 4px;
         font-weight: 600;
-        background: #ebecf0;
-        color: #172b4d;
+        background: var(--bg-subtle);
+        color: var(--text-primary);
       }
       .jql-tok[data-tok-type='IDENTIFIER'] {
-        background: #deebff;
+        background: var(--info-bg);
         color: #0747a6;
       }
       .jql-tok[data-tok-type='CUSTOM_FIELD'] {
@@ -1589,12 +1589,12 @@ ORDER BY {{ info.order_by_sql || 'w.board_order ASC, w.id ASC' }}</pre>
         color: #403294;
       }
       .jql-tok[data-tok-type='STRING'] {
-        background: #e3fcef;
+        background: var(--success-bg);
         color: #006644;
       }
       .jql-tok[data-tok-type='NUMBER'] {
         background: #fff0b3;
-        color: #172b4d;
+        color: var(--text-primary);
       }
       .jql-tok[data-tok-type='OPERATOR'],
       .jql-tok[data-tok-type='IN'],
@@ -1604,7 +1604,7 @@ ORDER BY {{ info.order_by_sql || 'w.board_order ASC, w.id ASC' }}</pre>
       .jql-tok[data-tok-type='WAS'],
       .jql-tok[data-tok-type='WAS_IN'],
       .jql-tok[data-tok-type='CHANGED'] {
-        background: #fffae6;
+        background: var(--warning-bg);
         color: #974f0c;
         border: 1px solid #ffe380;
       }
@@ -1618,7 +1618,7 @@ ORDER BY {{ info.order_by_sql || 'w.board_order ASC, w.id ASC' }}</pre>
         color: #ffffff;
       }
       .jql-error-banner {
-        background: #ffebe6;
+        background: var(--danger-bg);
         border: 1px solid #ffbdad;
         color: #bf2600;
         padding: 8px 12px;
@@ -1636,20 +1636,20 @@ ORDER BY {{ info.order_by_sql || 'w.board_order ASC, w.id ASC' }}</pre>
       .chips-label {
         font-size: 11px;
         font-weight: 700;
-        color: #5e6c84;
+        color: var(--text-secondary);
       }
       .jql-chip {
-        background: #f4f5f7;
-        border: 1px solid #dfe1e6;
+        background: var(--bg-app);
+        border: 1px solid var(--border-color);
         border-radius: 12px;
         padding: 3px 9px;
         font-family: monospace;
         font-size: 11px;
-        color: #172b4d;
+        color: var(--text-primary);
         cursor: pointer;
       }
       .jql-chip:hover {
-        background: #deebff;
+        background: var(--info-bg);
         border-color: #4c9aff;
         color: #0747a6;
       }
@@ -1658,15 +1658,15 @@ ORDER BY {{ info.order_by_sql || 'w.board_order ASC, w.id ASC' }}</pre>
         grid-template-columns: repeat(3, 1fr);
         gap: 12px;
         padding: 12px;
-        background: #fafbfc;
-        border: 1px solid #dfe1e6;
+        background: var(--bg-app);
+        border: 1px solid var(--border-color);
         border-radius: 6px;
       }
       .ac-col h4 {
         margin: 0 0 8px;
         font-size: 11px;
         text-transform: uppercase;
-        color: #5e6c84;
+        color: var(--text-secondary);
       }
       .ac-pill-list {
         display: flex;
@@ -1676,8 +1676,8 @@ ORDER BY {{ info.order_by_sql || 'w.board_order ASC, w.id ASC' }}</pre>
         overflow-y: auto;
       }
       .ac-pill {
-        border: 1px solid #dfe1e6;
-        background: #ffffff;
+        border: 1px solid var(--border-color);
+        background: var(--bg-surface);
         border-radius: 4px;
         padding: 3px 7px;
         font-size: 11px;
@@ -1688,10 +1688,10 @@ ORDER BY {{ info.order_by_sql || 'w.board_order ASC, w.id ASC' }}</pre>
       }
       .ac-pill:hover {
         border-color: #0052cc;
-        background: #deebff;
+        background: var(--info-bg);
       }
       .ac-pill small {
-        color: #6b778c;
+        color: var(--text-secondary);
         font-size: 10px;
       }
       .sql-inspector-box {
@@ -1783,7 +1783,7 @@ ORDER BY {{ info.order_by_sql || 'w.board_order ASC, w.id ASC' }}</pre>
         align-items: center;
         justify-content: space-between;
         font-size: 13px;
-        color: #42526e;
+        color: var(--text-secondary);
       }
       .fts-tag {
         margin-left: 8px;
@@ -1811,25 +1811,25 @@ ORDER BY {{ info.order_by_sql || 'w.board_order ASC, w.id ASC' }}</pre>
       .jql-results-table th {
         text-align: left;
         padding: 10px 12px;
-        background: #fafbfc;
-        border-bottom: 2px solid #dfe1e6;
+        background: var(--bg-app);
+        border-bottom: 2px solid var(--border-color);
         font-size: 11px;
         font-weight: 700;
-        color: #5e6c84;
+        color: var(--text-secondary);
         text-transform: uppercase;
         white-space: nowrap;
       }
       .jql-results-table td {
         padding: 10px 12px;
-        border-bottom: 1px solid #ebecf0;
+        border-bottom: 1px solid var(--border-color);
         vertical-align: middle;
       }
       .result-row:hover {
-        background: #f4f5f7;
+        background: var(--bg-app);
       }
       .issue-key-link {
         font-weight: 700;
-        color: #0052cc;
+        color: var(--brand-primary);
         text-decoration: none;
         white-space: nowrap;
       }
@@ -1843,12 +1843,12 @@ ORDER BY {{ info.order_by_sql || 'w.board_order ASC, w.id ASC' }}</pre>
         font-weight: 700;
       }
       .summary-link {
-        color: #172b4d;
+        color: var(--text-primary);
         font-weight: 600;
         text-decoration: none;
       }
       .summary-link:hover {
-        color: #0052cc;
+        color: var(--brand-primary);
       }
       .row-labels {
         display: flex;
@@ -1857,8 +1857,8 @@ ORDER BY {{ info.order_by_sql || 'w.board_order ASC, w.id ASC' }}</pre>
       }
       .lbl-chip {
         font-size: 10px;
-        background: #ebecf0;
-        color: #42526e;
+        background: var(--bg-subtle);
+        color: var(--text-secondary);
         padding: 1px 5px;
         border-radius: 3px;
       }
@@ -1874,15 +1874,15 @@ ORDER BY {{ info.order_by_sql || 'w.board_order ASC, w.id ASC' }}</pre>
         white-space: nowrap;
       }
       .type-pill {
-        background: #deebff;
+        background: var(--info-bg);
         color: #0747a6;
       }
       .cat-pill[data-cat='Bug'] {
-        background: #ffebe6;
+        background: var(--danger-bg);
         color: #bf2600;
       }
       .cat-pill[data-cat='New Feature'] {
-        background: #e3fcef;
+        background: var(--success-bg);
         color: #006644;
       }
       .cat-pill[data-cat='Improvement'] {
@@ -1891,36 +1891,36 @@ ORDER BY {{ info.order_by_sql || 'w.board_order ASC, w.id ASC' }}</pre>
       }
       .status-badge {
         background: #dfe1e6;
-        color: #172b4d;
+        color: var(--text-primary);
       }
       .status-badge[data-status='Done'] {
-        background: #e3fcef;
+        background: var(--success-bg);
         color: #006644;
       }
       .status-badge[data-status='In Progress'],
       .status-badge[data-status='In Review'],
       .status-badge[data-status='QA / Testing'] {
-        background: #deebff;
-        color: #0052cc;
+        background: var(--info-bg);
+        color: var(--brand-primary);
       }
       .status-badge[data-status='Blocked'] {
-        background: #ffebe6;
+        background: var(--danger-bg);
         color: #bf2600;
       }
       .prio-badge[data-prio='Critical'],
       .prio-badge[data-prio='Highest'],
       .prio-badge[data-prio='High'] {
-        background: #ffebe6;
+        background: var(--danger-bg);
         color: #bf2600;
       }
       .prio-badge[data-prio='Medium'] {
-        background: #fffae6;
+        background: var(--warning-bg);
         color: #974f0c;
       }
       .prio-badge[data-prio='Low'],
       .prio-badge[data-prio='Lowest'] {
-        background: #f4f5f7;
-        color: #5e6c84;
+        background: var(--bg-app);
+        color: var(--text-secondary);
       }
       .res-resolved {
         color: #006644;
@@ -1928,7 +1928,7 @@ ORDER BY {{ info.order_by_sql || 'w.board_order ASC, w.id ASC' }}</pre>
         font-size: 12px;
       }
       .res-unresolved {
-        color: #6b778c;
+        color: var(--text-secondary);
         font-size: 12px;
       }
       .user-cell {
@@ -1958,8 +1958,8 @@ ORDER BY {{ info.order_by_sql || 'w.board_order ASC, w.id ASC' }}</pre>
         font-size: 10px;
         padding: 1px 6px;
         border-radius: 4px;
-        background: #f4f5f7;
-        color: #42526e;
+        background: var(--bg-app);
+        color: var(--text-secondary);
         white-space: nowrap;
       }
       .mini-tag.cf {
@@ -1967,8 +1967,8 @@ ORDER BY {{ info.order_by_sql || 'w.board_order ASC, w.id ASC' }}</pre>
         color: #403294;
       }
       .pts-circle {
-        background: #ebecf0;
-        color: #172b4d;
+        background: var(--bg-subtle);
+        color: var(--text-primary);
         padding: 2px 7px;
         border-radius: 10px;
         font-size: 11px;
@@ -1990,13 +1990,13 @@ ORDER BY {{ info.order_by_sql || 'w.board_order ASC, w.id ASC' }}</pre>
       }
       .split-card-item {
         padding: 10px;
-        border: 1px solid #dfe1e6;
+        border: 1px solid var(--border-color);
         border-radius: 6px;
         cursor: pointer;
       }
       .split-card-item.active {
         border-color: #0052cc;
-        background: #deebff;
+        background: var(--info-bg);
       }
       .sc-top {
         display: flex;
@@ -2006,13 +2006,13 @@ ORDER BY {{ info.order_by_sql || 'w.board_order ASC, w.id ASC' }}</pre>
       }
       .sc-key {
         font-weight: 700;
-        color: #0052cc;
+        color: var(--brand-primary);
         font-size: 12px;
       }
       .sc-title {
         font-weight: 600;
         font-size: 13px;
-        color: #172b4d;
+        color: var(--text-primary);
         margin-bottom: 6px;
       }
       .sc-meta {
@@ -2020,7 +2020,7 @@ ORDER BY {{ info.order_by_sql || 'w.board_order ASC, w.id ASC' }}</pre>
         align-items: center;
         justify-content: space-between;
         font-size: 11px;
-        color: #5e6c84;
+        color: var(--text-secondary);
       }
       .split-detail-pane {
         padding: 20px;
@@ -2029,7 +2029,7 @@ ORDER BY {{ info.order_by_sql || 'w.board_order ASC, w.id ASC' }}</pre>
         display: flex;
         justify-content: space-between;
         align-items: flex-start;
-        border-bottom: 1px solid #ebecf0;
+        border-bottom: 1px solid var(--border-color);
         padding-bottom: 12px;
         margin-bottom: 14px;
       }
@@ -2046,7 +2046,7 @@ ORDER BY {{ info.order_by_sql || 'w.board_order ASC, w.id ASC' }}</pre>
         display: grid;
         grid-template-columns: repeat(3, 1fr);
         gap: 10px;
-        background: #fafbfc;
+        background: var(--bg-app);
         padding: 12px;
         border-radius: 6px;
         font-size: 13px;
@@ -2059,7 +2059,7 @@ ORDER BY {{ info.order_by_sql || 'w.board_order ASC, w.id ASC' }}</pre>
         margin: 0 0 6px;
         font-size: 12px;
         text-transform: uppercase;
-        color: #5e6c84;
+        color: var(--text-secondary);
       }
       .dp-cf-grid {
         display: grid;
@@ -2069,7 +2069,7 @@ ORDER BY {{ info.order_by_sql || 'w.board_order ASC, w.id ASC' }}</pre>
       }
       .dp-comment {
         padding: 8px 10px;
-        background: #f4f5f7;
+        background: var(--bg-app);
         border-radius: 6px;
         margin-bottom: 6px;
         font-size: 12px;
@@ -2077,7 +2077,7 @@ ORDER BY {{ info.order_by_sql || 'w.board_order ASC, w.id ASC' }}</pre>
       .empty-results {
         padding: 32px;
         text-align: center;
-        color: #5e6c84;
+        color: var(--text-secondary);
       }
       .modal-backdrop {
         position: fixed;
@@ -2089,7 +2089,7 @@ ORDER BY {{ info.order_by_sql || 'w.board_order ASC, w.id ASC' }}</pre>
         z-index: 1500;
       }
       .modal-dialog {
-        background: #ffffff;
+        background: var(--bg-surface);
         border-radius: 8px;
         width: 540px;
         max-width: 94vw;
@@ -2101,7 +2101,7 @@ ORDER BY {{ info.order_by_sql || 'w.board_order ASC, w.id ASC' }}</pre>
         align-items: center;
         justify-content: space-between;
         padding: 14px 18px;
-        border-bottom: 1px solid #ebecf0;
+        border-bottom: 1px solid var(--border-color);
       }
       .modal-header h3 {
         margin: 0;
@@ -2115,7 +2115,7 @@ ORDER BY {{ info.order_by_sql || 'w.board_order ASC, w.id ASC' }}</pre>
       }
       .modal-footer {
         padding: 12px 18px;
-        border-top: 1px solid #ebecf0;
+        border-top: 1px solid var(--border-color);
         display: flex;
         justify-content: flex-end;
         gap: 8px;
@@ -2128,13 +2128,13 @@ ORDER BY {{ info.order_by_sql || 'w.board_order ASC, w.id ASC' }}</pre>
       .form-group label {
         font-size: 12px;
         font-weight: 600;
-        color: #42526e;
+        color: var(--text-secondary);
       }
       .form-group input,
       .form-group select,
       .form-group textarea {
         padding: 8px 10px;
-        border: 1px solid #dfe1e6;
+        border: 1px solid var(--border-color);
         border-radius: 4px;
         font-size: 13px;
       }
@@ -2163,7 +2163,7 @@ ORDER BY {{ info.order_by_sql || 'w.board_order ASC, w.id ASC' }}</pre>
         align-items: center;
         justify-content: space-between;
         padding: 8px 10px;
-        background: #f4f5f7;
+        background: var(--bg-app);
         border-radius: 6px;
         font-size: 12px;
       }

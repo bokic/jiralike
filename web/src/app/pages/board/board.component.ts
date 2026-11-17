@@ -288,15 +288,15 @@ export interface SwimlaneRow {
         font-weight: 700;
       }
       .wip-ok {
-        background: #ebecf0;
-        color: #42526e;
+        background: var(--bg-subtle);
+        color: var(--text-secondary);
       }
       .wip-exceeded-header {
-        background: #ffebe6 !important;
+        background: var(--danger-bg) !important;
         border-bottom: 3px solid #de350b !important;
       }
       .wip-under-header {
-        background: #fffae6 !important;
+        background: var(--warning-bg) !important;
         border-bottom: 3px solid #ff991f !important;
       }
       .kanban-column.wip-exceeded-col {
@@ -317,7 +317,7 @@ export interface SwimlaneRow {
       }
       .wip-under-banner {
         background: #ff991f;
-        color: #172b4d;
+        color: var(--text-primary);
         font-size: 11px;
         font-weight: 700;
         padding: 4px 8px;
@@ -329,20 +329,20 @@ export interface SwimlaneRow {
         flex-wrap: wrap;
         padding: 4px 10px 6px;
         background: rgba(9, 30, 66, 0.03);
-        border-bottom: 1px solid #ebecf0;
+        border-bottom: 1px solid var(--border-color);
       }
       .mapped-chip {
         font-size: 10px;
         padding: 1px 6px;
         border-radius: 4px;
         background: #dfe1e6;
-        color: #172b4d;
+        color: var(--text-primary);
         font-weight: 600;
       }
       .swimlane-section {
-        border: 1px solid #dfe1e6;
+        border: 1px solid var(--border-color);
         border-radius: 10px;
-        background: #fff;
+        background: var(--bg-surface);
         margin-bottom: 14px;
         overflow: hidden;
       }
@@ -351,8 +351,8 @@ export interface SwimlaneRow {
         align-items: center;
         justify-content: space-between;
         padding: 10px 16px;
-        background: #f4f5f7;
-        border-bottom: 1px solid #dfe1e6;
+        background: var(--bg-app);
+        border-bottom: 1px solid var(--border-color);
         cursor: pointer;
         user-select: none;
       }
@@ -362,7 +362,7 @@ export interface SwimlaneRow {
         gap: 10px;
         font-weight: 700;
         font-size: 14px;
-        color: #172b4d;
+        color: var(--text-primary);
       }
       .issue-card {
         border-left: 4px solid transparent;
@@ -383,24 +383,24 @@ export interface SwimlaneRow {
         gap: 14px;
       }
       .side-panel-card {
-        background: #fff;
-        border: 1px solid #dfe1e6;
+        background: var(--bg-surface);
+        border: 1px solid var(--border-color);
         border-radius: 10px;
         padding: 12px;
       }
       .side-panel-item {
         padding: 9px 10px;
-        border: 1px solid #ebecf0;
+        border: 1px solid var(--border-color);
         border-radius: 7px;
         margin-top: 8px;
         cursor: pointer;
         transition: all 0.15s;
-        background: #fafbfc;
+        background: var(--bg-app);
       }
       .side-panel-item:hover,
       .side-panel-item.drag-target {
         border-color: #0052cc;
-        background: #deebff;
+        background: var(--info-bg);
       }
       .side-panel-item.selected {
         border-color: #0052cc;
@@ -408,8 +408,8 @@ export interface SwimlaneRow {
         box-shadow: inset 3px 0 0 #0052cc;
       }
       .sprint-bucket {
-        background: #fff;
-        border: 1px solid #dfe1e6;
+        background: var(--bg-surface);
+        border: 1px solid var(--border-color);
         border-radius: 10px;
         margin-bottom: 16px;
         overflow: hidden;
@@ -428,8 +428,8 @@ export interface SwimlaneRow {
         flex-wrap: wrap;
         gap: 10px;
         padding: 12px 16px;
-        background: #f4f5f7;
-        border-bottom: 1px solid #dfe1e6;
+        background: var(--bg-app);
+        border-bottom: 1px solid var(--border-color);
       }
       .backlog-row {
         display: flex;
@@ -438,7 +438,7 @@ export interface SwimlaneRow {
         gap: 10px;
         padding: 9px 14px;
         border-bottom: 1px solid #f0f1f4;
-        background: #fff;
+        background: var(--bg-surface);
         transition: background 0.12s;
       }
       .backlog-row:hover {
@@ -461,17 +461,17 @@ export interface SwimlaneRow {
         flex-shrink: 0;
       }
       .rank-btn {
-        border: 1px solid #dfe1e6;
-        background: #fff;
+        border: 1px solid var(--border-color);
+        background: var(--bg-surface);
         border-radius: 4px;
         padding: 2px 6px;
         font-size: 11px;
         cursor: pointer;
-        color: #42526e;
+        color: var(--text-secondary);
       }
       .rank-btn:hover {
-        background: #ebecf0;
-        color: #172b4d;
+        background: var(--bg-subtle);
+        color: var(--text-primary);
       }
       .sp-pill-group {
         display: inline-flex;
@@ -486,14 +486,14 @@ export interface SwimlaneRow {
       }
       .sp-todo {
         background: #dfe1e6;
-        color: #42526e;
+        color: var(--text-secondary);
       }
       .sp-inprog {
-        background: #deebff;
+        background: var(--info-bg);
         color: #0747a6;
       }
       .sp-done {
-        background: #e3fcef;
+        background: var(--success-bg);
         color: #006644;
       }
     `,
@@ -752,7 +752,7 @@ export interface SwimlaneRow {
                   } @empty {
                     <div class="empty-column-drop">
                       Drop item here → <strong>{{ col.name }}</strong>
-                      <div style="font-size: 11px; color: #6b778c; margin-top: 2px;">
+                      <div style="font-size: 11px; color: var(--text-secondary); margin-top: 2px;">
                         ({{ col.statuses.join(' / ') }})
                       </div>
                     </div>
@@ -883,7 +883,7 @@ export interface SwimlaneRow {
           }
 
           @if (shouldShowCardField('due_date') && item.due_date) {
-            <div style="font-size: 11px; color: #5e6c84; margin-top: 4px;">
+            <div style="font-size: 11px; color: var(--text-secondary); margin-top: 4px;">
               📅 Due: <strong>{{ item.due_date }}</strong>
             </div>
           }
@@ -951,7 +951,7 @@ export interface SwimlaneRow {
               <!-- EPICS PANEL -->
               <div class="side-panel-card">
                 <div style="display: flex; justify-content: space-between; align-items: center;">
-                  <h4 style="margin: 0; font-size: 13px; text-transform: uppercase; color: #5e6c84;">
+                  <h4 style="margin: 0; font-size: 13px; text-transform: uppercase; color: var(--text-secondary);">
                     ⚡ Epics ({{ epicItems().length }})
                   </h4>
                   @if (selectedEpicFilter()) {
@@ -986,7 +986,7 @@ export interface SwimlaneRow {
                         {{ epStats.done }}/{{ epStats.total }} done · {{ epStats.points }} SP
                       </span>
                     </div>
-                    <div style="font-weight: 600; font-size: 12px; color: #172b4d; margin: 4px 0;">
+                    <div style="font-weight: 600; font-size: 12px; color: var(--text-primary); margin: 4px 0;">
                       {{ ep.title }}
                     </div>
                     <div class="progress-bar" style="height: 5px;">
@@ -999,7 +999,7 @@ export interface SwimlaneRow {
               <!-- VERSIONS PANEL -->
               <div class="side-panel-card">
                 <div style="display: flex; justify-content: space-between; align-items: center;">
-                  <h4 style="margin: 0; font-size: 13px; text-transform: uppercase; color: #5e6c84;">
+                  <h4 style="margin: 0; font-size: 13px; text-transform: uppercase; color: var(--text-secondary);">
                     🚀 Versions ({{ api.versions().length }})
                   </h4>
                   @if (selectedVersionFilter()) {
@@ -1028,10 +1028,10 @@ export interface SwimlaneRow {
                     (drop)="onVersionDrop($event, ver)"
                   >
                     <div style="display: flex; justify-content: space-between; align-items: center;">
-                      <strong style="font-size: 12px; color: #172b4d;">{{ ver.name }}</strong>
+                      <strong style="font-size: 12px; color: var(--text-primary);">{{ ver.name }}</strong>
                       <span class="badge" style="font-size: 10px;">{{ ver.status }}</span>
                     </div>
-                    <div style="font-size: 11px; color: #5e6c84; margin-top: 3px;">
+                    <div style="font-size: 11px; color: var(--text-secondary); margin-top: 3px;">
                       📅 Release: {{ ver.release_date || 'TBD' }} · {{ verIssueCount(ver.id) }} issues
                     </div>
                   </div>
@@ -1077,7 +1077,7 @@ export interface SwimlaneRow {
                     >
                       {{ isBucketCollapsed('sprint_' + sp.id) ? '▶' : '▼' }}
                     </button>
-                    <strong style="font-size: 14px; color: #172b4d;">{{ sp.name }}</strong>
+                    <strong style="font-size: 14px; color: var(--text-primary);">{{ sp.name }}</strong>
                     @if (sp.status === 'active' || sp.is_current) {
                       <span class="current-pill">★ ACTIVE SPRINT</span>
                     } @else {
@@ -1132,7 +1132,7 @@ export interface SwimlaneRow {
                         "
                       />
                     } @empty {
-                      <div style="padding: 20px; text-align: center; color: #6b778c; font-size: 13px;">
+                      <div style="padding: 20px; text-align: center; color: var(--text-secondary); font-size: 13px;">
                         Plan your sprint by dragging work items from the Backlog below into <strong>{{ sp.name }}</strong>.
                       </div>
                     }
@@ -1153,7 +1153,7 @@ export interface SwimlaneRow {
             >
               <div class="sprint-bucket-header">
                 <div style="display: flex; align-items: center; gap: 10px;">
-                  <strong style="font-size: 14px; color: #172b4d;">🗂 Backlog (Unassigned to Sprint)</strong>
+                  <strong style="font-size: 14px; color: var(--text-primary);">🗂 Backlog (Unassigned to Sprint)</strong>
                   <span class="badge">{{ blItems.length }} issues</span>
                 </div>
                 <div class="sp-pill-group">
@@ -1172,14 +1172,14 @@ export interface SwimlaneRow {
                     "
                   />
                 } @empty {
-                  <div style="padding: 22px; text-align: center; color: #6b778c; font-size: 13px;">
+                  <div style="padding: 22px; text-align: center; color: var(--text-secondary); font-size: 13px;">
                     Backlog is empty — drag items here to remove them from a sprint, or create a new backlog issue below.
                   </div>
                 }
               </div>
 
               <!-- Quick Inline Backlog Item Creator -->
-              <div style="padding: 10px 14px; background: #fafbfc; border-top: 1px solid #dfe1e6; display: flex; gap: 8px; align-items: center;">
+              <div style="padding: 10px 14px; background: var(--bg-app); border-top: 1px solid var(--border-color); display: flex; gap: 8px; align-items: center;">
                 <select
                   name="quick_backlog_type"
                   style="width: 110px; padding: 6px 8px; font-size: 12px;"
@@ -1215,21 +1215,21 @@ export interface SwimlaneRow {
             <!-- Closed Sprints Velocity History -->
             @if (closedSprints().length > 0) {
               <div class="card-panel" style="margin-top: 14px;">
-                <h4 style="margin: 0 0 8px 0; font-size: 13px; color: #5e6c84; text-transform: uppercase;">
+                <h4 style="margin: 0 0 8px 0; font-size: 13px; color: var(--text-secondary); text-transform: uppercase;">
                   📊 Completed Sprints Velocity History ({{ closedSprints().length }})
                 </h4>
                 <div style="display: flex; gap: 10px; flex-wrap: wrap;">
                   @for (csp of closedSprints(); track csp.id) {
-                    <div style="border: 1px solid #dfe1e6; border-radius: 8px; padding: 10px 14px; background: #fafbfc; min-width: 240px;">
+                    <div style="border: 1px solid var(--border-color); border-radius: 8px; padding: 10px 14px; background: var(--bg-app); min-width: 240px;">
                       <div style="display: flex; justify-content: space-between; align-items: center;">
                         <strong>{{ csp.name }}</strong>
-                        <span class="badge" style="background: #e3fcef; color: #006644;">CLOSED</span>
+                        <span class="badge" style="background: var(--success-bg); color: #006644;">CLOSED</span>
                       </div>
-                      <div style="font-size: 12px; color: #42526e; margin-top: 6px;">
+                      <div style="font-size: 12px; color: var(--text-secondary); margin-top: 6px;">
                         Committed: <strong>{{ csp.committed_points || 0 }} SP</strong> ·
                         Completed: <strong style="color: #006644;">{{ csp.completed_points || 0 }} SP</strong>
                       </div>
-                      <div style="font-size: 11px; color: #6b778c; margin-top: 2px;">
+                      <div style="font-size: 11px; color: var(--text-secondary); margin-top: 2px;">
                         ✔ {{ csp.completed_items_count || 0 }} done · ↪ {{ csp.incomplete_items_count || 0 }} rolled over
                       </div>
                     </div>
@@ -1253,7 +1253,7 @@ export interface SwimlaneRow {
             <span style="color: #a5adba; cursor: grab;" title="Drag to reorder or move between sprints">⋮⋮</span>
             <span class="type-badge" [attr.data-type]="item.type">{{ item.type }}</span>
             <a [routerLink]="['/', item.key]" class="issue-key">{{ item.key }}</a>
-            <a [routerLink]="['/', item.key]" style="color: #172b4d; font-weight: 500; text-decoration: none; overflow: hidden; text-overflow: ellipsis; white-space: nowrap;">
+            <a [routerLink]="['/', item.key]" style="color: var(--text-primary); font-weight: 500; text-decoration: none; overflow: hidden; text-overflow: ellipsis; white-space: nowrap;">
               {{ item.title }}
             </a>
             @if (item.parent_key) {
@@ -1299,7 +1299,7 @@ export interface SwimlaneRow {
             <!-- Quick Sprint Mover Dropdown -->
             <select
               [name]="'move_sp_' + item.id"
-              style="padding: 2px 6px; font-size: 11px; border: 1px solid #dfe1e6; border-radius: 4px; width: 115px;"
+              style="padding: 2px 6px; font-size: 11px; border: 1px solid var(--border-color); border-radius: 4px; width: 115px;"
               [ngModel]="item.sprint_id || 0"
               (ngModelChange)="moveItemToSprint(item, $event)"
               title="Move to Sprint or Backlog"
@@ -1420,7 +1420,7 @@ export interface SwimlaneRow {
             </div>
 
             <div class="grid-2" style="margin: 14px 0;">
-              <div style="background: #e3fcef; border: 1px solid #abf5d1; border-radius: 8px; padding: 12px;">
+              <div style="background: var(--success-bg); border: 1px solid #abf5d1; border-radius: 8px; padding: 12px;">
                 <div style="font-size: 11px; font-weight: 700; color: #006644; text-transform: uppercase;">
                   ✔ Completed Issues
                 </div>
@@ -1429,7 +1429,7 @@ export interface SwimlaneRow {
                 </div>
               </div>
 
-              <div style="background: #fffae6; border: 1px solid #ffe380; border-radius: 8px; padding: 12px;">
+              <div style="background: var(--warning-bg); border: 1px solid #ffe380; border-radius: 8px; padding: 12px;">
                 <div style="font-size: 11px; font-weight: 700; color: #974f0c; text-transform: uppercase;">
                   ↪ Incomplete Issues
                 </div>
@@ -1596,7 +1596,7 @@ export interface SwimlaneRow {
             @if (configTab() === 'columns') {
               <div style="display: flex; flex-direction: column; gap: 10px;">
                 @for (col of editableColumns; track $index; let idx = $index) {
-                  <div style="border: 1px solid #dfe1e6; border-radius: 8px; padding: 12px; background: #fafbfc;">
+                  <div style="border: 1px solid var(--border-color); border-radius: 8px; padding: 12px; background: var(--bg-app);">
                     <div class="grid-3" style="align-items: end;">
                       <div class="form-group" style="margin: 0;">
                         <label>Column Name</label>
@@ -1623,13 +1623,13 @@ export interface SwimlaneRow {
                     </div>
 
                     <div style="margin-top: 8px;">
-                      <label style="font-size: 11px; font-weight: 700; color: #5e6c84;">
+                      <label style="font-size: 11px; font-weight: 700; color: var(--text-secondary);">
                         Mapped Workflow Statuses (Many-to-One Status-to-Column Mapping):
                       </label>
                       <div style="display: flex; gap: 8px; flex-wrap: wrap; margin-top: 4px;">
                         @for (st of states; track st) {
                           <label
-                            style="display: inline-flex; align-items: center; gap: 4px; font-size: 12px; background: #fff; border: 1px solid #dfe1e6; padding: 3px 8px; border-radius: 6px; cursor: pointer;"
+                            style="display: inline-flex; align-items: center; gap: 4px; font-size: 12px; background: var(--bg-surface); border: 1px solid var(--border-color); padding: 3px 8px; border-radius: 6px; cursor: pointer;"
                           >
                             <input
                               type="checkbox"
@@ -1725,10 +1725,10 @@ export interface SwimlaneRow {
             @if (configTab() === 'quick_filters') {
               <div style="display: flex; flex-direction: column; gap: 8px;">
                 @for (qf of board.quick_filters; track qf.id) {
-                  <div style="display: flex; justify-content: space-between; align-items: center; padding: 8px 12px; border: 1px solid #dfe1e6; border-radius: 6px;">
+                  <div style="display: flex; justify-content: space-between; align-items: center; padding: 8px 12px; border: 1px solid var(--border-color); border-radius: 6px;">
                     <div>
                       <strong>{{ qf.name }}</strong>
-                      <code style="margin-left: 8px; font-size: 12px; background: #f4f5f7; padding: 2px 6px; border-radius: 4px;">
+                      <code style="margin-left: 8px; font-size: 12px; background: var(--bg-app); padding: 2px 6px; border-radius: 4px;">
                         {{ qf.jql_query }}
                       </code>
                       <div class="text-muted" style="font-size: 11px;">{{ qf.description }}</div>
@@ -1739,7 +1739,7 @@ export interface SwimlaneRow {
                   </div>
                 }
 
-                <div style="border-top: 1px solid #dfe1e6; padding-top: 12px; margin-top: 6px;">
+                <div style="border-top: 1px solid var(--border-color); padding-top: 12px; margin-top: 6px;">
                   <h4>+ Add Quick Filter</h4>
                   <div class="grid-3">
                     <input type="text" name="new_qf_name" placeholder="Button Label (e.g. Needs QA)" [(ngModel)]="newQfDraft.name" />
@@ -1754,10 +1754,10 @@ export interface SwimlaneRow {
             @if (configTab() === 'swimlanes') {
               <div style="display: flex; flex-direction: column; gap: 8px;">
                 @for (sw of board.swimlanes; track sw.id) {
-                  <div style="display: flex; justify-content: space-between; align-items: center; padding: 8px 12px; border: 1px solid #dfe1e6; border-radius: 6px;">
+                  <div style="display: flex; justify-content: space-between; align-items: center; padding: 8px 12px; border: 1px solid var(--border-color); border-radius: 6px;">
                     <div>
                       <strong>{{ sw.name }}</strong>
-                      <code style="margin-left: 8px; font-size: 12px; background: #f4f5f7; padding: 2px 6px; border-radius: 4px;">
+                      <code style="margin-left: 8px; font-size: 12px; background: var(--bg-app); padding: 2px 6px; border-radius: 4px;">
                         {{ sw.jql_query }}
                       </code>
                       <div class="text-muted" style="font-size: 11px;">{{ sw.description }}</div>
@@ -1768,7 +1768,7 @@ export interface SwimlaneRow {
                   </div>
                 }
 
-                <div style="border-top: 1px solid #dfe1e6; padding-top: 12px; margin-top: 6px;">
+                <div style="border-top: 1px solid var(--border-color); padding-top: 12px; margin-top: 6px;">
                   <h4>+ Add Custom JQL Swimlane</h4>
                   <div class="grid-3">
                     <input type="text" name="new_sw_name" placeholder="Swimlane Title" [(ngModel)]="newSwDraft.name" />
@@ -1835,7 +1835,7 @@ export interface SwimlaneRow {
               <div class="form-group" style="margin-top: 10px;">
                 <label>
                   Resolution
-                  <span style="color: #de350b; font-weight: bold;">*</span>
+                  <span style="color: var(--danger-color); font-weight: bold;">*</span>
                 </label>
                 <select name="board_tr_res" [(ngModel)]="boardTransitionDraft.resolution_id">
                   <option [ngValue]="0">— Select Resolution —</option>
@@ -1850,7 +1850,7 @@ export interface SwimlaneRow {
               <label>
                 Transition Comment
                 @if (hasBoardCommentValidator(modal.transition)) {
-                  <span style="color: #de350b; font-weight: bold;">* (Required)</span>
+                  <span style="color: var(--danger-color); font-weight: bold;">* (Required)</span>
                 }
               </label>
               <textarea

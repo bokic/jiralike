@@ -114,7 +114,7 @@ interface DependencyLine {
             </div>
 
             <!-- Column Visibility Checkboxes (Unchecked by Default) -->
-            <div style="margin-top: 10px; padding-top: 10px; border-top: 1px solid #ebecf0;">
+            <div style="margin-top: 10px; padding-top: 10px; border-top: 1px solid var(--border-color);">
               <div class="states-filter-header">
                 <span class="filter-label">Visible Tree-Grid Columns:</span>
               </div>

@@ -2,13 +2,24 @@
   --bg-app: #f4f5f7;
   --bg-surface: #ffffff;
   --bg-subtle: #ebecf0;
+  --bg-elevated: #ffffff;
+  --bg-hover: #ebecf0;
   --text-primary: #172b4d;
   --text-secondary: #5e6c84;
+  --text-muted: #6b778c;
   --brand-primary: #0052cc;
   --brand-hover: #0065ff;
   --border-color: #dfe1e6;
   --danger-color: #de350b;
   --success-color: #00875a;
+  --warning-color: #ff991f;
+  --info-bg: #deebff;
+  --danger-bg: #ffebe6;
+  --success-bg: #e3fcef;
+  --warning-bg: #fffae6;
+  --shadow-sm: 0 1px 2px rgba(9, 30, 66, 0.06);
+  --shadow-md: 0 4px 12px rgba(9, 30, 66, 0.14);
+  --focus-ring: 0 0 0 2px rgba(0, 82, 204, 0.25);
 }
 
 * {
@@ -3840,13 +3851,24 @@ input:focus, select:focus, textarea:focus {
   --bg-app: #181b1f;
   --bg-surface: #22272b;
   --bg-subtle: #2c333a;
+  --bg-elevated: #282e33;
+  --bg-hover: #323940;
   --text-primary: #dee4ea;
   --text-secondary: #8c9bab;
+  --text-muted: #8c9bab;
   --brand-primary: #579dff;
   --brand-hover: #85b8ff;
   --border-color: #333c48;
   --danger-color: #f87171;
   --success-color: #4ade80;
+  --warning-color: #fbbf24;
+  --info-bg: rgba(87, 157, 255, 0.16);
+  --danger-bg: rgba(248, 113, 113, 0.16);
+  --success-bg: rgba(74, 222, 128, 0.16);
+  --warning-bg: rgba(251, 191, 36, 0.16);
+  --shadow-sm: 0 1px 2px rgba(0, 0, 0, 0.3);
+  --shadow-md: 0 4px 12px rgba(0, 0, 0, 0.45);
+  --focus-ring: 0 0 0 2px rgba(87, 157, 255, 0.35);
 }
 
 @media (prefers-color-scheme: dark) {
@@ -3855,13 +3877,24 @@ input:focus, select:focus, textarea:focus {
     --bg-app: #181b1f;
     --bg-surface: #22272b;
     --bg-subtle: #2c333a;
+    --bg-elevated: #282e33;
+    --bg-hover: #323940;
     --text-primary: #dee4ea;
     --text-secondary: #8c9bab;
+    --text-muted: #8c9bab;
     --brand-primary: #579dff;
     --brand-hover: #85b8ff;
     --border-color: #333c48;
     --danger-color: #f87171;
     --success-color: #4ade80;
+    --warning-color: #fbbf24;
+    --info-bg: rgba(87, 157, 255, 0.16);
+    --danger-bg: rgba(248, 113, 113, 0.16);
+    --success-bg: rgba(74, 222, 128, 0.16);
+    --warning-bg: rgba(251, 191, 36, 0.16);
+    --shadow-sm: 0 1px 2px rgba(0, 0, 0, 0.3);
+    --shadow-md: 0 4px 12px rgba(0, 0, 0, 0.45);
+    --focus-ring: 0 0 0 2px rgba(87, 157, 255, 0.35);
   }
 }
 

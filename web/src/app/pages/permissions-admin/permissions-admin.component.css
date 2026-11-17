@@ -28,19 +28,19 @@
   align-items: center;
   padding: 12px;
   border-radius: 6px;
-  border: 1px solid #dfe1e6;
-  background: #ffffff;
+  border: 1px solid var(--border-color);
+  background: var(--bg-surface);
   cursor: pointer;
   transition: all 0.15s ease-in-out;
 }
 
 .scheme-item-row:hover {
-  background: #f4f5f7;
-  border-color: #c1c7d0;
+  background: var(--bg-app);
+  border-color: var(--border-color);
 }
 
 .scheme-item-row.active {
-  background: #deebff;
+  background: var(--info-bg);
   border-color: #0052cc;
 }
 
@@ -57,11 +57,11 @@
 .pill-tag {
   display: inline-block;
   padding: 2px 8px;
-  background: #ebecf0;
+  background: var(--bg-subtle);
   border-radius: 12px;
   font-size: 11px;
   font-weight: 600;
-  color: #172b4d;
+  color: var(--text-primary);
 }
 
 .matrix-table-wrap {
@@ -76,28 +76,28 @@
 .matrix-table th,
 .matrix-table td {
   padding: 10px 14px;
-  border-bottom: 1px solid #ebecf0;
+  border-bottom: 1px solid var(--border-color);
   vertical-align: middle;
 }
 
 .category-divider-row td {
-  background: #fafbfc;
-  color: #42526e;
+  background: var(--bg-app);
+  color: var(--text-secondary);
   font-size: 12px;
   text-transform: uppercase;
   letter-spacing: 0.5px;
   padding: 8px 14px;
-  border-top: 1px solid #dfe1e6;
+  border-top: 1px solid var(--border-color);
 }
 
 .perm-key-badge {
   display: inline-block;
   margin-top: 4px;
   font-size: 10.5px;
-  background: #f4f5f7;
+  background: var(--bg-app);
   padding: 1px 6px;
   border-radius: 3px;
-  color: #5e6c84;
+  color: var(--text-secondary);
 }
 
 .grants-pill-list {
@@ -114,9 +114,9 @@
   padding: 3px 8px;
   border-radius: 4px;
   font-size: 11.5px;
-  background: #f4f5f7;
-  border: 1px solid #dfe1e6;
-  color: #172b4d;
+  background: var(--bg-app);
+  border: 1px solid var(--border-color);
+  color: var(--text-primary);
 }
 
 .grant-pill[data-type="role"] {
@@ -134,7 +134,7 @@
 .grant-pill[data-type="dynamic"] {
   background: #fff0b3;
   border-color: #ffe380;
-  color: #172b4d;
+  color: var(--text-primary);
 }
 
 .grant-pill[data-type="custom_field"] {
@@ -144,13 +144,13 @@
 }
 
 .grant-pill[data-type="user"] {
-  background: #deebff;
+  background: var(--info-bg);
   border-color: #b3d4ff;
   color: #0747a6;
 }
 
 .grant-pill[data-type="anyone"] {
-  background: #e3fcef;
+  background: var(--success-bg);
   border-color: #abf5d1;
   color: #006644;
 }
@@ -158,14 +158,14 @@
 .grant-type-label {
   font-size: 10px;
   text-transform: uppercase;
-  color: #6b778c;
+  color: var(--text-secondary);
   font-weight: 500;
 }
 
 .revoke-btn {
   background: none;
   border: none;
-  color: #6b778c;
+  color: var(--text-secondary);
   cursor: pointer;
   font-size: 13px;
   line-height: 1;
@@ -205,7 +205,7 @@
 }
 
 .pat-created-alert {
-  background: #e3fcef;
+  background: var(--success-bg);
   border: 1px solid #abf5d1;
   border-radius: 6px;
   padding: 14px;
@@ -221,7 +221,7 @@
 }
 
 .token-code-row code {
-  background: #ffffff;
+  background: var(--bg-surface);
   padding: 6px 12px;
   border-radius: 4px;
   font-size: 13px;
@@ -245,7 +245,7 @@
 }
 
 .modal-card {
-  background: #ffffff;
+  background: var(--bg-surface);
   border-radius: 8px;
   padding: 24px;
   width: 480px;

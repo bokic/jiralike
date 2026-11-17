@@ -50,11 +50,11 @@ import { SsoConfig, TwoFactorSetup, TwoFactorStatus } from '../../models/jira.mo
             </div>
             <div>
               @if (twoFactorStatus()?.is_enabled) {
-                <span class="badge" style="background: #E3FCEF; color: #006644; font-weight: 700; padding: 4px 10px; border-radius: 12px; font-size: 12px;">
+                <span class="badge" style="background: var(--success-bg); color: #006644; font-weight: 700; padding: 4px 10px; border-radius: 12px; font-size: 12px;">
                   ✓ 2FA ENABLED
                 </span>
               } @else {
-                <span class="badge" style="background: #FFEBE6; color: #DE350B; font-weight: 700; padding: 4px 10px; border-radius: 12px; font-size: 12px;">
+                <span class="badge" style="background: var(--danger-bg); color: var(--danger-color); font-weight: 700; padding: 4px 10px; border-radius: 12px; font-size: 12px;">
                   DISABLED
                 </span>
               }
@@ -195,11 +195,11 @@ import { SsoConfig, TwoFactorSetup, TwoFactorStatus } from '../../models/jira.mo
             </div>
             <div>
               @if (ssoConfig()?.is_enabled) {
-                <span class="badge" style="background: #E3FCEF; color: #006644; font-weight: 700; padding: 4px 10px; border-radius: 12px; font-size: 12px;">
+                <span class="badge" style="background: var(--success-bg); color: #006644; font-weight: 700; padding: 4px 10px; border-radius: 12px; font-size: 12px;">
                   ✓ SSO ACTIVE ({{ ssoConfig()?.protocol }})
                 </span>
               } @else {
-                <span class="badge" style="background: #DFE1E6; color: #42526E; font-weight: 700; padding: 4px 10px; border-radius: 12px; font-size: 12px;">
+                <span class="badge" style="background: #DFE1E6; color: var(--text-secondary); font-weight: 700; padding: 4px 10px; border-radius: 12px; font-size: 12px;">
                   SSO DISABLED
                 </span>
               }

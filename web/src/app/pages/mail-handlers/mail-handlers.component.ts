@@ -110,7 +110,7 @@ import { InboundMailHandler, InboundMailLog, Project, IssueTypeDef, User } from 
                     @if (h.is_active) {
                       <span style="color: #006644; font-weight: 600; font-size: 12px;">● Active</span>
                     } @else {
-                      <span style="color: #6B778C; font-size: 12px;">○ Inactive</span>
+                      <span style="color: var(--text-secondary); font-size: 12px;">○ Inactive</span>
                     }
                   </td>
                   <td style="padding: 12px 16px; text-align: right;">
@@ -155,15 +155,15 @@ import { InboundMailHandler, InboundMailLog, Project, IssueTypeDef, User } from 
                   </td>
                   <td style="padding: 10px 14px;">
                     @if (l.status === 'PROCESSED') {
-                      <span class="badge" style="background: #E3FCEF; color: #006644; font-weight: 700; padding: 2px 8px; border-radius: 10px; font-size: 11px;">
+                      <span class="badge" style="background: var(--success-bg); color: #006644; font-weight: 700; padding: 2px 8px; border-radius: 10px; font-size: 11px;">
                         ✓ PROCESSED
                       </span>
                     } @else if (l.status === 'REJECTED_SPAM') {
-                      <span class="badge" style="background: #FFF0B3; color: #172B4D; font-weight: 700; padding: 2px 8px; border-radius: 10px; font-size: 11px;">
+                      <span class="badge" style="background: #FFF0B3; color: var(--text-primary); font-weight: 700; padding: 2px 8px; border-radius: 10px; font-size: 11px;">
                         ⚠️ SPAM BLOCKED
                       </span>
                     } @else {
-                      <span class="badge" style="background: #FFEBE6; color: #DE350B; font-weight: 700; padding: 2px 8px; border-radius: 10px; font-size: 11px;">
+                      <span class="badge" style="background: var(--danger-bg); color: var(--danger-color); font-weight: 700; padding: 2px 8px; border-radius: 10px; font-size: 11px;">
                         ✕ {{ l.status }}
                       </span>
                     }

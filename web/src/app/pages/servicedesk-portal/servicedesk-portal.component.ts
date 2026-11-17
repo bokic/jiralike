@@ -88,7 +88,7 @@ import {
                   <span class="ticket-key-badge">{{ activeTicket()!.key }}</span>
                   <span class="ticket-req-type">{{ activeTicket()!.request_type_name }}</span>
                   @if (activeTicket()!.organization_name) {
-                    <span class="badge" style="background: #ebecf0; color: #172b4d; border: 1px solid #dfe1e6; font-size: 11px; margin-left: 6px;">🏢 {{ activeTicket()!.organization_name }}</span>
+                    <span class="badge" style="background: var(--bg-subtle); color: var(--text-primary); border: 1px solid var(--border-color); font-size: 11px; margin-left: 6px;">🏢 {{ activeTicket()!.organization_name }}</span>
                   }
                   <h2 class="ticket-title">{{ activeTicket()!.title }}</h2>
                 </div>
@@ -234,7 +234,7 @@ import {
             <div class="my-requests-header">
               <div>
                 <h2>My Submitted &amp; Organization Requests</h2>
-                <p style="margin: 0; font-size: 13px; color: #5e6c84;">
+                <p style="margin: 0; font-size: 13px; color: var(--text-secondary);">
                   Tickets raised by you or shared with your customer organizations
                 </p>
               </div>
@@ -300,7 +300,7 @@ import {
                       </td>
                       <td>
                         @if (req.is_my_request) {
-                          <span class="badge" style="background: #e3fcef; color: #006644; font-size: 11px;">You</span>
+                          <span class="badge" style="background: var(--success-bg); color: #006644; font-size: 11px;">You</span>
                         } @else {
                           <span style="font-size: 12px;">{{ req.customer_name || 'Organization Member' }}</span>
                         }
@@ -319,7 +319,7 @@ import {
                     </tr>
                   } @empty {
                     <tr>
-                      <td colspan="9" class="text-center" style="padding: 30px; color: #5e6c84;">
+                      <td colspan="9" class="text-center" style="padding: 30px; color: var(--text-secondary);">
                         No requests found for this customer or organization.
                       </td>
                     </tr>
@@ -437,9 +437,9 @@ import {
   styles: [`
     .portal-wrapper {
       min-height: 100vh;
-      background: #f4f5f7;
+      background: var(--bg-app);
       font-family: -apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, Helvetica, Arial, sans-serif;
-      color: #172b4d;
+      color: var(--text-primary);
     }
     .portal-header {
       background: #0052cc;
@@ -498,17 +498,17 @@ import {
       background: rgba(255, 255, 255, 0.25);
     }
     .btn-portal.active {
-      background: #ffffff;
-      color: #0052cc;
+      background: var(--bg-surface);
+      color: var(--brand-primary);
     }
     .btn-portal-agent {
       background: #ffab00;
-      color: #172b4d;
+      color: var(--text-primary);
       border: none;
     }
     .btn-portal-agent:hover {
       background: #ff991f;
-      color: #172b4d;
+      color: var(--text-primary);
     }
     .portal-counter {
       background: #de350b;
@@ -530,12 +530,12 @@ import {
       padding: 14px 18px;
       border-radius: 6px;
       box-shadow: 0 1px 3px rgba(9, 30, 66, 0.08);
-      border: 1px solid #dfe1e6;
+      border: 1px solid var(--border-color);
     }
     .desk-section {
-      background: #ffffff;
+      background: var(--bg-surface);
       border-radius: 8px;
-      border: 1px solid #dfe1e6;
+      border: 1px solid var(--border-color);
       padding: 24px;
       margin-bottom: 24px;
       box-shadow: 0 1px 2px rgba(9, 30, 66, 0.05);
@@ -543,7 +543,7 @@ import {
     .desk-header {
       margin-bottom: 16px;
       padding-bottom: 12px;
-      border-bottom: 1px solid #ebecf0;
+      border-bottom: 1px solid var(--border-color);
       display: flex;
       flex-wrap: wrap;
       align-items: baseline;
@@ -552,11 +552,11 @@ import {
     .desk-header h3 {
       margin: 0;
       font-size: 18px;
-      color: #172b4d;
+      color: var(--text-primary);
     }
     .desk-key-pill {
-      background: #ebecf0;
-      color: #42526e;
+      background: var(--bg-subtle);
+      color: var(--text-secondary);
       font-size: 11px;
       font-weight: 700;
       padding: 2px 6px;
@@ -566,7 +566,7 @@ import {
       width: 100%;
       margin: 4px 0 0 0;
       font-size: 13px;
-      color: #5e6c84;
+      color: var(--text-secondary);
     }
     .request-types-grid {
       display: grid;
@@ -574,8 +574,8 @@ import {
       gap: 16px;
     }
     .req-type-card {
-      background: #fafbfc;
-      border: 1px solid #dfe1e6;
+      background: var(--bg-app);
+      border: 1px solid var(--border-color);
       border-radius: 6px;
       padding: 16px;
       display: flex;
@@ -585,7 +585,7 @@ import {
       transition: all 0.2s ease;
     }
     .req-type-card:hover {
-      background: #ffffff;
+      background: var(--bg-surface);
       border-color: #4c9aff;
       box-shadow: 0 4px 8px rgba(9, 30, 66, 0.08);
       transform: translateY(-1px);
@@ -601,18 +601,18 @@ import {
       margin: 0 0 4px 0;
       font-size: 14px;
       font-weight: 600;
-      color: #172b4d;
+      color: var(--text-primary);
     }
     .rt-info p {
       margin: 0;
       font-size: 12px;
-      color: #5e6c84;
+      color: var(--text-secondary);
       line-height: 1.3;
     }
     .btn-raise {
       background: transparent;
       border: none;
-      color: #0052cc;
+      color: var(--brand-primary);
       font-weight: 600;
       font-size: 13px;
       cursor: pointer;
@@ -625,8 +625,8 @@ import {
       margin-bottom: 16px;
     }
     .ticket-card {
-      background: #ffffff;
-      border: 1px solid #dfe1e6;
+      background: var(--bg-surface);
+      border: 1px solid var(--border-color);
       border-radius: 8px;
       padding: 24px;
       box-shadow: 0 1px 3px rgba(9, 30, 66, 0.05);
@@ -635,12 +635,12 @@ import {
       display: flex;
       justify-content: space-between;
       align-items: flex-start;
-      border-bottom: 1px solid #ebecf0;
+      border-bottom: 1px solid var(--border-color);
       padding-bottom: 16px;
       margin-bottom: 20px;
     }
     .ticket-key-badge {
-      background: #deebff;
+      background: var(--info-bg);
       color: #0747a6;
       font-weight: 700;
       padding: 3px 8px;
@@ -649,14 +649,14 @@ import {
       margin-right: 8px;
     }
     .ticket-req-type {
-      color: #5e6c84;
+      color: var(--text-secondary);
       font-size: 13px;
       font-weight: 500;
     }
     .ticket-title {
       margin: 10px 0 0 0;
       font-size: 20px;
-      color: #172b4d;
+      color: var(--text-primary);
     }
     .ticket-date-info {
       display: flex;
@@ -664,10 +664,10 @@ import {
       align-items: flex-end;
       gap: 4px;
       font-size: 12px;
-      color: #5e6c84;
+      color: var(--text-secondary);
     }
     .portal-sla-summary {
-      background: #f4f5f7;
+      background: var(--bg-app);
       border: 1px solid #e1e4e8;
       border-radius: 6px;
       padding: 12px 16px;
@@ -676,7 +676,7 @@ import {
     .portal-sla-title {
       font-size: 11px;
       font-weight: 700;
-      color: #5e6c84;
+      color: var(--text-secondary);
       text-transform: uppercase;
       letter-spacing: 0.5px;
       margin-bottom: 8px;
@@ -687,8 +687,8 @@ import {
       flex-wrap: wrap;
     }
     .portal-sla-badge {
-      background: #ffffff;
-      border: 1px solid #dfe1e6;
+      background: var(--bg-surface);
+      border: 1px solid var(--border-color);
       border-left-width: 4px;
       border-radius: 4px;
       padding: 6px 12px;
@@ -698,8 +698,8 @@ import {
       align-items: center;
     }
     .ticket-desc-box {
-      background: #fafbfc;
-      border: 1px solid #ebecf0;
+      background: var(--bg-app);
+      border: 1px solid var(--border-color);
       border-radius: 6px;
       padding: 14px;
       font-size: 14px;
@@ -709,7 +709,7 @@ import {
     }
     .ticket-comments-section {
       margin-top: 28px;
-      border-top: 1px solid #ebecf0;
+      border-top: 1px solid var(--border-color);
       padding-top: 20px;
     }
     .comments-stream {
@@ -719,8 +719,8 @@ import {
       margin-bottom: 20px;
     }
     .portal-comment-card {
-      background: #f4f5f7;
-      border: 1px solid #dfe1e6;
+      background: var(--bg-app);
+      border: 1px solid var(--border-color);
       border-radius: 6px;
       padding: 12px 16px;
     }
@@ -736,7 +736,7 @@ import {
     }
     .author-name {
       font-weight: 700;
-      color: #172b4d;
+      color: var(--text-primary);
       display: flex;
       gap: 6px;
       align-items: center;
@@ -756,17 +756,17 @@ import {
       border-radius: 3px;
     }
     .comment-time {
-      color: #5e6c84;
+      color: var(--text-secondary);
     }
     .comment-body-text {
       font-size: 13px;
       line-height: 1.4;
-      color: #172b4d;
+      color: var(--text-primary);
       white-space: pre-wrap;
     }
     .add-reply-card {
-      background: #fafbfc;
-      border: 1px solid #dfe1e6;
+      background: var(--bg-app);
+      border: 1px solid var(--border-color);
       border-radius: 6px;
       padding: 16px;
     }
@@ -794,8 +794,8 @@ import {
       align-items: center;
     }
     .table-container {
-      background: #ffffff;
-      border: 1px solid #dfe1e6;
+      background: var(--bg-surface);
+      border: 1px solid var(--border-color);
       border-radius: 6px;
       overflow: hidden;
     }
@@ -805,35 +805,35 @@ import {
       font-size: 13px;
     }
     .portal-table th {
-      background: #f4f5f7;
+      background: var(--bg-app);
       text-align: left;
       padding: 10px 14px;
-      border-bottom: 2px solid #dfe1e6;
-      color: #5e6c84;
+      border-bottom: 2px solid var(--border-color);
+      color: var(--text-secondary);
       font-size: 12px;
     }
     .portal-table td {
       padding: 10px 14px;
-      border-bottom: 1px solid #ebecf0;
+      border-bottom: 1px solid var(--border-color);
     }
     .clickable-row:hover {
-      background: #f4f5f7;
+      background: var(--bg-app);
       cursor: pointer;
     }
     .status-pill {
       background: #dfe1e6;
-      color: #42526e;
+      color: var(--text-secondary);
       padding: 3px 8px;
       border-radius: 12px;
       font-size: 11px;
       font-weight: 700;
     }
     .status-pill.pill-done {
-      background: #e3fcef;
+      background: var(--success-bg);
       color: #006644;
     }
     .status-pill.pill-wait {
-      background: #fffae6;
+      background: var(--warning-bg);
       color: #ff8b00;
     }
     /* Modals */
@@ -851,7 +851,7 @@ import {
       padding: 16px;
     }
     .portal-modal {
-      background: #ffffff;
+      background: var(--bg-surface);
       border-radius: 8px;
       width: 100%;
       max-width: 600px;
@@ -860,8 +860,8 @@ import {
     }
     .portal-modal-header {
       padding: 16px 20px;
-      background: #f4f5f7;
-      border-bottom: 1px solid #dfe1e6;
+      background: var(--bg-app);
+      border-bottom: 1px solid var(--border-color);
       display: flex;
       justify-content: space-between;
       align-items: center;
@@ -869,7 +869,7 @@ import {
     .portal-modal-header h3 {
       margin: 0;
       font-size: 16px;
-      color: #172b4d;
+      color: var(--text-primary);
     }
     .close-modal-btn {
       background: transparent;
@@ -881,7 +881,7 @@ import {
       padding: 20px;
     }
     .help-box {
-      background: #deebff;
+      background: var(--info-bg);
       border-left: 4px solid #0052cc;
       color: #0747a6;
       padding: 10px 14px;
@@ -910,15 +910,15 @@ import {
       width: 100%;
       box-sizing: border-box;
       padding: 8px 10px;
-      border: 1px solid #dfe1e6;
+      border: 1px solid var(--border-color);
       border-radius: 4px;
       font-size: 13px;
       font-family: inherit;
     }
     .portal-modal-footer {
       padding: 14px 20px;
-      background: #f4f5f7;
-      border-top: 1px solid #dfe1e6;
+      background: var(--bg-app);
+      border-top: 1px solid var(--border-color);
       display: flex;
       justify-content: flex-end;
       gap: 10px;
@@ -934,12 +934,12 @@ import {
       align-items: center;
     }
     .alert-success {
-      background: #e3fcef;
+      background: var(--success-bg);
       border: 1px solid #abf5d1;
       color: #006644;
     }
     .alert-error {
-      background: #ffebe6;
+      background: var(--danger-bg);
       border: 1px solid #ffbdad;
       color: #bf2600;
     }

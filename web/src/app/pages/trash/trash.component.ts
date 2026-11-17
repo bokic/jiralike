@@ -217,7 +217,7 @@ import { TrashItem } from '../../models/jira.models';
     }
     .stat-card {
       background: var(--card-bg, #ffffff);
-      border: 1px solid var(--border-color, #dfe1e6);
+      border: 1px solid var(--border-color, var(--border-color));
       border-radius: 8px;
       padding: 14px 18px;
       display: flex;
@@ -244,7 +244,7 @@ import { TrashItem } from '../../models/jira.models';
     .filter-input {
       max-width: 360px;
       padding: 8px 12px;
-      border: 1px solid var(--border-color, #dfe1e6);
+      border: 1px solid var(--border-color, var(--border-color));
       border-radius: 4px;
       font-size: 13px;
       background: var(--input-bg, #ffffff);
@@ -256,7 +256,7 @@ import { TrashItem } from '../../models/jira.models';
     }
     .table-card {
       background: var(--card-bg, #ffffff);
-      border: 1px solid var(--border-color, #dfe1e6);
+      border: 1px solid var(--border-color, var(--border-color));
       border-radius: 8px;
       overflow-x: auto;
     }
@@ -273,11 +273,11 @@ import { TrashItem } from '../../models/jira.models';
       font-weight: 700;
       text-transform: uppercase;
       color: var(--text-subtle, #5e6c84);
-      border-bottom: 2px solid var(--border-color, #dfe1e6);
+      border-bottom: 2px solid var(--border-color, var(--border-color));
     }
     .trash-table td {
       padding: 12px 14px;
-      border-bottom: 1px solid var(--border-color, #ebecf0);
+      border-bottom: 1px solid var(--border-color, var(--border-color));
       vertical-align: middle;
       color: var(--text-color, #172b4d);
     }
@@ -286,7 +286,7 @@ import { TrashItem } from '../../models/jira.models';
     }
     .issue-key-badge {
       font-weight: 700;
-      color: #0052cc;
+      color: var(--brand-primary);
     }
     .item-type-pill {
       background: var(--badge-bg, #f4f5f7);
@@ -296,15 +296,15 @@ import { TrashItem } from '../../models/jira.models';
       font-weight: 600;
     }
     .proj-badge {
-      background: #ebecf0;
-      color: #42526e;
+      background: var(--bg-subtle);
+      color: var(--text-secondary);
       padding: 2px 6px;
       border-radius: 3px;
       font-weight: 700;
       font-size: 11px;
     }
     .days-badge {
-      background: #e3fcef;
+      background: var(--success-bg);
       color: #006644;
       padding: 3px 8px;
       border-radius: 4px;
@@ -313,12 +313,12 @@ import { TrashItem } from '../../models/jira.models';
       white-space: nowrap;
     }
     .days-warn {
-      background: #fffae6;
+      background: var(--warning-bg);
       color: #ff8b00;
     }
     .days-danger {
-      background: #ffebe6;
-      color: #de350b;
+      background: var(--danger-bg);
+      color: var(--danger-color);
     }
     .action-buttons {
       display: inline-flex;
@@ -331,16 +331,16 @@ import { TrashItem } from '../../models/jira.models';
       cursor: pointer;
     }
     .text-danger {
-      color: #de350b;
+      color: var(--danger-color);
     }
     .text-danger:hover {
-      background: #ffebe6;
+      background: var(--danger-bg);
     }
     .loading-state, .empty-state {
       text-align: center;
       padding: 60px 20px;
       background: var(--card-bg, #ffffff);
-      border: 1px solid var(--border-color, #dfe1e6);
+      border: 1px solid var(--border-color, var(--border-color));
       border-radius: 8px;
     }
     .empty-icon {

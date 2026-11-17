@@ -15,12 +15,12 @@
   margin: 0;
   font-size: 24px;
   font-weight: 600;
-  color: #172b4d;
+  color: var(--text-primary);
 }
 
 .page-subtitle {
   margin: 4px 0 0;
-  color: #5e6c84;
+  color: var(--text-secondary);
   font-size: 14px;
 }
 
@@ -35,13 +35,13 @@
 }
 
 .alert-success {
-  background: #e3fcef;
+  background: var(--success-bg);
   color: #006644;
   border: 1px solid #abf5d1;
 }
 
 .alert-error {
-  background: #ffebe6;
+  background: var(--danger-bg);
   color: #bf2600;
   border: 1px solid #ffbdad;
 }
@@ -57,7 +57,7 @@
 .tab-nav {
   display: flex;
   gap: 8px;
-  border-bottom: 2px solid #ebecf0;
+  border-bottom: 2px solid var(--border-color);
   margin-bottom: 20px;
 }
 
@@ -67,7 +67,7 @@
   padding: 10px 16px;
   font-size: 14px;
   font-weight: 500;
-  color: #5e6c84;
+  color: var(--text-secondary);
   cursor: pointer;
   border-bottom: 2px solid transparent;
   margin-bottom: -2px;
@@ -75,18 +75,18 @@
 }
 
 .tab-btn:hover {
-  color: #0052cc;
+  color: var(--brand-primary);
 }
 
 .tab-btn.active {
-  color: #0052cc;
+  color: var(--brand-primary);
   border-bottom-color: #0052cc;
   font-weight: 600;
 }
 
 .section-card {
-  background: #ffffff;
-  border: 1px solid #dfe1e6;
+  background: var(--bg-surface);
+  border: 1px solid var(--border-color);
   border-radius: 6px;
   padding: 20px;
   box-shadow: 0 1px 2px rgba(9, 30, 66, 0.05);
@@ -103,13 +103,13 @@
   margin: 0;
   font-size: 18px;
   font-weight: 600;
-  color: #172b4d;
+  color: var(--text-primary);
 }
 
 .card-subtitle {
   margin: 3px 0 0;
   font-size: 13px;
-  color: #6b778c;
+  color: var(--text-secondary);
 }
 
 .data-table {
@@ -121,25 +121,25 @@
 .data-table th,
 .data-table td {
   padding: 10px 12px;
-  border-bottom: 1px solid #ebecf0;
+  border-bottom: 1px solid var(--border-color);
   text-align: left;
   vertical-align: middle;
 }
 
 .data-table th {
-  background: #f4f5f7;
-  color: #42526e;
+  background: var(--bg-app);
+  color: var(--text-secondary);
   font-weight: 600;
 }
 
 .data-table tr:hover td {
-  background: #fafbfc;
+  background: var(--bg-app);
 }
 
 .empty-cell {
   text-align: center;
   padding: 32px 16px;
-  color: #6b778c;
+  color: var(--text-secondary);
   font-style: italic;
 }
 
@@ -150,26 +150,26 @@
   font-weight: 600;
   border: none;
   cursor: pointer;
-  background: #ebecf0;
-  color: #6b778c;
+  background: var(--bg-subtle);
+  color: var(--text-secondary);
 }
 
 .toggle-pill.active {
-  background: #e3fcef;
+  background: var(--success-bg);
   color: #006644;
 }
 
 .url-code {
   font-size: 12px;
-  background: #f4f5f7;
+  background: var(--bg-app);
   padding: 2px 6px;
   border-radius: 3px;
-  color: #172b4d;
+  color: var(--text-primary);
 }
 
 .events-badge {
   font-size: 11.5px;
-  color: #42526e;
+  color: var(--text-secondary);
   word-break: break-all;
 }
 
@@ -182,7 +182,7 @@
 .payload-details {
   cursor: pointer;
   font-size: 12px;
-  color: #0052cc;
+  color: var(--brand-primary);
 }
 
 .json-box {
@@ -213,19 +213,19 @@
 
 .scheme-nav-item {
   padding: 12px;
-  border: 1px solid #ebecf0;
+  border: 1px solid var(--border-color);
   border-radius: 4px;
   cursor: pointer;
   transition: all 0.15s;
 }
 
 .scheme-nav-item:hover {
-  background: #f4f5f7;
+  background: var(--bg-app);
 }
 
 .scheme-nav-item.active {
   border-color: #0052cc;
-  background: #deebff;
+  background: var(--info-bg);
 }
 
 .scheme-nav-header {
@@ -237,7 +237,7 @@
 
 .scheme-nav-desc {
   font-size: 12px;
-  color: #5e6c84;
+  color: var(--text-secondary);
   margin-bottom: 4px;
 }
 
@@ -246,20 +246,20 @@
 }
 
 .project-assign-box {
-  background: #f4f5f7;
+  background: var(--bg-app);
   padding: 14px;
   border-radius: 4px;
-  border: 1px solid #dfe1e6;
+  border: 1px solid var(--border-color);
 }
 
 .add-entry-bar {
   display: flex;
   gap: 12px;
   align-items: flex-end;
-  background: #f4f5f7;
+  background: var(--bg-app);
   padding: 14px;
   border-radius: 4px;
-  border: 1px solid #dfe1e6;
+  border: 1px solid var(--border-color);
   flex-wrap: wrap;
 }
 
@@ -273,7 +273,7 @@
   font-size: 12px;
   font-weight: 500;
   margin-bottom: 4px;
-  color: #42526e;
+  color: var(--text-secondary);
 }
 
 .entry-action {
@@ -304,14 +304,14 @@
   display: block;
   font-size: 12.5px;
   font-weight: 600;
-  color: #172b4d;
+  color: var(--text-primary);
   margin-bottom: 4px;
 }
 
 .form-control {
   width: 100%;
   padding: 8px 10px;
-  border: 1px solid #dfe1e6;
+  border: 1px solid var(--border-color);
   border-radius: 3px;
   font-size: 13px;
   box-sizing: border-box;
@@ -344,7 +344,7 @@
 }
 
 .modal-card {
-  background: #ffffff;
+  background: var(--bg-surface);
   border-radius: 6px;
   width: 100%;
   max-width: 560px;
@@ -363,13 +363,13 @@
   justify-content: space-between;
   align-items: center;
   padding: 16px 20px;
-  border-bottom: 1px solid #ebecf0;
+  border-bottom: 1px solid var(--border-color);
 }
 
 .modal-header h3 {
   margin: 0;
   font-size: 17px;
-  color: #172b4d;
+  color: var(--text-primary);
 }
 
 .modal-close {
@@ -377,7 +377,7 @@
   border: none;
   font-size: 16px;
   cursor: pointer;
-  color: #6b778c;
+  color: var(--text-secondary);
 }
 
 .modal-body {
@@ -391,17 +391,17 @@
   justify-content: flex-end;
   gap: 10px;
   padding: 14px 20px;
-  background: #f4f5f7;
-  border-top: 1px solid #ebecf0;
+  background: var(--bg-app);
+  border-top: 1px solid var(--border-color);
 }
 
 .events-checkbox-grid {
   display: grid;
   grid-template-columns: 1fr 1fr;
   gap: 8px;
-  background: #fafbfc;
+  background: var(--bg-app);
   padding: 10px;
-  border: 1px solid #ebecf0;
+  border: 1px solid var(--border-color);
   border-radius: 4px;
 }
 
@@ -410,15 +410,15 @@
   align-items: center;
   gap: 6px;
   font-size: 12.5px;
-  color: #172b4d;
+  color: var(--text-primary);
   cursor: pointer;
 }
 
 .email-preview-frame {
-  border: 1px solid #dfe1e6;
+  border: 1px solid var(--border-color);
   border-radius: 4px;
   padding: 16px;
-  background: #ffffff;
+  background: var(--bg-surface);
   max-height: 400px;
   overflow: auto;
 }
@@ -428,5 +428,5 @@
 }
 
 .btn-danger-ghost:hover {
-  background: #ffebe6 !important;
+  background: var(--danger-bg) !important;
 }

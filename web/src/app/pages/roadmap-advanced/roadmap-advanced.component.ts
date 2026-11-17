@@ -764,13 +764,13 @@ interface FlattenedHierarchyRow {
       align-items: center;
       justify-content: space-between;
       padding: 10px 16px;
-      background-color: #e3fcef;
+      background-color: var(--success-bg);
       color: #006644;
       font-weight: 500;
       border-bottom: 1px solid #abf5d1;
     }
     .toast-error {
-      background-color: #ffebe6;
+      background-color: var(--danger-bg);
       color: #bf2600;
       border-color: #ffbdad;
     }
@@ -787,12 +787,12 @@ interface FlattenedHierarchyRow {
       justify-content: space-between;
       align-items: center;
       padding: 14px 20px 10px 20px;
-      border-bottom: 1px solid var(--color-border, #ebecf0);
+      border-bottom: 1px solid var(--color-border, var(--border-color));
       background-color: var(--color-surface, #ffffff);
     }
     .header-breadcrumb {
       font-size: 12px;
-      color: #6b778c;
+      color: var(--text-secondary);
       margin-bottom: 4px;
     }
     .header-row {
@@ -811,14 +811,14 @@ interface FlattenedHierarchyRow {
       gap: 8px;
     }
     .stat-chip {
-      background-color: #f4f5f7;
+      background-color: var(--bg-app);
       padding: 3px 8px;
       border-radius: 4px;
       font-size: 12px;
-      color: #42526e;
+      color: var(--text-secondary);
     }
     .progress-chip {
-      background-color: #deebff;
+      background-color: var(--info-bg);
       color: #0747a6;
     }
 
@@ -838,8 +838,8 @@ interface FlattenedHierarchyRow {
       justify-content: space-between;
       align-items: center;
       padding: 8px 20px;
-      background-color: #fafbfc;
-      border-bottom: 1px solid var(--color-border, #ebecf0);
+      background-color: var(--bg-app);
+      border-bottom: 1px solid var(--color-border, var(--border-color));
     }
     .toolbar-left, .toolbar-right {
       display: flex;
@@ -851,14 +851,14 @@ interface FlattenedHierarchyRow {
       align-items: center;
       gap: 6px;
       font-weight: 600;
-      border: 1px solid #dfe1e6;
-      background-color: #ffffff;
-      color: #42526e;
+      border: 1px solid var(--border-color);
+      background-color: var(--bg-surface);
+      color: var(--text-secondary);
     }
     .cpm-toggle-btn.active {
-      background-color: #ffebe6;
+      background-color: var(--danger-bg);
       border-color: #ff8f73;
-      color: #de350b;
+      color: var(--danger-color);
       box-shadow: 0 0 6px rgba(222, 53, 11, 0.25);
     }
     .glow-indicator {
@@ -880,7 +880,7 @@ interface FlattenedHierarchyRow {
     .toolbar-label {
       font-size: 12px;
       font-weight: 600;
-      color: #5e6c84;
+      color: var(--text-secondary);
     }
     .select-baseline {
       font-size: 12px;
@@ -906,17 +906,17 @@ interface FlattenedHierarchyRow {
       border-radius: 3px;
       font-weight: 600;
     }
-    .badge-success { background-color: #e3fcef; color: #006644; }
-    .badge-danger { background-color: #ffebe6; color: #bf2600; }
-    .badge-info { background-color: #deebff; color: #0747a6; }
-    .badge-warning { background-color: #fff0b3; color: #172b4d; }
+    .badge-success { background-color: var(--success-bg); color: #006644; }
+    .badge-danger { background-color: var(--danger-bg); color: #bf2600; }
+    .badge-info { background-color: var(--info-bg); color: #0747a6; }
+    .badge-warning { background-color: #fff0b3; color: var(--text-primary); }
 
     .cpm-summary-banner {
       display: flex;
       justify-content: space-between;
       align-items: center;
       padding: 8px 20px;
-      background-color: #ffebe6;
+      background-color: var(--danger-bg);
       border-bottom: 1px solid #ffbdad;
       color: #bf2600;
       font-size: 12px;
@@ -952,8 +952,8 @@ interface FlattenedHierarchyRow {
     .hierarchy-panel {
       display: flex;
       flex-direction: column;
-      border-right: 2px solid var(--color-border, #dfe1e6);
-      background-color: #ffffff;
+      border-right: 2px solid var(--color-border, var(--border-color));
+      background-color: var(--bg-surface);
       flex-shrink: 0;
       overflow-y: auto;
     }
@@ -961,11 +961,11 @@ interface FlattenedHierarchyRow {
       display: flex;
       align-items: center;
       height: 44px;
-      background-color: #f4f5f7;
-      border-bottom: 1px solid #dfe1e6;
+      background-color: var(--bg-app);
+      border-bottom: 1px solid var(--border-color);
       font-weight: 700;
       font-size: 12px;
-      color: #5e6c84;
+      color: var(--text-secondary);
       padding: 0 12px;
     }
     .th-title { flex: 1; }
@@ -987,7 +987,7 @@ interface FlattenedHierarchyRow {
       gap: 8px;
     }
     .hierarchy-row:hover {
-      background-color: #fafbfc;
+      background-color: var(--bg-app);
     }
     .hierarchy-row.critical-row {
       background-color: #fff5f2;
@@ -998,7 +998,7 @@ interface FlattenedHierarchyRow {
       border: none;
       cursor: pointer;
       font-size: 10px;
-      color: #6b778c;
+      color: var(--text-secondary);
       width: 16px;
       padding: 0;
     }
@@ -1027,18 +1027,18 @@ interface FlattenedHierarchyRow {
     }
     .item-key {
       font-weight: 600;
-      color: #0052cc;
+      color: var(--brand-primary);
       text-decoration: none;
       flex-shrink: 0;
     }
     .item-title {
       overflow: hidden;
       text-overflow: ellipsis;
-      color: #172b4d;
+      color: var(--text-primary);
     }
     .sp-rollup-badge {
       background-color: #dfe1e6;
-      color: #172b4d;
+      color: var(--text-primary);
       font-size: 11px;
       font-weight: 600;
       padding: 2px 6px;
@@ -1046,7 +1046,7 @@ interface FlattenedHierarchyRow {
     }
     .sp-badge {
       font-size: 11px;
-      color: #5e6c84;
+      color: var(--text-secondary);
     }
     .item-progress-cell {
       display: flex;
@@ -1068,7 +1068,7 @@ interface FlattenedHierarchyRow {
     }
     .prog-label {
       font-size: 11px;
-      color: #6b778c;
+      color: var(--text-secondary);
       width: 28px;
       text-align: right;
     }
@@ -1079,13 +1079,13 @@ interface FlattenedHierarchyRow {
       overflow-x: auto;
       overflow-y: auto;
       position: relative;
-      background-color: #ffffff;
+      background-color: var(--bg-surface);
     }
     .timeline-header {
       display: flex;
       height: 44px;
-      background-color: #f4f5f7;
-      border-bottom: 1px solid #dfe1e6;
+      background-color: var(--bg-app);
+      border-bottom: 1px solid var(--border-color);
       position: sticky;
       top: 0;
       z-index: 10;
@@ -1095,16 +1095,16 @@ interface FlattenedHierarchyRow {
       flex-direction: column;
       align-items: center;
       justify-content: center;
-      border-right: 1px solid #ebecf0;
+      border-right: 1px solid var(--border-color);
       font-size: 11px;
       flex-shrink: 0;
-      color: #5e6c84;
+      color: var(--text-secondary);
     }
     .day-header-cell.weekend {
-      background-color: #ebecf0;
+      background-color: var(--bg-subtle);
     }
     .day-header-cell.today {
-      background-color: #deebff;
+      background-color: var(--info-bg);
       font-weight: 700;
       color: #0747a6;
     }
@@ -1128,7 +1128,7 @@ interface FlattenedHierarchyRow {
       top: 0;
       bottom: 0;
       background-color: rgba(9, 30, 66, 0.03);
-      border-right: 1px solid #ebecf0;
+      border-right: 1px solid var(--border-color);
     }
     .today-line {
       position: absolute;
@@ -1226,7 +1226,7 @@ interface FlattenedHierarchyRow {
       border-radius: 0 4px 4px 0;
     }
     .resize-handle:hover {
-      background-color: #ffffff;
+      background-color: var(--bg-surface);
     }
 
     /* Baseline Ghost Overlay */
@@ -1251,12 +1251,12 @@ interface FlattenedHierarchyRow {
       white-space: nowrap;
     }
     .slippage-pill.slipped {
-      background-color: #ffebe6;
+      background-color: var(--danger-bg);
       color: #bf2600;
       border: 1px solid #ffbdad;
     }
     .slippage-pill.ahead {
-      background-color: #e3fcef;
+      background-color: var(--success-bg);
       color: #006644;
       border: 1px solid #abf5d1;
     }
@@ -1266,16 +1266,16 @@ interface FlattenedHierarchyRow {
       flex: 1;
       padding: 20px;
       overflow-y: auto;
-      background-color: #fafbfc;
+      background-color: var(--bg-app);
     }
     .capacity-header-card {
       display: flex;
       justify-content: space-between;
       align-items: center;
       padding: 16px 20px;
-      background-color: #ffffff;
+      background-color: var(--bg-surface);
       border-radius: 6px;
-      border: 1px solid #dfe1e6;
+      border: 1px solid var(--border-color);
       margin-bottom: 20px;
     }
     .card-title-group h2 {
@@ -1285,7 +1285,7 @@ interface FlattenedHierarchyRow {
     .card-subtitle {
       margin: 0;
       font-size: 13px;
-      color: #6b778c;
+      color: var(--text-secondary);
     }
     .capacity-window-badge {
       display: flex;
@@ -1298,9 +1298,9 @@ interface FlattenedHierarchyRow {
       border-radius: 4px;
       font-weight: 600;
     }
-    .utilization-chip.under_allocated { background-color: #e3fcef; color: #006644; }
-    .utilization-chip.balanced { background-color: #deebff; color: #0747a6; }
-    .utilization-chip.over_allocated { background-color: #ffebe6; color: #bf2600; }
+    .utilization-chip.under_allocated { background-color: var(--success-bg); color: #006644; }
+    .utilization-chip.balanced { background-color: var(--info-bg); color: #0747a6; }
+    .utilization-chip.over_allocated { background-color: var(--danger-bg); color: #bf2600; }
 
     .capacity-grid {
       display: grid;
@@ -1308,8 +1308,8 @@ interface FlattenedHierarchyRow {
       gap: 16px;
     }
     .capacity-card {
-      background-color: #ffffff;
-      border: 1px solid #dfe1e6;
+      background-color: var(--bg-surface);
+      border: 1px solid var(--border-color);
       border-radius: 6px;
       padding: 16px;
       display: flex;
@@ -1354,7 +1354,7 @@ interface FlattenedHierarchyRow {
     }
     .user-username {
       font-size: 12px;
-      color: #6b778c;
+      color: var(--text-secondary);
     }
     .status-pill {
       font-size: 11px;
@@ -1362,9 +1362,9 @@ interface FlattenedHierarchyRow {
       padding: 3px 8px;
       border-radius: 12px;
     }
-    .status-pill.under_allocated { background-color: #e3fcef; color: #006644; }
-    .status-pill.balanced { background-color: #deebff; color: #0747a6; }
-    .status-pill.over_allocated { background-color: #ffebe6; color: #bf2600; }
+    .status-pill.under_allocated { background-color: var(--success-bg); color: #006644; }
+    .status-pill.balanced { background-color: var(--info-bg); color: #0747a6; }
+    .status-pill.over_allocated { background-color: var(--danger-bg); color: #bf2600; }
 
     .user-metrics-row {
       display: flex;
@@ -1372,14 +1372,14 @@ interface FlattenedHierarchyRow {
       font-size: 12px;
     }
     .metric-label {
-      color: #5e6c84;
+      color: var(--text-secondary);
       display: block;
     }
 
     .utilization-bar-container {
       position: relative;
       height: 10px;
-      background-color: #ebecf0;
+      background-color: var(--bg-subtle);
       border-radius: 5px;
       overflow: hidden;
     }
@@ -1401,13 +1401,13 @@ interface FlattenedHierarchyRow {
     }
 
     .assigned-items-section {
-      border-top: 1px solid #ebecf0;
+      border-top: 1px solid var(--border-color);
       padding-top: 10px;
     }
     .assigned-header {
       font-size: 11px;
       font-weight: 700;
-      color: #6b778c;
+      color: var(--text-secondary);
       text-transform: uppercase;
       margin-bottom: 6px;
     }
@@ -1424,12 +1424,12 @@ interface FlattenedHierarchyRow {
       gap: 6px;
       font-size: 12px;
       padding: 3px 6px;
-      background-color: #fafbfc;
+      background-color: var(--bg-app);
       border-radius: 3px;
     }
     .item-link {
       font-weight: 600;
-      color: #0052cc;
+      color: var(--brand-primary);
       text-decoration: none;
     }
     .item-title-mini {
@@ -1440,12 +1440,12 @@ interface FlattenedHierarchyRow {
     }
     .item-stat-badge {
       font-size: 10px;
-      color: #5e6c84;
+      color: var(--text-secondary);
     }
     .item-hrs-badge {
       font-weight: 700;
       font-size: 11px;
-      color: #172b4d;
+      color: var(--text-primary);
     }
     .no-items-text {
       font-size: 12px;
@@ -1467,7 +1467,7 @@ interface FlattenedHierarchyRow {
       z-index: 1000;
     }
     .modal-dialog {
-      background-color: #ffffff;
+      background-color: var(--bg-surface);
       border-radius: 6px;
       width: 520px;
       max-width: 90vw;
@@ -1480,7 +1480,7 @@ interface FlattenedHierarchyRow {
       justify-content: space-between;
       align-items: center;
       padding: 16px 20px;
-      border-bottom: 1px solid #dfe1e6;
+      border-bottom: 1px solid var(--border-color);
     }
     .modal-header h3 { margin: 0; font-size: 16px; }
     .modal-close {
@@ -1498,15 +1498,15 @@ interface FlattenedHierarchyRow {
     .modal-intro {
       margin: 0;
       font-size: 13px;
-      color: #6b778c;
+      color: var(--text-secondary);
     }
     .modal-footer {
       display: flex;
       justify-content: flex-end;
       gap: 10px;
       padding: 12px 20px;
-      border-top: 1px solid #dfe1e6;
-      background-color: #fafbfc;
+      border-top: 1px solid var(--border-color);
+      background-color: var(--bg-app);
     }
     .form-group {
       display: flex;
@@ -1520,13 +1520,13 @@ interface FlattenedHierarchyRow {
     }
     .form-control {
       padding: 6px 10px;
-      border: 1px solid #dfe1e6;
+      border: 1px solid var(--border-color);
       border-radius: 4px;
       font-size: 13px;
     }
     .form-hint {
       font-size: 11px;
-      color: #6b778c;
+      color: var(--text-secondary);
     }
   `],
 })
