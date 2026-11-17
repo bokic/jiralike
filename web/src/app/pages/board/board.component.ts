@@ -3,6 +3,7 @@ import { CommonModule } from '@angular/common';
 import { FormsModule } from '@angular/forms';
 import { ActivatedRoute, Router, RouterLink } from '@angular/router';
 import { ApiService } from '../../services/api.service';
+import { IconComponent } from '../../components/icon/icon.component';
 import {
   AvailableTransition,
   BoardColumn,
@@ -32,7 +33,7 @@ export interface SwimlaneRow {
 @Component({
   selector: 'app-board',
   standalone: true,
-  imports: [CommonModule, FormsModule, RouterLink],
+  imports: [CommonModule, FormsModule, RouterLink, IconComponent],
   styles: [
     `
       .board-shell {
@@ -533,22 +534,22 @@ export interface SwimlaneRow {
             <button
               type="button"
               role="tab"
-              class="mode-btn"
+              class="mode-btn u-inline-flex u-items-center u-gap-1"
               [class.active]="viewMode() === 'board'"
               [attr.aria-selected]="viewMode() === 'board'"
               (click)="setViewMode('board')"
             >
-              📋 Board
+              <app-icon name="board" [size]="14" /> Board
             </button>
             <button
               type="button"
               role="tab"
-              class="mode-btn"
+              class="mode-btn u-inline-flex u-items-center u-gap-1"
               [class.active]="viewMode() === 'backlog'"
               [attr.aria-selected]="viewMode() === 'backlog'"
               (click)="setViewMode('backlog')"
             >
-              🗂 Backlog
+              <app-icon name="backlog" [size]="14" /> Backlog
             </button>
           </div>
         </div>
@@ -556,16 +557,16 @@ export interface SwimlaneRow {
         <div class="board-top-actions">
           @if (viewMode() === 'board' && activeBoard()?.board_type === 'scrum' && activeSprintForBoard(); as actSp) {
             <button type="button" class="btn btn-primary btn-sm" (click)="openCompleteSprintModal(actSp)">
-              ✓ Complete Sprint ({{ actSp.name }})
+              <app-icon name="check" [size]="14" /> Complete Sprint ({{ actSp.name }})
             </button>
           }
           <button type="button" class="btn btn-secondary btn-sm" (click)="openCreateBoardModal()">
-            + New Board
+            <app-icon name="plus" [size]="14" /> New Board
           </button>
           <button type="button" class="btn btn-secondary btn-sm" (click)="openBoardConfigModal()" title="Configure Columns, WIP Limits &amp; Quick Filters">
-            ⚙ Configure
+            <app-icon name="settings" [size]="14" /> Configure
           </button>
-          <a routerLink="/create" class="btn btn-primary btn-sm">+ Create Issue</a>
+          <a routerLink="/create" class="btn btn-primary btn-sm"><app-icon name="plus" [size]="14" /> Create Issue</a>
         </div>
       </div>
 
@@ -573,7 +574,7 @@ export interface SwimlaneRow {
       <div class="quick-filters-bar">
         <div class="qf-left">
           <div class="qf-search-wrap">
-            <span class="qf-search-icon">🔍</span>
+            <span class="qf-search-icon"><app-icon name="search" [size]="13" /></span>
             <input
               type="text"
               id="board-search"
@@ -591,13 +592,13 @@ export interface SwimlaneRow {
                 title="Clear search"
                 (click)="searchQuery.set('')"
               >
-                ✕
+                <app-icon name="close" [size]="12" />
               </button>
             }
           </div>
 
           <div class="qf-pills">
-            <span class="qf-label">⚡ Quick Filters</span>
+            <span class="qf-label u-inline-flex u-items-center u-gap-1"><app-icon name="filter" [size]="12" /> Quick Filters</span>
             @if (activeBoard(); as board) {
               @for (qf of board.quick_filters; track qf.id) {
                 <button
@@ -614,10 +615,10 @@ export interface SwimlaneRow {
             @if (activeQuickFilterIds().length > 0 || selectedEpicFilter() || selectedVersionFilter()) {
               <button
                 type="button"
-                class="qf-clear-btn"
+                class="qf-clear-btn u-inline-flex u-items-center u-gap-1"
                 (click)="clearAllQuickFilters()"
               >
-                ✕ Clear
+                <app-icon name="close" [size]="12" /> Clear
               </button>
             }
           </div>
