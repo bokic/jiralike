@@ -49,6 +49,22 @@ a:hover {
   text-decoration: underline;
 }
 
+/* Global Keyboard Focus Outlines */
+a:focus-visible,
+button:focus-visible,
+[role='button']:focus-visible,
+[tabindex]:focus-visible,
+summary:focus-visible {
+  outline: 2px solid var(--brand-primary);
+  outline-offset: 2px;
+}
+
+.top-navbar a:focus-visible,
+.top-navbar button:focus-visible {
+  outline: 2px solid #ffffff;
+  outline-offset: 2px;
+}
+
 /* Navbar */
 .top-navbar {
   height: 54px;
