@@ -3,6 +3,7 @@ import { CommonModule } from '@angular/common';
 import { FormsModule } from '@angular/forms';
 import { RouterModule } from '@angular/router';
 import { ApiService } from '../../services/api.service';
+import { UiFeedbackService } from '../../services/ui-feedback.service';
 import { InboundMailHandler, InboundMailLog, Project, IssueTypeDef, User } from '../../models/jira.models';
 
 @Component({
@@ -355,6 +356,7 @@ import { InboundMailHandler, InboundMailLog, Project, IssueTypeDef, User } from 
 })
 export class MailHandlersComponent implements OnInit {
   readonly api = inject(ApiService);
+  private readonly ui = inject(UiFeedbackService);
 
   readonly activeTab = signal<'handlers' | 'logs' | 'simulator'>('handlers');
   readonly loading = signal(false);
@@ -467,7 +469,7 @@ export class MailHandlersComponent implements OnInit {
   }
 
   async deleteHandler(id: number): Promise<void> {
-    if (!confirm('Are you sure you want to delete this inbound mail handler?')) return;
+    if (!(await this.ui.confirm({ title: 'Delete Mail Handler', message: 'Are you sure you want to delete this inbound mail handler?', danger: true }))) return;
     this.loading.set(true);
     try {
       await this.api.deleteMailHandler(id);

@@ -9,6 +9,7 @@ import { CommonModule } from '@angular/common';
 import { FormsModule } from '@angular/forms';
 import { RouterLink } from '@angular/router';
 import { ApiService } from '../../services/api.service';
+import { UiFeedbackService } from '../../services/ui-feedback.service';
 import {
   BaselineDetailResponse,
   CapacityResponse,
@@ -1532,6 +1533,7 @@ interface FlattenedHierarchyRow {
 })
 export class RoadmapAdvancedComponent implements OnInit {
   readonly api = inject(ApiService);
+  private readonly ui = inject(UiFeedbackService);
 
   // Active view: 'timeline' or 'capacity'
   readonly activeView = signal<'timeline' | 'capacity'>('timeline');
@@ -2016,7 +2018,7 @@ export class RoadmapAdvancedComponent implements OnInit {
 
   async deleteSelectedBaseline(): Promise<void> {
     const bid = this.selectedBaselineId();
-    if (!bid || !confirm('Permanently delete this baseline snapshot?')) return;
+    if (!bid || !(await this.ui.confirm({ title: 'Delete Baseline', message: 'Permanently delete this baseline snapshot?', danger: true }))) return;
     try {
       await this.api.deleteTimelineBaseline(bid);
       this.showToast('Baseline deleted successfully.');

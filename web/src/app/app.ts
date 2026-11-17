@@ -5,6 +5,7 @@ import { Router, RouterLink, RouterLinkActive, RouterOutlet, NavigationEnd } fro
 import { Subscription } from 'rxjs';
 import { ApiService } from './services/api.service';
 import { I18nService, SUPPORTED_LANGUAGES, I18nPipe, LocaleDatePipe } from './services/i18n.service';
+import { UiFeedbackService } from './services/ui-feedback.service';
 import { IconComponent } from './components/icon/icon.component';
 import {
   InAppNotification,
@@ -34,6 +35,7 @@ interface CommandItem {
 export class App implements OnInit, OnDestroy {
   readonly api = inject(ApiService);
   readonly i18n = inject(I18nService);
+  readonly ui = inject(UiFeedbackService);
   private readonly router = inject(Router);
 
   readonly priorities = PRIORITIES;
@@ -230,6 +232,16 @@ export class App implements OnInit, OnDestroy {
     }
 
     if (e.key === 'Escape') {
+      if (this.ui.activeConfirm()) {
+        this.ui.resolveConfirm(false);
+        e.preventDefault();
+        return;
+      }
+      if (this.ui.activePrompt()) {
+        this.ui.resolvePrompt(false);
+        e.preventDefault();
+        return;
+      }
       if (this.showCreateModal()) {
         this.showCreateModal.set(false);
         e.preventDefault();

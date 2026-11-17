@@ -2,6 +2,7 @@ import { Component, OnInit, inject, signal } from '@angular/core';
 import { CommonModule } from '@angular/common';
 import { FormsModule } from '@angular/forms';
 import { ApiService } from '../../services/api.service';
+import { UiFeedbackService } from '../../services/ui-feedback.service';
 import {
   NotificationScheme,
   NotificationSchemeEntry,
@@ -21,6 +22,7 @@ import {
 })
 export class NotificationsAdminComponent implements OnInit {
   readonly api = inject(ApiService);
+  private readonly ui = inject(UiFeedbackService);
 
   readonly activeTab = signal<'webhooks' | 'schemes' | 'smtp'>('webhooks');
   readonly loading = signal<boolean>(false);
@@ -207,7 +209,7 @@ export class NotificationsAdminComponent implements OnInit {
   }
 
   async deleteWebhook(wh: Webhook): Promise<void> {
-    if (!confirm(`Delete webhook "${wh.name}"?`)) return;
+    if (!(await this.ui.confirm({ title: 'Delete Webhook', message: `Delete webhook "${wh.name}"?`, danger: true }))) return;
     try {
       await this.api.deleteWebhook(wh.id);
       this.setFeedback('success', 'Webhook deleted.');
@@ -264,10 +266,10 @@ export class NotificationsAdminComponent implements OnInit {
 
   async deleteScheme(s: NotificationScheme): Promise<void> {
     if (s.is_default) {
-      alert('Cannot delete the default notification scheme.');
+      this.ui.toast('Cannot delete the default notification scheme.', 'warning');
       return;
     }
-    if (!confirm(`Delete scheme "${s.name}"?`)) return;
+    if (!(await this.ui.confirm({ title: 'Delete Notification Scheme', message: `Delete scheme "${s.name}"?`, danger: true }))) return;
     try {
       await this.api.deleteNotificationScheme(s.id);
       this.setFeedback('success', 'Scheme deleted.');

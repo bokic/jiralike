@@ -3,6 +3,7 @@ import { CommonModule } from '@angular/common';
 import { FormsModule } from '@angular/forms';
 import { RouterLink } from '@angular/router';
 import { ApiService } from '../../services/api.service';
+import { UiFeedbackService } from '../../services/ui-feedback.service';
 import {
   CustomFieldDef,
   CustomFieldType,
@@ -692,6 +693,7 @@ import {
 })
 export class CustomFieldsComponent implements OnInit {
   readonly api = inject(ApiService);
+  private readonly ui = inject(UiFeedbackService);
 
   readonly activeTab = signal<'fields' | 'configurations' | 'screens' | 'schemes'>('fields');
   readonly toastMsg = signal('');
@@ -837,7 +839,7 @@ export class CustomFieldsComponent implements OnInit {
   }
 
   async editOption(opt: any): Promise<void> {
-    const newVal = prompt('Edit option value:', opt.value);
+    const newVal = await this.ui.prompt({ title: 'Edit Option', message: 'Edit option value:', defaultValue: opt.value });
     if (newVal === null || !newVal.trim() || newVal === opt.value) return;
     try {
       await this.api.updateCustomFieldOption(opt.id, { value: newVal.trim() });

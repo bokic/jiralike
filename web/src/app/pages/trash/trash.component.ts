@@ -2,6 +2,7 @@ import { Component, OnInit, computed, inject, signal } from '@angular/core';
 import { CommonModule } from '@angular/common';
 import { FormsModule } from '@angular/forms';
 import { ApiService } from '../../services/api.service';
+import { UiFeedbackService } from '../../services/ui-feedback.service';
 import { TrashItem } from '../../models/jira.models';
 
 @Component({
@@ -365,6 +366,7 @@ import { TrashItem } from '../../models/jira.models';
 })
 export class TrashComponent implements OnInit {
   api = inject(ApiService);
+  private ui = inject(UiFeedbackService);
 
   trashItems = signal<TrashItem[]>([]);
   isLoading = signal<boolean>(true);
@@ -414,7 +416,7 @@ export class TrashComponent implements OnInit {
   }
 
   async purgeItem(item: TrashItem): Promise<void> {
-    if (!confirm(`Are you sure you want to permanently delete ${item.item_key}? This action cannot be undone.`)) {
+    if (!(await this.ui.confirm({ title: 'Permanently Delete Item', message: `Are you sure you want to permanently delete ${item.item_key}? This action cannot be undone.`, confirmText: 'Delete Forever', danger: true }))) {
       return;
     }
     try {
@@ -427,7 +429,7 @@ export class TrashComponent implements OnInit {
   }
 
   async purgeAll(): Promise<void> {
-    if (!confirm(`Are you sure you want to permanently empty all ${this.trashItems().length} items from the trash bin?`)) {
+    if (!(await this.ui.confirm({ title: 'Empty Trash Bin', message: `Are you sure you want to permanently empty all ${this.trashItems().length} items from the trash bin?`, confirmText: 'Empty Trash', danger: true }))) {
       return;
     }
     this.isPurging.set(true);

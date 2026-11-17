@@ -3,6 +3,7 @@ import { CommonModule } from '@angular/common';
 import { FormsModule } from '@angular/forms';
 import { RouterLink } from '@angular/router';
 import { ApiService } from '../../services/api.service';
+import { UiFeedbackService } from '../../services/ui-feedback.service';
 import {
   ProjectComponent,
   ProjectVersion,
@@ -591,6 +592,7 @@ import {
 })
 export class ProjectSettingsComponent implements OnInit {
   readonly api = inject(ApiService);
+  private readonly ui = inject(UiFeedbackService);
 
   readonly activeTab = signal<'components' | 'versions' | 'issue-types' | 'resolutions' | 'project-details'>('components');
   readonly selectedProjectId = signal<number>(1);
@@ -874,7 +876,7 @@ export class ProjectSettingsComponent implements OnInit {
     const pid = this.selectedProjectId();
     const cur = this.api.projects().find(p => p.id === pid);
     if (!pid || !cur) return;
-    if (!confirm(`Are you absolutely sure you want to permanently delete project '${cur.name}' (${cur.key}) and ALL its items?`)) {
+    if (!(await this.ui.confirm({ title: 'Delete Project', message: `Are you absolutely sure you want to permanently delete project '${cur.name}' (${cur.key}) and ALL its items?`, confirmText: 'Delete Project', danger: true }))) {
       return;
     }
     this.errorMsg.set('');
@@ -891,7 +893,7 @@ export class ProjectSettingsComponent implements OnInit {
   }
 
   async deleteIssueType(it: any): Promise<void> {
-    if (!confirm(`Delete issue type '${it.name}'?`)) return;
+    if (!(await this.ui.confirm({ title: 'Delete Issue Type', message: `Delete issue type '${it.name}'?`, danger: true }))) return;
     this.errorMsg.set('');
     try {
       await this.api.deleteIssueType(it.id);
@@ -902,7 +904,7 @@ export class ProjectSettingsComponent implements OnInit {
   }
 
   async deleteResolution(r: any): Promise<void> {
-    if (!confirm(`Delete resolution '${r.name}'?`)) return;
+    if (!(await this.ui.confirm({ title: 'Delete Resolution', message: `Delete resolution '${r.name}'?`, danger: true }))) return;
     this.errorMsg.set('');
     try {
       await this.api.deleteResolution(r.id);

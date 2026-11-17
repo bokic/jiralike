@@ -3,6 +3,7 @@ import { CommonModule } from '@angular/common';
 import { FormsModule } from '@angular/forms';
 import { Router, RouterLink } from '@angular/router';
 import { ApiService } from '../../services/api.service';
+import { UiFeedbackService } from '../../services/ui-feedback.service';
 import {
   CannedResponse,
   CustomerOrganization,
@@ -1228,6 +1229,7 @@ import {
 })
 export class ServiceDeskAgentComponent implements OnInit {
   private readonly api = inject(ApiService);
+  private readonly ui = inject(UiFeedbackService);
   private readonly router = inject(Router);
 
   readonly serviceDesks = signal<ServiceDesk[]>([]);
@@ -1518,7 +1520,7 @@ export class ServiceDeskAgentComponent implements OnInit {
   }
 
   async deleteCanned(id: number): Promise<void> {
-    if (!confirm('Are you sure you want to delete this canned response?')) return;
+    if (!(await this.ui.confirm({ title: 'Delete Canned Response', message: 'Are you sure you want to delete this canned response?', danger: true }))) return;
     try {
       await this.api.deleteCannedResponse(id);
       await this.loadCanned();
@@ -1528,10 +1530,10 @@ export class ServiceDeskAgentComponent implements OnInit {
     }
   }
 
-  openCreateSlaModal(): void {
-    const name = prompt('Enter SLA Metric Name (e.g. "Time to first response", "VIP Resolution"):');
+  async openCreateSlaModal(): Promise<void> {
+    const name = await this.ui.prompt({ title: 'New SLA Metric', message: 'Enter SLA Metric Name (e.g. "Time to first response", "VIP Resolution"):' });
     if (!name) return;
-    const targetHours = prompt('Enter Target Duration in hours (e.g. 4):', '4');
+    const targetHours = await this.ui.prompt({ title: 'SLA Target Duration', message: 'Enter Target Duration in hours (e.g. 4):', defaultValue: '4' });
     const targetSec = (parseFloat(targetHours || '4') || 4) * 3600;
 
     this.api
@@ -1551,8 +1553,8 @@ export class ServiceDeskAgentComponent implements OnInit {
       });
   }
 
-  openCreateCalendarModal(): void {
-    const name = prompt('Enter Calendar Name:');
+  async openCreateCalendarModal(): Promise<void> {
+    const name = await this.ui.prompt({ title: 'New SLA Calendar', message: 'Enter Calendar Name:' });
     if (!name) return;
     this.api
       .createSlaCalendar({
@@ -1645,7 +1647,7 @@ export class ServiceDeskAgentComponent implements OnInit {
   async deleteSelectedOrg(): Promise<void> {
     const org = this.activeOrg();
     if (!org) return;
-    if (!confirm(`Are you sure you want to delete organization "${org.name}"?`)) return;
+    if (!(await this.ui.confirm({ title: 'Delete Organization', message: `Are you sure you want to delete organization "${org.name}"?`, danger: true }))) return;
     try {
       await this.api.deleteOrganization(org.id);
       this.activeOrg.set(null);
@@ -1692,7 +1694,7 @@ export class ServiceDeskAgentComponent implements OnInit {
   async removeOrgMember(userId: number): Promise<void> {
     const org = this.activeOrg();
     if (!org) return;
-    if (!confirm('Are you sure you want to remove this member from the organization?')) return;
+    if (!(await this.ui.confirm({ title: 'Remove Member', message: 'Are you sure you want to remove this member from the organization?', confirmText: 'Remove', danger: true }))) return;
     try {
       await this.api.removeOrganizationMember(org.id, userId);
       await this.loadOrgMembers(org.id);

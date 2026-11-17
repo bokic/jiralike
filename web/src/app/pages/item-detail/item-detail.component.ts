@@ -3,6 +3,7 @@ import { CommonModule } from '@angular/common';
 import { FormsModule } from '@angular/forms';
 import { ActivatedRoute, Router, RouterLink } from '@angular/router';
 import { ApiService } from '../../services/api.service';
+import { UiFeedbackService } from '../../services/ui-feedback.service';
 import { RichEditorComponent } from '../../components/rich-editor/rich-editor.component';
 import { MarkdownViewerComponent } from '../../components/rich-editor/markdown-viewer.component';
 import {
@@ -2369,6 +2370,7 @@ import {
 })
 export class ItemDetailComponent implements OnInit, OnDestroy {
   readonly api = inject(ApiService);
+  private readonly ui = inject(UiFeedbackService);
   private readonly route = inject(ActivatedRoute);
   private readonly router = inject(Router);
 
@@ -2837,7 +2839,7 @@ export class ItemDetailComponent implements OnInit, OnDestroy {
   async deleteComment(commentId: number): Promise<void> {
     const cur = this.item();
     if (!cur) return;
-    if (!confirm('Are you sure you want to delete this comment?')) return;
+    if (!(await this.ui.confirm({ title: 'Delete Comment', message: 'Are you sure you want to delete this comment?', danger: true }))) return;
     try {
       await this.api.deleteComment(commentId);
       this.showToast('Comment deleted');
@@ -2938,7 +2940,7 @@ export class ItemDetailComponent implements OnInit, OnDestroy {
   async deleteCurrentItem(): Promise<void> {
     const cur = this.item();
     if (!cur) return;
-    if (!confirm(`Are you sure you want to move ${cur.key} to the Trash Bin? You can restore it anytime within 30 days.`)) {
+    if (!(await this.ui.confirm({ title: 'Move to Trash', message: `Are you sure you want to move ${cur.key} to the Trash Bin? You can restore it anytime within 30 days.`, confirmText: 'Move to Trash', danger: true }))) {
       return;
     }
     await this.api.deleteItem(cur.key);
@@ -3154,7 +3156,7 @@ export class ItemDetailComponent implements OnInit, OnDestroy {
   async deleteWorklog(wlId: number): Promise<void> {
     const cur = this.item();
     if (!cur) return;
-    if (!confirm('Are you sure you want to delete this worklog?')) return;
+    if (!(await this.ui.confirm({ title: 'Delete Worklog', message: 'Are you sure you want to delete this worklog?', danger: true }))) return;
     try {
       await this.api.deleteWorklog(wlId, 'auto');
       await this.reloadDetail(cur.key);
@@ -3330,7 +3332,7 @@ export class ItemDetailComponent implements OnInit, OnDestroy {
   async unlinkDev(type: 'branches' | 'commits' | 'pull-requests' | 'builds' | string, id: number): Promise<void> {
     const cur = this.item();
     if (!cur) return;
-    if (!confirm(`Are you sure you want to unlink this item?`)) return;
+    if (!(await this.ui.confirm({ title: 'Unlink Item', message: 'Are you sure you want to unlink this item?', confirmText: 'Unlink', danger: true }))) return;
     try {
       await this.api.unlinkItemDevelopment(cur.key, type, id);
       await this.reloadDetail(cur.key);

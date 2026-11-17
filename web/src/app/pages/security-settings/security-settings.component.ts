@@ -4,6 +4,7 @@ import { FormsModule } from '@angular/forms';
 import { RouterModule } from '@angular/router';
 import { DomSanitizer, SafeHtml } from '@angular/platform-browser';
 import { ApiService } from '../../services/api.service';
+import { UiFeedbackService } from '../../services/ui-feedback.service';
 import { SsoConfig, TwoFactorSetup, TwoFactorStatus } from '../../models/jira.models';
 
 @Component({
@@ -283,6 +284,7 @@ import { SsoConfig, TwoFactorSetup, TwoFactorStatus } from '../../models/jira.mo
 })
 export class SecuritySettingsComponent implements OnInit {
   readonly api = inject(ApiService);
+  private readonly ui = inject(UiFeedbackService);
   private readonly sanitizer = inject(DomSanitizer);
 
   readonly loading = signal(false);
@@ -367,7 +369,7 @@ export class SecuritySettingsComponent implements OnInit {
   }
 
   async disable2fa(): Promise<void> {
-    if (!confirm('Are you sure you want to disable Two-Factor Authentication on your account?')) return;
+    if (!(await this.ui.confirm({ title: 'Disable 2FA', message: 'Are you sure you want to disable Two-Factor Authentication on your account?', confirmText: 'Disable 2FA', danger: true }))) return;
     this.loading.set(true);
     this.feedback.set(null);
     try {

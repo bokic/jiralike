@@ -3,6 +3,7 @@ import { CommonModule } from '@angular/common';
 import { FormsModule } from '@angular/forms';
 import { RouterLink } from '@angular/router';
 import { ApiService } from '../../services/api.service';
+import { UiFeedbackService } from '../../services/ui-feedback.service';
 import {
   Dashboard,
   DashboardGadget,
@@ -839,6 +840,7 @@ import {
 })
 export class DashboardsComponent implements OnInit {
   api = inject(ApiService);
+  private ui = inject(UiFeedbackService);
 
   dashboards = signal<Dashboard[]>([]);
   activeDashboard = signal<Dashboard | null>(null);
@@ -1027,7 +1029,7 @@ export class DashboardsComponent implements OnInit {
   }
 
   async deleteGadget(gadget: DashboardGadget): Promise<void> {
-    if (!confirm(`Are you sure you want to remove "${gadget.title}" from this dashboard?`)) {
+    if (!(await this.ui.confirm({ title: 'Remove Gadget', message: `Are you sure you want to remove "${gadget.title}" from this dashboard?`, confirmText: 'Remove', danger: true }))) {
       return;
     }
     try {
@@ -1188,7 +1190,7 @@ export class DashboardsComponent implements OnInit {
 
   async deleteCurrentDashboard(): Promise<void> {
     const cur = this.activeDashboard();
-    if (!cur || !confirm(`Are you sure you want to delete dashboard "${cur.name}"?`)) {
+    if (!cur || !(await this.ui.confirm({ title: 'Delete Dashboard', message: `Are you sure you want to delete dashboard "${cur.name}"?`, danger: true }))) {
       return;
     }
     try {

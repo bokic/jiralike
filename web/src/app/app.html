@@ -705,4 +705,79 @@
       </div>
     </div>
   }
+
+  <!-- 5. Global Confirm Dialog -->
+  @if (ui.activeConfirm(); as dlg) {
+    <div class="modal-backdrop" (click)="ui.resolveConfirm(false)">
+      <div class="modal-card modal-card-sm" role="dialog" aria-modal="true" (click)="$event.stopPropagation()">
+        <div class="modal-header">
+          <h3 class="u-m-0" style="font-size: 16px; font-weight: 600;">{{ dlg.title }}</h3>
+          <button type="button" class="btn btn-ghost btn-sm" (click)="ui.resolveConfirm(false)" aria-label="Close">
+            <app-icon name="close" [size]="15" />
+          </button>
+        </div>
+        <div class="modal-body u-p-4">
+          <p class="u-m-0 u-text-primary" style="font-size: 14px; line-height: 1.5;">{{ dlg.message }}</p>
+        </div>
+        <div class="modal-footer u-flex u-justify-end u-gap-2" style="padding: 12px 16px; border-top: 1px solid var(--border-color);">
+          <button type="button" class="btn btn-secondary btn-sm" (click)="ui.resolveConfirm(false)">{{ dlg.cancelText }}</button>
+          <button
+            type="button"
+            class="btn btn-sm"
+            [class.btn-danger]="dlg.danger"
+            [class.btn-primary]="!dlg.danger"
+            (click)="ui.resolveConfirm(true)"
+          >
+            {{ dlg.confirmText }}
+          </button>
+        </div>
+      </div>
+    </div>
+  }
+
+  <!-- 6. Global Prompt Dialog -->
+  @if (ui.activePrompt(); as prm) {
+    <div class="modal-backdrop" (click)="ui.resolvePrompt(false)">
+      <div class="modal-card modal-card-sm" role="dialog" aria-modal="true" (click)="$event.stopPropagation()">
+        <div class="modal-header">
+          <h3 class="u-m-0" style="font-size: 16px; font-weight: 600;">{{ prm.title }}</h3>
+          <button type="button" class="btn btn-ghost btn-sm" (click)="ui.resolvePrompt(false)" aria-label="Close">
+            <app-icon name="close" [size]="15" />
+          </button>
+        </div>
+        <form (ngSubmit)="ui.resolvePrompt(true)">
+          <div class="modal-body u-p-4">
+            <label class="u-mb-2" style="display: block; font-weight: 600; font-size: 13px;">{{ prm.message }}</label>
+            <input
+              type="text"
+              class="form-control"
+              name="global_prompt_input"
+              [placeholder]="prm.placeholder || ''"
+              [ngModel]="ui.promptInput()"
+              (ngModelChange)="ui.promptInput.set($event)"
+              autofocus
+            />
+          </div>
+          <div class="modal-footer u-flex u-justify-end u-gap-2" style="padding: 12px 16px; border-top: 1px solid var(--border-color);">
+            <button type="button" class="btn btn-secondary btn-sm" (click)="ui.resolvePrompt(false)">{{ prm.cancelText }}</button>
+            <button type="submit" class="btn btn-primary btn-sm">{{ prm.confirmText }}</button>
+          </div>
+        </form>
+      </div>
+    </div>
+  }
+
+  <!-- 7. Global Toast Notifications Stack -->
+  @if (ui.toasts().length > 0) {
+    <div class="ui-toast-stack" role="status" aria-live="polite">
+      @for (t of ui.toasts(); track t.id) {
+        <div class="ui-toast-item" [attr.data-type]="t.type">
+          <span class="ui-toast-msg">{{ t.message }}</span>
+          <button type="button" class="ui-toast-close" (click)="ui.dismissToast(t.id)" aria-label="Dismiss">
+            <app-icon name="close" [size]="13" />
+          </button>
+        </div>
+      }
+    </div>
+  }
 </div>

@@ -3,6 +3,7 @@ import { CommonModule } from '@angular/common';
 import { FormsModule } from '@angular/forms';
 import { RouterLink } from '@angular/router';
 import { ApiService } from '../../services/api.service';
+import { UiFeedbackService } from '../../services/ui-feedback.service';
 import {
   IssueSecurityGrant,
   IssueSecurityLevel,
@@ -69,6 +70,7 @@ const ALL_PERMISSION_METAS: PermissionMeta[] = [
 })
 export class PermissionsAdminComponent implements OnInit {
   readonly api = inject(ApiService);
+  private readonly ui = inject(UiFeedbackService);
 
   activeTab = signal<'permissions' | 'security' | 'groups' | 'tokens' | 'project-schemes'>('permissions');
   toastMsg = signal<string>('');
@@ -221,7 +223,7 @@ export class PermissionsAdminComponent implements OnInit {
   }
 
   async deletePermissionScheme(scheme: PermissionScheme): Promise<void> {
-    if (!confirm(`Delete permission scheme "${scheme.name}"? Projects using it will revert to Default.`)) return;
+    if (!(await this.ui.confirm({ title: 'Delete Permission Scheme', message: `Delete permission scheme "${scheme.name}"? Projects using it will revert to Default.`, danger: true }))) return;
     try {
       await this.api.deletePermissionScheme(scheme.id);
       this.showToast(`Deleted permission scheme "${scheme.name}".`);
@@ -352,7 +354,7 @@ export class PermissionsAdminComponent implements OnInit {
   async deleteSecurityLevel(level: IssueSecurityLevel): Promise<void> {
     const scheme = this.selectedSecurityScheme();
     if (!scheme) return;
-    if (!confirm(`Delete security level "${level.name}"? Associated issues will become unclassified.`)) return;
+    if (!(await this.ui.confirm({ title: 'Delete Security Level', message: `Delete security level "${level.name}"? Associated issues will become unclassified.`, danger: true }))) return;
     try {
       await this.api.deleteSecurityLevel(scheme.id, level.id);
       this.showToast(`Deleted security level "${level.name}"`);
@@ -500,7 +502,7 @@ export class PermissionsAdminComponent implements OnInit {
   }
 
   async deleteGroup(group: UserGroup): Promise<void> {
-    if (!confirm(`Delete group "${group.name}"?`)) return;
+    if (!(await this.ui.confirm({ title: 'Delete Group', message: `Delete group "${group.name}"?`, danger: true }))) return;
     try {
       await this.api.deleteUserGroup(group.id);
       this.showToast(`Deleted group "${group.name}".`);
@@ -647,7 +649,7 @@ export class PermissionsAdminComponent implements OnInit {
   }
 
   async deleteToken(token: PersonalAccessToken): Promise<void> {
-    if (!confirm(`Revoke token "${token.name}"?`)) return;
+    if (!(await this.ui.confirm({ title: 'Revoke Token', message: `Revoke token "${token.name}"?`, confirmText: 'Revoke', danger: true }))) return;
     try {
       await this.api.deletePersonalAccessToken(token.id);
       this.showToast(`Revoked token "${token.name}".`);

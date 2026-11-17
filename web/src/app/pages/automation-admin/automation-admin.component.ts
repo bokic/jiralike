@@ -3,6 +3,7 @@ import { CommonModule } from '@angular/common';
 import { FormsModule } from '@angular/forms';
 import { RouterLink } from '@angular/router';
 import { ApiService } from '../../services/api.service';
+import { UiFeedbackService } from '../../services/ui-feedback.service';
 import {
   AutomationAction,
   AutomationCondition,
@@ -39,6 +40,7 @@ const TRIGGER_OPTIONS: TriggerOption[] = [
 })
 export class AutomationAdminComponent implements OnInit {
   api = inject(ApiService);
+  private ui = inject(UiFeedbackService);
 
   activeTab = signal<'rules' | 'logs'>('rules');
   searchQuery = signal('');
@@ -373,7 +375,7 @@ export class AutomationAdminComponent implements OnInit {
   }
 
   async deleteRule(rule: AutomationRule) {
-    if (!confirm(`Are you sure you want to delete rule '${rule.name}'?`)) {
+    if (!(await this.ui.confirm({ title: 'Delete Automation Rule', message: `Are you sure you want to delete rule '${rule.name}'?`, danger: true }))) {
       return;
     }
     try {
