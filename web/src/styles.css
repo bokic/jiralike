@@ -1454,23 +1454,52 @@ input:disabled, select:disabled, textarea:disabled {
 
 /* Detail & Workflow Pipeline */
 .detail-top-bar {
+  position: sticky;
+  top: 54px;
+  z-index: 40;
   display: flex;
   justify-content: space-between;
   align-items: center;
+  flex-wrap: wrap;
+  gap: 10px;
+  padding: 10px 0;
   margin-bottom: 12px;
+  background: var(--bg-app);
+  border-bottom: 1px solid var(--border-color);
+}
+
+.title-input {
+  font-size: 18px !important;
+  font-weight: 700;
+  background: transparent !important;
+  border-color: transparent !important;
+  padding: 6px 8px !important;
+  margin-left: -8px;
+  width: calc(100% + 8px) !important;
+}
+
+.title-input:hover {
+  background: var(--bg-subtle) !important;
+  border-color: var(--border-color) !important;
+}
+
+.title-input:focus {
+  background: var(--bg-surface) !important;
+  border-color: var(--brand-primary) !important;
 }
 
 .breadcrumb {
   display: flex;
   align-items: center;
+  flex-wrap: wrap;
   gap: 8px;
   font-size: 14px;
 }
 
 .workflow-pipeline-bar {
-  background: #fff;
+  background: var(--bg-surface);
   border: 1px solid var(--border-color);
-  border-radius: 8px;
+  border-radius: var(--radius-lg);
   padding: 10px 14px;
   margin-bottom: 16px;
   display: flex;
