@@ -199,6 +199,21 @@
 .table-scroll {
   flex: 1;
   overflow: auto;
+  -webkit-overflow-scrolling: touch;
+}
+
+@media (max-width: 768px) {
+  .db-layout,
+  .admin-layout {
+    flex-direction: column;
+  }
+  .data-table th:first-child,
+  .data-table td:first-child {
+    position: sticky;
+    left: 0;
+    background: var(--bg-surface);
+    z-index: 2;
+  }
 }
 
 .data-table {

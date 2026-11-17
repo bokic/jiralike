@@ -1529,6 +1529,20 @@ interface FlattenedHierarchyRow {
       font-size: 11px;
       color: var(--text-secondary);
     }
+    @media (max-width: 960px) {
+      .gantt-split-view {
+        flex-direction: column;
+      }
+      .hierarchy-panel {
+        width: 100% !important;
+        max-height: 260px;
+        border-right: none;
+        border-bottom: 2px solid var(--border-color);
+      }
+      .timeline-panel {
+        min-height: 360px;
+      }
+    }
   `],
 })
 export class RoadmapAdvancedComponent implements OnInit {

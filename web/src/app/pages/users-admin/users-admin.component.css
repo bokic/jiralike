@@ -78,10 +78,21 @@
 
 /* Users Table */
 .table-card {
-  background: white;
+  background: var(--bg-surface);
   border: 1px solid var(--border-color);
-  border-radius: 4px;
-  overflow: hidden;
+  border-radius: var(--radius-md);
+  overflow-x: auto;
+  -webkit-overflow-scrolling: touch;
+}
+
+@media (max-width: 768px) {
+  .users-table th:first-child,
+  .users-table td:first-child {
+    position: sticky;
+    left: 0;
+    background: var(--bg-surface);
+    z-index: 1;
+  }
 }
 
 .users-table {

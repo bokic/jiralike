@@ -2167,6 +2167,25 @@ ORDER BY {{ info.order_by_sql || 'w.board_order ASC, w.id ASC' }}</pre>
         border-radius: 6px;
         font-size: 12px;
       }
+      @media (max-width: 960px) {
+        .split-navigator {
+          grid-template-columns: 1fr;
+        }
+        .split-list-pane {
+          max-height: 280px;
+        }
+        .search-shell {
+          flex-direction: column;
+        }
+        .filter-sidebar {
+          width: 100% !important;
+          max-height: 320px;
+        }
+        .results-table-wrap {
+          overflow-x: auto;
+          -webkit-overflow-scrolling: touch;
+        }
+      }
     `,
   ],
 })
