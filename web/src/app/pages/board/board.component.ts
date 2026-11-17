@@ -38,7 +38,7 @@ export interface SwimlaneRow {
       .board-shell {
         display: flex;
         flex-direction: column;
-        gap: 14px;
+        gap: 10px;
       }
       .board-top-bar {
         display: flex;
@@ -46,11 +46,11 @@ export interface SwimlaneRow {
         align-items: center;
         flex-wrap: wrap;
         gap: 12px;
-        background: #fff;
-        padding: 14px 18px;
+        background: var(--bg-surface);
+        padding: 10px 16px;
         border-radius: 10px;
-        border: 1px solid #dfe1e6;
-        box-shadow: 0 1px 3px rgba(9, 30, 66, 0.05);
+        border: 1px solid var(--border-color);
+        box-shadow: 0 1px 2px rgba(9, 30, 66, 0.04);
       }
       .board-selector-group {
         display: flex;
@@ -59,20 +59,30 @@ export interface SwimlaneRow {
         flex-wrap: wrap;
       }
       .board-select {
-        font-size: 15px;
+        font-size: 16px;
         font-weight: 700;
-        color: #172b4d;
-        padding: 7px 12px;
+        color: var(--text-primary);
+        padding: 5px 10px;
         border-radius: 6px;
-        border: 2px solid #0052cc;
-        background: #f4f5f7;
+        border: 1px solid transparent;
+        background: transparent;
         cursor: pointer;
+        transition: background 0.15s, border-color 0.15s;
+      }
+      .board-select:hover {
+        background: var(--bg-subtle);
+        border-color: var(--border-color);
+      }
+      .board-select:focus {
+        outline: none;
+        border-color: var(--brand-primary);
+        background: var(--bg-surface);
       }
       .board-type-tag {
         display: inline-flex;
         align-items: center;
-        gap: 5px;
-        padding: 4px 10px;
+        gap: 4px;
+        padding: 3px 8px;
         border-radius: 999px;
         font-size: 11px;
         font-weight: 700;
@@ -80,35 +90,60 @@ export interface SwimlaneRow {
         letter-spacing: 0.04em;
       }
       .board-type-tag.scrum {
-        background: #deebff;
-        color: #0747a6;
+        background: rgba(0, 82, 204, 0.12);
+        color: var(--brand-primary);
       }
       .board-type-tag.kanban {
-        background: #eae6ff;
-        color: #403294;
+        background: rgba(101, 84, 192, 0.14);
+        color: #6554c0;
+      }
+      .board-jql-chip {
+        display: inline-flex;
+        align-items: center;
+        gap: 4px;
+        padding: 3px 8px;
+        border-radius: 6px;
+        background: var(--bg-subtle);
+        color: var(--text-secondary);
+        font-family: monospace;
+        font-size: 11px;
+        max-width: 200px;
+        overflow: hidden;
+        text-overflow: ellipsis;
+        white-space: nowrap;
       }
       .mode-switcher {
         display: inline-flex;
-        background: #ebecf0;
+        background: var(--bg-subtle);
         padding: 3px;
-        border-radius: 8px;
-        gap: 4px;
+        border-radius: 7px;
+        gap: 2px;
       }
       .mode-btn {
         border: none;
         background: transparent;
-        padding: 6px 14px;
-        border-radius: 6px;
-        font-size: 13px;
+        padding: 5px 12px;
+        border-radius: 5px;
+        font-size: 12.5px;
         font-weight: 600;
-        color: #42526e;
+        color: var(--text-secondary);
         cursor: pointer;
         transition: all 0.15s;
+        white-space: nowrap;
+      }
+      .mode-btn:hover {
+        color: var(--text-primary);
       }
       .mode-btn.active {
-        background: #0052cc;
-        color: #fff;
-        box-shadow: 0 1px 3px rgba(0, 82, 204, 0.3);
+        background: var(--bg-surface);
+        color: var(--brand-primary);
+        box-shadow: 0 1px 2px rgba(9, 30, 66, 0.12);
+      }
+      .board-top-actions {
+        display: flex;
+        align-items: center;
+        gap: 6px;
+        flex-wrap: wrap;
       }
       .quick-filters-bar {
         display: flex;
@@ -116,10 +151,62 @@ export interface SwimlaneRow {
         justify-content: space-between;
         flex-wrap: wrap;
         gap: 10px;
-        background: #fff;
-        padding: 10px 16px;
-        border-radius: 8px;
-        border: 1px solid #dfe1e6;
+        background: var(--bg-surface);
+        padding: 8px 14px;
+        border-radius: 10px;
+        border: 1px solid var(--border-color);
+      }
+      .qf-left {
+        display: flex;
+        align-items: center;
+        gap: 10px;
+        flex-wrap: wrap;
+        flex: 1;
+        min-width: 240px;
+      }
+      .qf-search-wrap {
+        position: relative;
+        display: inline-flex;
+        align-items: center;
+      }
+      .qf-search-icon {
+        position: absolute;
+        left: 9px;
+        font-size: 12px;
+        color: var(--text-secondary);
+        pointer-events: none;
+      }
+      .qf-search-input {
+        height: 30px;
+        padding: 0 26px 0 28px;
+        font-size: 12.5px;
+        border: 1px solid var(--border-color);
+        border-radius: 6px;
+        background: var(--bg-app);
+        color: var(--text-primary);
+        width: 200px;
+        transition: border-color 0.15s, width 0.15s, background 0.15s;
+      }
+      .qf-search-input:focus {
+        outline: none;
+        border-color: var(--brand-primary);
+        background: var(--bg-surface);
+        width: 230px;
+      }
+      .qf-search-clear {
+        position: absolute;
+        right: 6px;
+        border: none;
+        background: transparent;
+        color: var(--text-secondary);
+        font-size: 11px;
+        cursor: pointer;
+        padding: 2px 4px;
+        border-radius: 4px;
+      }
+      .qf-search-clear:hover {
+        color: var(--text-primary);
+        background: var(--bg-subtle);
       }
       .qf-pills {
         display: flex;
@@ -127,24 +214,69 @@ export interface SwimlaneRow {
         gap: 6px;
         flex-wrap: wrap;
       }
+      .qf-label {
+        font-size: 11px;
+        font-weight: 700;
+        color: var(--text-secondary);
+        text-transform: uppercase;
+        letter-spacing: 0.04em;
+      }
       .qf-pill {
-        padding: 5px 11px;
+        height: 28px;
+        padding: 0 10px;
         border-radius: 999px;
-        border: 1px solid #dfe1e6;
-        background: #f4f5f7;
-        color: #172b4d;
+        border: 1px solid var(--border-color);
+        background: var(--bg-app);
+        color: var(--text-primary);
         font-size: 12px;
         font-weight: 600;
         cursor: pointer;
+        display: inline-flex;
+        align-items: center;
         transition: all 0.15s;
       }
       .qf-pill:hover {
-        background: #ebecf0;
+        background: var(--bg-subtle);
       }
       .qf-pill.active {
-        background: #0052cc;
+        background: var(--brand-primary);
         color: #fff;
-        border-color: #0052cc;
+        border-color: var(--brand-primary);
+      }
+      .qf-clear-btn {
+        height: 26px;
+        padding: 0 8px;
+        border-radius: 6px;
+        border: none;
+        background: transparent;
+        color: var(--danger-color);
+        font-size: 11.5px;
+        font-weight: 600;
+        cursor: pointer;
+      }
+      .qf-clear-btn:hover {
+        background: rgba(222, 53, 11, 0.08);
+      }
+      .qf-controls {
+        display: flex;
+        align-items: center;
+        gap: 8px;
+        flex-wrap: wrap;
+      }
+      .qf-select {
+        height: 30px;
+        padding: 0 8px;
+        font-size: 12.5px;
+        font-weight: 500;
+        border: 1px solid var(--border-color);
+        border-radius: 6px;
+        background: var(--bg-app);
+        color: var(--text-primary);
+        cursor: pointer;
+      }
+      .qf-select:focus {
+        outline: none;
+        border-color: var(--brand-primary);
       }
       .wip-badge {
         display: inline-flex;
@@ -371,117 +503,131 @@ export interface SwimlaneRow {
       <!-- Top Multi-Board Header & View Mode Switcher -->
       <div class="board-top-bar">
         <div class="board-selector-group">
-          <label for="active-board-select" style="font-size: 12px; font-weight: 700; color: #5e6c84; text-transform: uppercase;">
-            Agile Board:
-          </label>
           <select
             id="active-board-select"
             name="active_board_id"
             class="board-select"
+            aria-label="Select Agile Board"
             [ngModel]="activeBoard()?.id || 1"
             (ngModelChange)="selectBoard($event)"
           >
             @for (b of api.boards(); track b.id) {
               <option [ngValue]="b.id">
-                {{ b.board_type === 'scrum' ? '🏃 [Scrum] ' : '📋 [Kanban] ' }}{{ b.name }}
+                {{ b.board_type === 'scrum' ? '🏃 ' : '📋 ' }}{{ b.name }}
               </option>
             }
           </select>
 
           @if (activeBoard(); as board) {
             <span class="board-type-tag" [class.scrum]="board.board_type === 'scrum'" [class.kanban]="board.board_type === 'kanban'">
-              {{ board.board_type === 'scrum' ? 'Scrum Board' : 'Kanban Flow' }}
+              {{ board.board_type === 'scrum' ? 'Scrum' : 'Kanban' }}
             </span>
             @if (board.filter_jql) {
-              <span class="badge" title="Powered by JQL Filter" style="font-family: monospace; font-size: 11px;">
-                🔍 JQL: {{ board.filter_jql }}
+              <span class="board-jql-chip" [title]="'Board JQL Filter: ' + board.filter_jql">
+                JQL: {{ board.filter_jql }}
               </span>
             }
           }
 
-          <div class="mode-switcher">
+          <div class="mode-switcher" role="tablist" aria-label="Board View Mode">
             <button
               type="button"
+              role="tab"
               class="mode-btn"
               [class.active]="viewMode() === 'board'"
+              [attr.aria-selected]="viewMode() === 'board'"
               (click)="setViewMode('board')"
             >
-              📋 {{ activeBoard()?.board_type === 'scrum' ? 'Active Sprint Board' : 'Kanban Board' }}
+              📋 Board
             </button>
             <button
               type="button"
+              role="tab"
               class="mode-btn"
               [class.active]="viewMode() === 'backlog'"
+              [attr.aria-selected]="viewMode() === 'backlog'"
               (click)="setViewMode('backlog')"
             >
-              🗂 Agile Backlog &amp; Sprint Planning
+              🗂 Backlog
             </button>
           </div>
         </div>
 
-        <div class="toolbar-actions" style="display: flex; gap: 8px; flex-wrap: wrap;">
+        <div class="board-top-actions">
           @if (viewMode() === 'board' && activeBoard()?.board_type === 'scrum' && activeSprintForBoard(); as actSp) {
             <button type="button" class="btn btn-primary btn-sm" (click)="openCompleteSprintModal(actSp)">
-              ✔ Complete Sprint ({{ actSp.name }})
+              ✓ Complete Sprint ({{ actSp.name }})
             </button>
           }
           <button type="button" class="btn btn-secondary btn-sm" (click)="openCreateBoardModal()">
             + New Board
           </button>
-          <button type="button" class="btn btn-secondary btn-sm" (click)="openBoardConfigModal()">
-            ⚙ Configure Board
+          <button type="button" class="btn btn-secondary btn-sm" (click)="openBoardConfigModal()" title="Configure Columns, WIP Limits &amp; Quick Filters">
+            ⚙ Configure
           </button>
-          <a routerLink="/search" class="btn btn-secondary btn-sm">🔍 JQL Search</a>
           <a routerLink="/create" class="btn btn-primary btn-sm">+ Create Issue</a>
         </div>
       </div>
 
-      <!-- Quick Filters, Swimlane Strategy & Search Bar -->
+      <!-- Quick Filters, Search & View Controls -->
       <div class="quick-filters-bar">
-        <div class="qf-pills">
-          <span style="font-size: 11px; font-weight: 700; color: #5e6c84; text-transform: uppercase; margin-right: 4px;">
-            ⚡ Quick Filters:
-          </span>
-          @if (activeBoard(); as board) {
-            @for (qf of board.quick_filters; track qf.id) {
+        <div class="qf-left">
+          <div class="qf-search-wrap">
+            <span class="qf-search-icon">🔍</span>
+            <input
+              type="text"
+              id="board-search"
+              name="board_search"
+              class="qf-search-input"
+              autocomplete="off"
+              placeholder="Filter key, summary, labels..."
+              [ngModel]="searchQuery()"
+              (ngModelChange)="searchQuery.set($event)"
+            />
+            @if (searchQuery()) {
               <button
                 type="button"
-                class="qf-pill"
-                [class.active]="isQuickFilterActive(qf.id)"
-                [title]="qf.description + ' (' + qf.jql_query + ')'"
-                (click)="toggleQuickFilter(qf.id)"
+                class="qf-search-clear"
+                title="Clear search"
+                (click)="searchQuery.set('')"
               >
-                {{ qf.name }}
+                ✕
               </button>
             }
-          }
-          @if (activeQuickFilterIds().length > 0 || selectedEpicFilter() || selectedVersionFilter()) {
-            <button
-              type="button"
-              class="btn btn-ghost btn-sm"
-              style="font-size: 11px; padding: 3px 8px;"
-              (click)="clearAllQuickFilters()"
-            >
-              ✕ Clear Active Filters
-            </button>
-          }
+          </div>
+
+          <div class="qf-pills">
+            <span class="qf-label">⚡ Quick Filters</span>
+            @if (activeBoard(); as board) {
+              @for (qf of board.quick_filters; track qf.id) {
+                <button
+                  type="button"
+                  class="qf-pill"
+                  [class.active]="isQuickFilterActive(qf.id)"
+                  [title]="qf.description + ' (' + qf.jql_query + ')'"
+                  (click)="toggleQuickFilter(qf.id)"
+                >
+                  {{ qf.name }}
+                </button>
+              }
+            }
+            @if (activeQuickFilterIds().length > 0 || selectedEpicFilter() || selectedVersionFilter()) {
+              <button
+                type="button"
+                class="qf-clear-btn"
+                (click)="clearAllQuickFilters()"
+              >
+                ✕ Clear
+              </button>
+            }
+          </div>
         </div>
 
-        <div style="display: flex; align-items: center; gap: 8px; flex-wrap: wrap;">
-          <input
-            type="text"
-            id="board-search"
-            name="board_search"
-            autocomplete="off"
-            placeholder="Filter key, summary, labels..."
-            style="padding: 5px 10px; font-size: 12px; border: 1px solid #dfe1e6; border-radius: 6px; width: 190px;"
-            [ngModel]="searchQuery()"
-            (ngModelChange)="searchQuery.set($event)"
-          />
-
+        <div class="qf-controls">
           <select
             name="board_assignee_filter"
-            style="padding: 5px 8px; font-size: 12px; border: 1px solid #dfe1e6; border-radius: 6px;"
+            class="qf-select"
+            aria-label="Filter by Assignee"
             [ngModel]="selectedAssignee()"
             (ngModelChange)="selectedAssignee.set($event)"
           >
@@ -492,25 +638,26 @@ export interface SwimlaneRow {
           </select>
 
           @if (viewMode() === 'board') {
-            <label style="font-size: 12px; color: #5e6c84; font-weight: 600;">Swimlanes:</label>
             <select
               name="board_swimlane_strategy"
-              style="padding: 5px 8px; font-size: 12px; border: 1px solid #dfe1e6; border-radius: 6px; font-weight: 600;"
+              class="qf-select"
+              aria-label="Swimlane grouping"
               [ngModel]="currentSwimlaneStrategy()"
               (ngModelChange)="changeSwimlaneStrategy($event)"
             >
-              <option value="none">None (Columns Only)</option>
-              <option value="epic">By Epic</option>
-              <option value="assignee">By Assignee</option>
-              <option value="priority">By Priority</option>
-              <option value="story">By Story (Subtasks)</option>
-              <option value="custom_jql">By Custom JQL Swimlanes</option>
+              <option value="none">Swimlanes: None</option>
+              <option value="epic">Swimlanes: By Epic</option>
+              <option value="assignee">Swimlanes: By Assignee</option>
+              <option value="priority">Swimlanes: By Priority</option>
+              <option value="story">Swimlanes: By Story</option>
+              <option value="custom_jql">Swimlanes: Custom JQL</option>
             </select>
 
             @if (activeBoard()?.board_type === 'scrum') {
               <select
                 name="board_sprint_filter"
-                style="padding: 5px 8px; font-size: 12px; border: 1px solid #dfe1e6; border-radius: 6px;"
+                class="qf-select"
+                aria-label="Filter by Sprint"
                 [ngModel]="selectedSprint()"
                 (ngModelChange)="selectedSprint.set($event)"
               >
@@ -529,7 +676,7 @@ export interface SwimlaneRow {
               [class.active]="showSidePanels()"
               (click)="showSidePanels.set(!showSidePanels())"
             >
-              {{ showSidePanels() ? '◀ Hide Epics & Versions Panels' : '▶ Show Epics & Versions Panels' }}
+              {{ showSidePanels() ? '◀ Hide Epics & Versions' : '▶ Epics & Versions' }}
             </button>
           }
         </div>
