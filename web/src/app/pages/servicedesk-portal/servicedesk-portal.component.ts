@@ -593,9 +593,14 @@ import {
     }
     .req-type-card:hover {
       background: var(--bg-surface);
-      border-color: #4c9aff;
-      box-shadow: 0 4px 8px rgba(9, 30, 66, 0.08);
+      border-color: var(--brand-primary);
+      box-shadow: var(--shadow-md);
       transform: translateY(-1px);
+    }
+    @media (max-width: 640px) {
+      .request-types-grid {
+        grid-template-columns: 1fr;
+      }
     }
     .rt-icon {
       font-size: 28px;

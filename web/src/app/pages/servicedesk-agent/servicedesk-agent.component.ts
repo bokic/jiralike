@@ -1217,13 +1217,32 @@ import {
     }
     .alert-success {
       background: var(--success-bg);
-      border: 1px solid #abf5d1;
-      color: #006644;
+      border: 1px solid rgba(0, 102, 68, 0.35);
+      color: var(--success-color);
     }
     .alert-error {
       background: var(--danger-bg);
-      border: 1px solid #ffbdad;
-      color: #bf2600;
+      border: 1px solid rgba(201, 55, 44, 0.35);
+      color: var(--danger-color);
+    }
+    .sla-timer-pill,
+    .sla-badge {
+      font-variant-numeric: tabular-nums;
+      font-weight: 700;
+    }
+    @media (max-width: 960px) {
+      .agent-layout {
+        flex-direction: column;
+      }
+      .agent-sidebar {
+        width: 100% !important;
+        border-right: none !important;
+        border-bottom: 1px solid var(--border-color);
+      }
+      .agent-main {
+        overflow-x: auto;
+        -webkit-overflow-scrolling: touch;
+      }
     }
   `],
 })
