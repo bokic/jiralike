@@ -503,7 +503,7 @@
   <!-- 1. Quick Create Issue Modal (Press 'c') -->
   @if (showCreateModal()) {
     <div class="modal-backdrop" (click)="showCreateModal.set(false)">
-      <div class="modal-card" style="max-width: 580px; width: 90vw;" (click)="$event.stopPropagation()">
+      <div class="modal-card modal-card-md" role="dialog" aria-modal="true" aria-label="Create Work Item" appTrapFocus (click)="$event.stopPropagation()">
         <div class="modal-header">
           <h3 style="margin: 0; font-size: 18px; font-weight: 600;">Create Work Item</h3>
           <button type="button" class="btn-ghost" style="font-size: 18px; line-height: 1; padding: 4px 8px;" (click)="showCreateModal.set(false)">✕</button>
@@ -585,7 +585,7 @@
   <!-- 2. Command Palette / Quick Operations Modal (Press '.') -->
   @if (showCommandPalette()) {
     <div class="cmd-palette-backdrop" (click)="showCommandPalette.set(false)">
-      <div class="cmd-palette-modal" (click)="$event.stopPropagation()">
+      <div class="cmd-palette-modal" role="dialog" aria-modal="true" aria-label="Command Palette" appTrapFocus (click)="$event.stopPropagation()">
         <div class="cmd-search-input-box">
           <span style="font-size: 18px;">🔍</span>
           <input
@@ -629,7 +629,7 @@
   <!-- 3. Keyboard Shortcuts Cheat Sheet Modal (Press '?') -->
   @if (showCheatSheet()) {
     <div class="modal-backdrop" (click)="showCheatSheet.set(false)">
-      <div class="modal-card" style="max-width: 640px; width: 90vw;" (click)="$event.stopPropagation()">
+      <div class="modal-card" style="max-width: 640px; width: 90vw;" role="dialog" aria-modal="true" aria-label="Keyboard Shortcuts" appTrapFocus (click)="$event.stopPropagation()">
         <div class="modal-header">
           <div class="u-flex u-items-center u-gap-2">
             <span style="font-size: 20px;">⌨️</span>
@@ -697,7 +697,7 @@
   <!-- 4. Quick Assign Modal (Press 'a' on selected card) -->
   @if (showQuickAssignModal()) {
     <div class="modal-backdrop" (click)="showQuickAssignModal.set(false)">
-      <div class="modal-card" style="max-width: 420px; width: 90vw;" (click)="$event.stopPropagation()">
+      <div class="modal-card" style="max-width: 420px; width: 90vw;" role="dialog" aria-modal="true" aria-label="Assign Issue" appTrapFocus (click)="$event.stopPropagation()">
         <div class="modal-header">
           <h3 style="margin: 0; font-size: 16px; font-weight: 600;">Assign Issue {{ selectedItemKey() }}</h3>
           <button type="button" class="btn-ghost" (click)="showQuickAssignModal.set(false)">✕</button>
@@ -722,7 +722,7 @@
   <!-- 5. Global Confirm Dialog -->
   @if (ui.activeConfirm(); as dlg) {
     <div class="modal-backdrop" (click)="ui.resolveConfirm(false)">
-      <div class="modal-card modal-card-sm" role="dialog" aria-modal="true" (click)="$event.stopPropagation()">
+      <div class="modal-card modal-card-sm" role="dialog" aria-modal="true" [attr.aria-label]="dlg.title" appTrapFocus (click)="$event.stopPropagation()">
         <div class="modal-header">
           <h3 class="u-m-0" style="font-size: 16px; font-weight: 600;">{{ dlg.title }}</h3>
           <button type="button" class="btn btn-ghost btn-sm" (click)="ui.resolveConfirm(false)" aria-label="Close">
@@ -751,7 +751,7 @@
   <!-- 6. Global Prompt Dialog -->
   @if (ui.activePrompt(); as prm) {
     <div class="modal-backdrop" (click)="ui.resolvePrompt(false)">
-      <div class="modal-card modal-card-sm" role="dialog" aria-modal="true" (click)="$event.stopPropagation()">
+      <div class="modal-card modal-card-sm" role="dialog" aria-modal="true" [attr.aria-label]="prm.title" appTrapFocus (click)="$event.stopPropagation()">
         <div class="modal-header">
           <h3 class="u-m-0" style="font-size: 16px; font-weight: 600;">{{ prm.title }}</h3>
           <button type="button" class="btn btn-ghost btn-sm" (click)="ui.resolvePrompt(false)" aria-label="Close">

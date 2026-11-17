@@ -7,6 +7,7 @@ import { ApiService } from './services/api.service';
 import { I18nService, SUPPORTED_LANGUAGES, I18nPipe, LocaleDatePipe } from './services/i18n.service';
 import { UiFeedbackService } from './services/ui-feedback.service';
 import { IconComponent } from './components/icon/icon.component';
+import { TrapFocusDirective } from './directives/trap-focus.directive';
 import {
   InAppNotification,
   UserMention,
@@ -28,7 +29,7 @@ interface CommandItem {
 @Component({
   selector: 'app-root',
   standalone: true,
-  imports: [CommonModule, FormsModule, RouterOutlet, RouterLink, RouterLinkActive, I18nPipe, IconComponent],
+  imports: [CommonModule, FormsModule, RouterOutlet, RouterLink, RouterLinkActive, I18nPipe, IconComponent, TrapFocusDirective],
   templateUrl: './app.html',
   styleUrl: './app.css',
 })
