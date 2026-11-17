@@ -4598,6 +4598,61 @@ kbd {
   line-height: 1.45;
 }
 
+/* Unified Form Validation & Alert Banners */
+.is-invalid {
+  border-color: var(--danger-color) !important;
+}
+
+.is-invalid:focus {
+  box-shadow: 0 0 0 2px rgba(222, 53, 11, 0.22) !important;
+}
+
+.ui-field-error {
+  margin-top: 4px;
+  font-size: 12px;
+  font-weight: 500;
+  color: var(--danger-color);
+  display: flex;
+  align-items: center;
+  gap: 4px;
+}
+
+.alert {
+  padding: 10px 14px;
+  border-radius: var(--radius-md);
+  border: 1px solid var(--border-color);
+  font-size: 13px;
+  line-height: 1.45;
+  display: flex;
+  align-items: flex-start;
+  justify-content: space-between;
+  gap: 10px;
+}
+
+.alert-danger {
+  background: var(--danger-bg);
+  border-color: rgba(222, 53, 11, 0.35);
+  color: var(--danger-color);
+}
+
+.alert-success {
+  background: var(--success-bg);
+  border-color: rgba(0, 135, 90, 0.35);
+  color: var(--success-color);
+}
+
+.alert-warning {
+  background: var(--warning-bg);
+  border-color: rgba(255, 153, 31, 0.4);
+  color: var(--warning-color);
+}
+
+.alert-info {
+  background: var(--info-bg);
+  border-color: rgba(0, 82, 204, 0.3);
+  color: var(--brand-primary);
+}
+
 
 
 
