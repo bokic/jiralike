@@ -130,7 +130,7 @@
       <div class="nav-right">
         @if (api.currentSprint(); as curSprint) {
           <span class="nav-sprint-pill" [title]="'Active Current Sprint: ' + curSprint.name">
-            <app-icon name="star" [size]="12" /> {{ curSprint.name }}
+            <app-icon name="star" [size]="12" /> {{ formatSprintName(curSprint.name) }}
           </span>
         }
 
@@ -342,9 +342,9 @@
             title="Account, Appearance &amp; Preferences"
           >
             <span class="avatar-sm" [style.background]="user.avatar_color">
-              {{ user.display_name.slice(0, 2).toUpperCase() }}
+              {{ formatDisplayName(user.display_name, user.role).slice(0, 2).toUpperCase() }}
             </span>
-            <span class="nav-user-name">{{ user.display_name }}</span>
+            <span class="nav-user-name">{{ formatDisplayName(user.display_name, user.role) }}</span>
             <app-icon name="chevron-down" [size]="13" class="nav-caret" />
           </button>
 

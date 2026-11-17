@@ -112,6 +112,24 @@ export class App implements OnInit, OnDestroy {
     return prefixes.some((p) => cleanUrl === p || cleanUrl.startsWith(p + '/'));
   }
 
+  formatSprintName(name?: string | null): string {
+    if (!name) return '';
+    const idx = name.indexOf(' - ');
+    return idx > 0 ? name.slice(0, idx).trim() : name;
+  }
+
+  formatDisplayName(displayName?: string | null, role?: string | null): string {
+    if (!displayName) return '';
+    let cleaned = displayName.trim();
+    if (role) {
+      const escapedRole = role.replace(/[.*+?^${}()|[\]\\]/g, '\\$&');
+      cleaned = cleaned
+        .replace(new RegExp(`\\s*(?:\\(${escapedRole}\\)|${escapedRole})\\s*$`, 'i'), '')
+        .trim();
+    }
+    return cleaned || displayName.trim();
+  }
+
   private pollInterval: any = null;
   private navSub: Subscription | null = null;
   private keydownHandler = (e: KeyboardEvent) => this.handleGlobalKeydown(e);
